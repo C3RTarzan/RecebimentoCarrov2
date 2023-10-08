@@ -1,0 +1,14 @@
+{
+    "name": "Recebimento_de_Carro",
+    "version": "1.0.0",
+    "description": "Recebimento de Carro",
+    "main": "main.js",
+    "scripts": {
+        "start": "electron ."
+    },
+    "dependencies": {
+        "electron": "^16.0.0",
+        "fs-extra": "^11.1.1",
+        "html2canvas": "^1.4.1"
+    }
+}
