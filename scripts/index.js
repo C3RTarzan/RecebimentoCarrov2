@@ -3,6 +3,10 @@ document.addEventListener("DOMContentLoaded", function() {
     document.querySelector('select').addEventListener('change', function() {
         getData();
     });
+    const data = new Date();
+    document.querySelector(".dateToday").value = `${data.getDate()}/${data.getMonth() + 1}/${data.getFullYear()}`;
+
+
 });
 
 function getData(){
@@ -346,6 +350,8 @@ function getCollect(cl, cl1, cl2, cl3, cl4, cl5){
     const PRN = document.querySelector('.PRN')
     const RRU = document.querySelector('.RRU')
     const MAC = document.querySelector('.MAC')
+    const FOR = document.querySelector('.FOR')
+    const TOTAL = document.querySelector('.TOTAL')
 
     
     switch (collect) {
@@ -386,6 +392,8 @@ function getCollect(cl, cl1, cl2, cl3, cl4, cl5){
             PRN.value = cl.routeEXP.PRN
             RRU.value = cl.routeEXP.RRU
             MAC.value = cl.routeEXP.MAC
+            FOR.value = cl.ForEXP
+            TOTAL.value = cl.EXP
             setMessage(cl, cl1, cl2, cl3, cl4, cl5)
             Graphic(cl)
             setTable(cl.routeFor)
@@ -427,6 +435,8 @@ function getCollect(cl, cl1, cl2, cl3, cl4, cl5){
             PRN.value = cl1.routeEXP.PRN
             RRU.value = cl1.routeEXP.RRU
             MAC.value = cl1.routeEXP.MAC
+            FOR.value = cl1.ForEXP
+            TOTAL.value = cl1.EXP
             setMessage(null, cl1)
             Graphic(null, cl1)
             setTable(null, cl1.routeFor)
@@ -468,6 +478,8 @@ function getCollect(cl, cl1, cl2, cl3, cl4, cl5){
             PRN.value = cl2.routeEXP.PRN
             RRU.value = cl2.routeEXP.RRU
             MAC.value = cl2.routeEXP.MAC
+            FOR.value = cl2.ForEXP
+            TOTAL.value = cl2.EXP
             setMessage(null, null, cl2)
             Graphic(null, null, cl2)
             setTable(null, null, cl2.routeFor)
@@ -509,6 +521,8 @@ function getCollect(cl, cl1, cl2, cl3, cl4, cl5){
             PRN.value = cl3.routeEXP.PRN
             RRU.value = cl3.routeEXP.RRU
             MAC.value = cl3.routeEXP.MAC
+            FOR.value = cl3.ForEXP
+            TOTAL.value = cl3.EXP
             setMessage(null, null, null, cl3)
             Graphic(null, null, null, cl3)
             setTable(null, null, null, cl3.routeFor)
@@ -550,6 +564,8 @@ function getCollect(cl, cl1, cl2, cl3, cl4, cl5){
             PRN.value = cl4.routeEXP.PRN
             RRU.value = cl4.routeEXP.RRU
             MAC.value = cl4.routeEXP.MAC
+            FOR.value = cl4.ForEXP
+            TOTAL.value = cl4.EXP
             setMessage(null, null, null, null, cl4)
             Graphic(null, null, null, null, cl4)
             setTable(null, null, null, null, cl4.routeFor)
@@ -591,6 +607,8 @@ function getCollect(cl, cl1, cl2, cl3, cl4, cl5){
             PRN.value = cl5.routeEXP.PRN
             RRU.value = cl5.routeEXP.RRU
             MAC.value = cl5.routeEXP.MAC
+            FOR.value = cl5.ForEXP
+            TOTAL.value = cl5.EXP
             setMessage(null, null, null, null, null,cl5)
             Graphic(null, null, null, null, null,cl5)
             setTable(null, null, null, null, null,cl5.routeFor)
