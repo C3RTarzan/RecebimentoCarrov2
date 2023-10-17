@@ -1267,3 +1267,7 @@ function imprimirDiv(divId) {
     janelaImpressao.print();
     janelaImpressao.close();
 }
+
+function redirectHelp(){
+    window.location.href = "/components/help.html";
+}

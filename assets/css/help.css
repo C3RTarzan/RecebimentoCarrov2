@@ -13,6 +13,7 @@ html, body, #root {
   display: flex;
   flex-direction: row;
   background-color: #292b2f;
+  position: relative;
 }
 
 div, header, section, footer, main {
@@ -86,6 +87,7 @@ a:hover {
 }
 
 .help {
+  position: relative;
   padding: 10px;
   overflow-y: scroll;
   width: 100%;
@@ -130,6 +132,23 @@ a:hover {
   opacity: 1;
   color: rgb(255, 255, 255);
   font-weight: 600;
+}
+.help .help {
+  overflow: hidden;
+  position: absolute;
+  left: 10px;
+  width: 90px;
+  height: 30px;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #d6d7d9;
+  font-weight: 600;
+}
+.help .help:hover {
+  background-color: white;
 }
 
 /*# sourceMappingURL=help.css.map */

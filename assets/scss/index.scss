@@ -83,6 +83,7 @@
     }
 }
 .result{
+    position: relative;
     overflow: hidden;
     overflow-y: scroll;
     width: calc(100% - 400px);
@@ -321,5 +322,20 @@
     .version{
         font-size: 12px;
         opacity: .5;
+    }
+    .help{
+        position: absolute;
+        right: 10px;
+        width: 90px;
+        height: min-content;
+        border: none;
+        color: $corspan;
+        text-decoration: underline;
+        cursor: pointer;
+        background-color: rgba(0, 0, 0, 0);
+        font-weight: 600;
+        &:hover{
+            
+        }
     }
 }
