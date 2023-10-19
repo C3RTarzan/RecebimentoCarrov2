@@ -4,141 +4,54 @@ document.addEventListener("DOMContentLoaded", function() {
         getData();
     });
     const data = new Date();
-    document.querySelector(".dateToday").value = `${data.getDate()}/${data.getMonth() + 1}/${data.getFullYear()}`;
+    const dateToday = document.querySelectorAll(".dateToday")
+    for(let i = 0; i < dateToday.length; i++){
+        dateToday[i].value = `${data.getDate()}/${data.getMonth() + 1}/${data.getFullYear()}`;
+    }
 
 
 });
 
-function getData(){
-    const data1 = document.querySelector("#data1").value.split('\n')
-    const data2 = document.querySelector("#data2").value.split('\n')
-    const data3 = document.querySelector("#data3").value.split('\n')
-    const data4 = document.querySelector("#data4").value.split('\n')
-    const data5 = document.querySelector("#data5").value.split('\n')
-    
+
+function getData(){   
     const dadosFormatados = [];
     const dadosFormatadoscoleta1 = [];
     const dadosFormatadoscoleta2 = [];
     const dadosFormatadoscoleta3 = [];
     const dadosFormatadoscoleta4 = [];
     const dadosFormatadoscoleta5 = [];
+    const dadosFormatadoscoleta6 = [];
+    const dadosFormatadoscoleta7 = [];
+    const dadosFormatadoscoleta8 = [];
+    const dadosFormatadoscoleta9 = [];
+    const dadosFormatadoscoleta10 = [];
 
-    const datePriority = document.querySelector('.datePriority')
-        
-    for(let i = 0; i < data1.length; i++){
-        const item = data1[i].split('	');
-        const route = item[0];
-        const type = item[1];
-        const date = item[2];
-
-        dadosFormatados.push({
-            route: route,
-            type: type,
-            date: date,
-            priority: item[1],
-            datePriority: datePriority.value,
-            collect: 0
-        });
-        dadosFormatadoscoleta1.push({
-            route: route,
-            type: type,
-            date: date,
-            priority: item[1],
-            datePriority: datePriority.value,
-            collect: 1
-        });
-    }
-    for(let i = 0; i < data2.length; i++){
-        const item = data2[i].split('	');
-
-        const route = item[0];
-        const type = item[1];
-        const date = item[2];
-
-        dadosFormatados.push({
-            route: route,
-            type: type,
-            date: date,
-            priority: item[1],
-            datePriority: datePriority.value
-        });
-        dadosFormatadoscoleta2.push({
-            route: route,
-            type: type,
-            date: date,
-            priority: item[1],
-            datePriority: datePriority.value,
-            collect: 2
-        });
-    }
-    for(let i = 0; i < data3.length; i++){
-        const item = data3[i].split('	');
-
-        const route = item[0];
-        const type = item[1];
-        const date = item[2];
-
-        dadosFormatados.push({
-            route: route,
-            type: type,
-            date: date,
-            priority: item[1],
-            datePriority: datePriority.value
-        });
-        dadosFormatadoscoleta3.push({
-            route: route,
-            type: type,
-            date: date,
-            priority: item[1],
-            datePriority: datePriority.value,
-            collect: 3
-        });
-    }
-    for(let i = 0; i < data4.length; i++){
-        const item = data4[i].split('	');
-
-        const route = item[0];
-        const type = item[1];
-        const date = item[2];
-
-        dadosFormatados.push({
-            route: route,
-            type: type,
-            date: date,
-            priority: item[1],
-            datePriority: datePriority.value
-        });
-        dadosFormatadoscoleta4.push({
-            route: route,
-            type: type,
-            date: date,
-            priority: item[1],
-            datePriority: datePriority.value,
-            collect: 4
-        });
-    }
-    for(let i = 0; i < data5.length; i++){
-        const item = data5[i].split('	');
-
-        const route = item[0];
-        const type = item[1];
-        const date = item[2];
-
-        dadosFormatados.push({
-            route: route,
-            type: type,
-            date: date,
-            priority: item[1],
-            datePriority: datePriority.value
-        });
-        dadosFormatadoscoleta5.push({
-            route: route,
-            type: type,
-            date: date,
-            priority: item[1],
-            datePriority: datePriority.value,
-            collect: 5
-        });
+    for (let i = 1; i <= 10; i++) {
+        const coleta = processarDados(i, i);
+    
+        if (i === 1) {
+            dadosFormatadoscoleta1.push(...coleta);
+        } else if (i === 2) {
+            dadosFormatadoscoleta2.push(...coleta);
+        } else if (i === 3) {
+            dadosFormatadoscoleta3.push(...coleta);
+        } else if (i === 4) {
+            dadosFormatadoscoleta4.push(...coleta);
+        } else if (i === 5) {
+            dadosFormatadoscoleta5.push(...coleta);
+        } else if (i === 6) {
+            dadosFormatadoscoleta6.push(...coleta);
+        } else if (i === 7) {
+            dadosFormatadoscoleta7.push(...coleta);
+        } else if (i === 8) {
+            dadosFormatadoscoleta8.push(...coleta);
+        } else if (i === 9) {
+            dadosFormatadoscoleta9.push(...coleta);
+        } else if (i === 10) {
+            dadosFormatadoscoleta10.push(...coleta);
+        }
+    
+        dadosFormatados.push(...coleta);
     }
     const count = getCount(dadosFormatados)
     const count1 = getCount(dadosFormatadoscoleta1)
@@ -146,7 +59,36 @@ function getData(){
     const count3 = getCount(dadosFormatadoscoleta3)
     const count4 = getCount(dadosFormatadoscoleta4)
     const count5 = getCount(dadosFormatadoscoleta5)
-    getCollect(count,count1,count2,count3,count4,count5)
+    const count6 = getCount(dadosFormatadoscoleta6)
+    const count7 = getCount(dadosFormatadoscoleta7)
+    const count8 = getCount(dadosFormatadoscoleta8)
+    const count9 = getCount(dadosFormatadoscoleta9)
+    const count10 = getCount(dadosFormatadoscoleta10)
+    getCollect(count,count1,count2,count3,count4,count5,count6,count7,count8,count9,count10)
+}
+function processarDados(coleta, coletaNumber) {
+    const data = document.querySelector(`#data${coletaNumber}`).value.split('\n');
+    const dadosFormatados = [];
+    
+    const datePriority = document.querySelector('.datePriority');
+    
+    for (let i = 0; i < data.length; i++) {
+        const item = data[i].split('	');
+        const route = item[0];
+        const type = item[1];
+        const date = item[2];
+
+        dadosFormatados.push({
+            route: route,
+            type: type,
+            date: date,
+            priority: item[1],
+            datePriority: datePriority.value,
+            collect: coleta
+        });
+    }
+
+    return dadosFormatados;
 }
 function getCount(route){
     let contTotal = 0, contEXP = 0, contSTD = 0
@@ -177,11 +119,29 @@ function getCount(route){
         'JPS': 0,'NTA': 0,'PRN': 0,'REK': 0,'RRU': 0,
         'SSA': 0,'MAC': 0
     };
+    const routeCountsSTD = {
+        'BHX': 0,'BHI': 0,'BHZ': 0,'BSB': 0,'BSI': 0,
+        'ENP': 0,'JZN': 0,'PTK': 0,'RZN': 0,'RZO': 0,
+        'RZS': 0,'SGI': 0,'VDQ': 0,'SSA': 0,'RRU': 0,
+        'REK': 0,'PRN': 0,'NTA': 0,'JPS': 0,'JPA': 0,
+        'ITN': 0,'FEK': 0,'CER': 0,'AJU': 0,'VIX': 0,
+        'MAC': 0,'RIO': 0
+    };
+
     let routesEXP = [
         "AJU","CER","FEK","ITN","JPA",
         "JPS","NTA","PRN","REK","RRU",
         "SSA","MAC"
     ]
+    let routeSTD = [
+        'BHX','BHI','BHZ','BSB','BSI',
+        'ENP','JZN','PTK','RZN','RZO',
+        'RZS','SGI','VDQ','SSA','RRU',
+        'REK','PRN','NTA','JPS','JPA',
+        'ITN','FEK','CER','AJU','VIX',
+        'MAC','RIO'
+    ]
+
     let routePrimaryLoc
     for(let i = 0; i < route.length; i++){
         routePrimaryLoc = route[i].route.split('-');
@@ -198,6 +158,12 @@ function getCount(route){
         }
         if(route[i].priority == "0"){
             contSTD++
+            if (routeSTD.includes(routePrimaryLoc[1])) {
+                routeCountsSTD[routePrimaryLoc[1]]++;
+            }
+            if (routePrimaryLoc[1] == 'ARP' ){
+                routeCountsSTD['MAC']++;
+            }
         }
         if(route[i].priority  == "6"){
             contEXP++
@@ -308,12 +274,86 @@ function getCount(route){
         BEP: contBEP,
         BLM: contBLM,
         routeEXP: routeCountsEXP,
+        routeSTD: routeCountsSTD,
         collect: collect,
         routeFor: routeFor
     }
 }
-function getCollect(cl, cl1, cl2, cl3, cl4, cl5){
+function getCollect(cl, cl1, cl2, cl3, cl4, cl5, cl6, cl7, cl8, cl9, cl10){
     const collect = document.querySelector('.collectSelect').value
+    switch (collect) {
+        case "all":
+            collectionConfiguration(cl)
+            setMessage(cl, cl1, cl2, cl3, cl4, cl5, cl6, cl7, cl8, cl9, cl10)
+            Graphic(cl)
+            setTable(cl.routeFor)
+            break;
+        case "collect1":
+            collectionConfiguration(cl1)
+            setMessage(null, cl1)
+            Graphic(null, cl1)
+            setTable(null, cl1.routeFor)
+            break;
+        case "collect2":
+            collectionConfiguration(cl2)
+            setMessage(null, null, cl2)
+            Graphic(null, null, cl2)
+            setTable(null, null, cl2.routeFor)
+            break;
+        case "collect3":
+            collectionConfiguration(cl3)
+            setMessage(null, null, null, cl3)
+            Graphic(null, null, null, cl3)
+            setTable(null, null, null, cl3.routeFor)
+            break;
+        case "collect4":
+            collectionConfiguration(cl4)
+            setMessage(null, null, null, null, cl4)
+            Graphic(null, null, null, null, cl4)
+            setTable(null, null, null, null, cl4.routeFor)
+        break;
+        case "collect5":
+            collectionConfiguration(cl5)
+            setMessage(null, null, null, null, null, cl5)
+            Graphic(null, null, null, null, null, cl5)
+            setTable(null, null, null, null, null, cl5.routeFor)
+        break;
+        case "collect6":
+            collectionConfiguration(cl6)
+            setMessage(null, null, null, null, null, null, cl6)
+            Graphic(null, null, null, null, null, null, cl6)
+            setTable(null, null, null, null, null, null, cl6.routeFor)
+        break;
+        case "collect7":
+            collectionConfiguration(cl7)
+            setMessage(null, null, null, null, null, null, null, cl7)
+            Graphic(null, null, null, null, null, null, null, cl7)
+            setTable(null, null, null, null, null, null, null, cl7.routeFor)
+        break;
+        case "collect8":
+            collectionConfiguration(cl8)
+            setMessage(null, null, null, null, null, null, null, null, cl8)
+            Graphic(null, null, null, null, null, null, null, null, cl8)
+            setTable(null, null, null, null, null, null, null, null, cl8.routeFor)
+        break;
+        case "collect9":
+            collectionConfiguration(cl9)
+            setMessage(null, null, null, null, null, null, null, null, null, cl9)
+            Graphic(null, null, null, null, null, null, null, null, null, cl9)
+            setTable(null, null, null, null, null, null, null, null, null, cl9.routeFor)
+        break;
+        case "collect10":
+            collectionConfiguration(cl10)
+            setMessage(null, null, null, null, null, null, null, null, null, null, cl10)
+            Graphic(null, null, null, null, null, null, null, null, null, null, cl10)
+            setTable(null, null, null, null, null, null, null, null, null, null, cl10.routeFor)
+        break;
+        default:
+            console.log("Opção desconhecida");   
+    }
+    
+}
+function collectionConfiguration(collect){
     const contSTD = document.querySelector('.contSTD')
     const contEXP = document.querySelector('.contEXP')
     const contTotal = document.querySelector('.contTotal')
@@ -353,273 +393,107 @@ function getCollect(cl, cl1, cl2, cl3, cl4, cl5){
     const FOR = document.querySelector('.FOR')
     const TOTAL = document.querySelector('.TOTAL')
 
-    
-    switch (collect) {
-        case "all":
-            contSTD.value = cl.STD
-            contEXP.value = cl.EXP
-            contTotal.value = cl.Total
+    const BHX_STD  = document.querySelector('.BHX_STD')
+    const BHI_STD  = document.querySelector('.BHI_STD')
+    const BHZ_STD  = document.querySelector('.BHZ_STD')
+    const BSB_STD  = document.querySelector('.BSB_STD')
+    const BSI_STD  = document.querySelector('.BSI_STD')
+    const ENP_STD  = document.querySelector('.ENP_STD')
+    const JZN_STD  = document.querySelector('.JZN_STD')
+    const PTK_STD  = document.querySelector('.PTK_STD')
+    const RZN_STD  = document.querySelector('.RZN_STD')
+    const RZO_STD  = document.querySelector('.RZO_STD')
+    const RZS_STD  = document.querySelector('.RZS_STD')
+    const SGI_STD  = document.querySelector('.SGI_STD')
+    const VDQ_STD  = document.querySelector('.VDQ_STD')
+    const SSA_STD = document.querySelector('.SSA_STD')
+    const RRU_STD = document.querySelector('.RRU_STD')
+    const REK_STD = document.querySelector('.REK_STD')
+    const PRN_STD = document.querySelector('.PRN_STD')
+    const NTA_STD = document.querySelector('.NTA_STD')
+    const JPS_STD = document.querySelector('.JPS_STD')
+    const JPA_STD = document.querySelector('.JPA_STD')
+    const ITN_STD = document.querySelector('.ITN_STD')
+    const FEK_STD = document.querySelector('.FEK_STD')
+    const CER_STD = document.querySelector('.CER_STD')
+    const AJU_STD = document.querySelector('.AJU_STD')
+    const VIX_STD = document.querySelector('.VIX_STD')
+    const RIO_STD = document.querySelector('.RIO_STD')
+    const MAC_STD = document.querySelector('.MAC_STD')
+    const FOR_STD = document.querySelector('.FOR_STD')
+    const TOTAL_STD = document.querySelector('.TOTAL_STD')
 
-            contForSTD.value = cl.ForSTD
-            contForEXP.value = cl.ForEXP
-            contFor.value = cl.ForTotal
+    contSTD.value = collect.STD
+    contEXP.value = collect.EXP
+    contTotal.value = collect.Total
 
-            contForSTDPriority.value = cl.ForSTDPriority
-            contForEXPPriority.value = cl.ForEXPPriority
-            contForPriority.value = cl.ForTotalPriority
+    contForSTD.value = collect.ForSTD
+    contForEXP.value = collect.ForEXP
+    contFor.value = collect.ForTotal
 
-            contCerSTD.value = cl.CerSTD
-            contCerEXP.value = cl.CerEXP
-            contCerTotal.value = cl.CerTotal
+    contForSTDPriority.value = collect.ForSTDPriority
+    contForEXPPriority.value = collect.ForEXPPriority
+    contForPriority.value = collect.ForTotalPriority
 
-            SAO.value = cl.SAO
-            SLX.value = cl.SLX
-            PSX.value = cl.PSX
-            BEC.value = cl.BEC
-            SOB.value = cl.SOB
-            BEP.value = cl.BEP
-            BLM.value = cl.BLM
+    contCerSTD.value = collect.CerSTD
+    contCerEXP.value = collect.CerEXP
+    contCerTotal.value = collect.CerTotal
 
-            AJU.value = cl.routeEXP.AJU
-            FEK.value = cl.routeEXP.FEK
-            JPA.value = cl.routeEXP.JPA
-            NTA.value = cl.routeEXP.NTA
-            REK.value = cl.routeEXP.REK
-            SSA.value = cl.routeEXP.SSA
-            CER.value = cl.routeEXP.CER
-            ITN.value = cl.routeEXP.ITN
-            JPS.value = cl.routeEXP.JPS
-            PRN.value = cl.routeEXP.PRN
-            RRU.value = cl.routeEXP.RRU
-            MAC.value = cl.routeEXP.MAC
-            FOR.value = cl.ForEXP
-            TOTAL.value = cl.EXP
-            setMessage(cl, cl1, cl2, cl3, cl4, cl5)
-            Graphic(cl)
-            setTable(cl.routeFor)
-            break;
-        case "collect1":
-            contSTD.value = cl1.STD
-            contEXP.value = cl1.EXP
-            contTotal.value = cl1.Total
+    SAO.value = collect.SAO
+    SLX.value = collect.SLX
+    PSX.value = collect.PSX
+    BEC.value = collect.BEC
+    SOB.value = collect.SOB
+    BEP.value = collect.BEP
+    BLM.value = collect.BLM
 
-            contForSTD.value = cl1.ForSTD
-            contForEXP.value = cl1.ForEXP
-            contFor.value = cl1.ForTotal
+    AJU.value = collect.routeEXP.AJU
+    FEK.value = collect.routeEXP.FEK
+    JPA.value = collect.routeEXP.JPA
+    NTA.value = collect.routeEXP.NTA
+    REK.value = collect.routeEXP.REK
+    SSA.value = collect.routeEXP.SSA
+    CER.value = collect.routeEXP.CER
+    ITN.value = collect.routeEXP.ITN
+    JPS.value = collect.routeEXP.JPS
+    PRN.value = collect.routeEXP.PRN
+    RRU.value = collect.routeEXP.RRU
+    MAC.value = collect.routeEXP.MAC
+    FOR.value = collect.ForEXP
+    TOTAL.value = collect.EXP
 
-            contForSTDPriority.value = cl1.ForSTDPriority
-            contForEXPPriority.value = cl1.ForEXPPriority
-            contForPriority.value = cl1.ForTotalPriority
-
-            contCerSTD.value = cl1.CerSTD
-            contCerEXP.value = cl1.CerEXP
-            contCerTotal.value = cl1.CerTotal
-
-            SAO.value = cl1.SAO
-            SLX.value = cl1.SLX
-            PSX.value = cl1.PSX
-            BEC.value = cl1.BEC
-            SOB.value = cl1.SOB
-            BEP.value = cl1.BEP
-            BLM.value = cl1.BLM
-
-            AJU.value = cl1.routeEXP.AJU
-            FEK.value = cl1.routeEXP.FEK
-            JPA.value = cl1.routeEXP.JPA
-            NTA.value = cl1.routeEXP.NTA
-            REK.value = cl1.routeEXP.REK
-            SSA.value = cl1.routeEXP.SSA
-            CER.value = cl1.routeEXP.CER
-            ITN.value = cl1.routeEXP.ITN
-            JPS.value = cl1.routeEXP.JPS
-            PRN.value = cl1.routeEXP.PRN
-            RRU.value = cl1.routeEXP.RRU
-            MAC.value = cl1.routeEXP.MAC
-            FOR.value = cl1.ForEXP
-            TOTAL.value = cl1.EXP
-            setMessage(null, cl1)
-            Graphic(null, cl1)
-            setTable(null, cl1.routeFor)
-            break;
-        case "collect2":
-            contSTD.value = cl2.STD
-            contEXP.value = cl2.EXP
-            contTotal.value = cl2.Total
-
-            contForSTD.value = cl2.ForSTD
-            contForEXP.value = cl2.ForEXP
-            contFor.value = cl2.ForTotal
-
-            contForSTDPriority.value = cl2.ForSTDPriority
-            contForEXPPriority.value = cl2.ForEXPPriority
-            contForPriority.value = cl2.ForTotalPriority
-
-            contCerSTD.value = cl2.CerSTD
-            contCerEXP.value = cl2.CerEXP
-            contCerTotal.value = cl2.CerTotal
-
-            SAO.value = cl2.SAO
-            SLX.value = cl2.SLX
-            PSX.value = cl2.PSX
-            BEC.value = cl2.BEC
-            SOB.value = cl2.SOB
-            BEP.value = cl2.BEP
-            BLM.value = cl2.BLM
-
-            AJU.value = cl2.routeEXP.AJU
-            FEK.value = cl2.routeEXP.FEK
-            JPA.value = cl2.routeEXP.JPA
-            NTA.value = cl2.routeEXP.NTA
-            REK.value = cl2.routeEXP.REK
-            SSA.value = cl2.routeEXP.SSA
-            CER.value = cl2.routeEXP.CER
-            ITN.value = cl2.routeEXP.ITN
-            JPS.value = cl2.routeEXP.JPS
-            PRN.value = cl2.routeEXP.PRN
-            RRU.value = cl2.routeEXP.RRU
-            MAC.value = cl2.routeEXP.MAC
-            FOR.value = cl2.ForEXP
-            TOTAL.value = cl2.EXP
-            setMessage(null, null, cl2)
-            Graphic(null, null, cl2)
-            setTable(null, null, cl2.routeFor)
-            break;
-        case "collect3":
-            contSTD.value = cl3.STD
-            contEXP.value = cl3.EXP
-            contTotal.value = cl3.Total
-
-            contForSTD.value = cl3.ForSTD
-            contForEXP.value = cl3.ForEXP
-            contFor.value = cl3.ForTotal
-
-            contForSTDPriority.value = cl3.ForSTDPriority
-            contForEXPPriority.value = cl3.ForEXPPriority
-            contForPriority.value = cl3.ForTotalPriority
-
-            contCerSTD.value = cl3.CerSTD
-            contCerEXP.value = cl3.CerEXP
-            contCerTotal.value = cl3.CerTotal
-
-            SAO.value = cl3.SAO
-            SLX.value = cl3.SLX
-            PSX.value = cl3.PSX
-            BEC.value = cl3.BEC
-            SOB.value = cl3.SOB
-            BEP.value = cl3.BEP
-            BLM.value = cl3.BLM
-
-            AJU.value = cl3.routeEXP.AJU
-            FEK.value = cl3.routeEXP.FEK
-            JPA.value = cl3.routeEXP.JPA
-            NTA.value = cl3.routeEXP.NTA
-            REK.value = cl3.routeEXP.REK
-            SSA.value = cl3.routeEXP.SSA
-            CER.value = cl3.routeEXP.CER
-            ITN.value = cl3.routeEXP.ITN
-            JPS.value = cl3.routeEXP.JPS
-            PRN.value = cl3.routeEXP.PRN
-            RRU.value = cl3.routeEXP.RRU
-            MAC.value = cl3.routeEXP.MAC
-            FOR.value = cl3.ForEXP
-            TOTAL.value = cl3.EXP
-            setMessage(null, null, null, cl3)
-            Graphic(null, null, null, cl3)
-            setTable(null, null, null, cl3.routeFor)
-            break;
-        case "collect4":
-            contSTD.value = cl4.STD
-            contEXP.value = cl4.EXP
-            contTotal.value = cl4.Total
-
-            contForSTD.value = cl4.ForSTD
-            contForEXP.value = cl4.ForEXP
-            contFor.value = cl4.ForTotal
-
-            contForSTDPriority.value = cl4.ForSTDPriority
-            contForEXPPriority.value = cl4.ForEXPPriority
-            contForPriority.value = cl4.ForTotalPriority
-
-            contCerSTD.value = cl4.CerSTD
-            contCerEXP.value = cl4.CerEXP
-            contCerTotal.value = cl4.CerTotal
-
-            SAO.value = cl4.SAO
-            SLX.value = cl4.SLX
-            PSX.value = cl4.PSX
-            BEC.value = cl4.BEC
-            SOB.value = cl4.SOB
-            BEP.value = cl4.BEP
-            BLM.value = cl4.BLM
-
-            AJU.value = cl4.routeEXP.AJU
-            FEK.value = cl4.routeEXP.FEK
-            JPA.value = cl4.routeEXP.JPA
-            NTA.value = cl4.routeEXP.NTA
-            REK.value = cl4.routeEXP.REK
-            SSA.value = cl4.routeEXP.SSA
-            CER.value = cl4.routeEXP.CER
-            ITN.value = cl4.routeEXP.ITN
-            JPS.value = cl4.routeEXP.JPS
-            PRN.value = cl4.routeEXP.PRN
-            RRU.value = cl4.routeEXP.RRU
-            MAC.value = cl4.routeEXP.MAC
-            FOR.value = cl4.ForEXP
-            TOTAL.value = cl4.EXP
-            setMessage(null, null, null, null, cl4)
-            Graphic(null, null, null, null, cl4)
-            setTable(null, null, null, null, cl4.routeFor)
-        break;
-        case "collect5":
-            contSTD.value = cl5.STD
-            contEXP.value = cl5.EXP
-            contTotal.value = cl5.Total
-
-            contForSTD.value = cl5.ForSTD
-            contForEXP.value = cl5.ForEXP
-            contFor.value = cl5.ForTotal
-
-            contForSTDPriority.value = cl5.ForSTDPriority
-            contForEXPPriority.value = cl5.ForEXPPriority
-            contForPriority.value = cl5.ForTotalPriority
-
-            contCerSTD.value = cl5.CerSTD
-            contCerEXP.value = cl5.CerEXP
-            contCerTotal.value = cl5.CerTotal
-
-            SAO.value = cl5.SAO
-            SLX.value = cl5.SLX
-            PSX.value = cl5.PSX
-            BEC.value = cl5.BEC
-            SOB.value = cl5.SOB
-            BEP.value = cl5.BEP
-            BLM.value = cl5.BLM
-
-            AJU.value = cl5.routeEXP.AJU
-            FEK.value = cl5.routeEXP.FEK
-            JPA.value = cl5.routeEXP.JPA
-            NTA.value = cl5.routeEXP.NTA
-            REK.value = cl5.routeEXP.REK
-            SSA.value = cl5.routeEXP.SSA
-            CER.value = cl5.routeEXP.CER
-            ITN.value = cl5.routeEXP.ITN
-            JPS.value = cl5.routeEXP.JPS
-            PRN.value = cl5.routeEXP.PRN
-            RRU.value = cl5.routeEXP.RRU
-            MAC.value = cl5.routeEXP.MAC
-            FOR.value = cl5.ForEXP
-            TOTAL.value = cl5.EXP
-            setMessage(null, null, null, null, null,cl5)
-            Graphic(null, null, null, null, null,cl5)
-            setTable(null, null, null, null, null,cl5.routeFor)
-        break;
-        default:
-            console.log("Opção desconhecida");   
-    }
-    
+    BHX_STD.value = collect.routeSTD.BHX
+    BHI_STD.value = collect.routeSTD.BHI
+    BHZ_STD.value = collect.routeSTD.BHZ
+    BSB_STD.value = collect.routeSTD.BSB
+    BSI_STD.value = collect.routeSTD.BSI
+    ENP_STD.value = collect.routeSTD.ENP
+    JZN_STD.value = collect.routeSTD.JZN
+    PTK_STD.value = collect.routeSTD.PTK
+    RZO_STD.value = collect.routeSTD.RZO
+    RZS_STD.value = collect.routeSTD.RZS
+    SGI_STD.value = collect.routeSTD.SGI
+    VDQ_STD.value = collect.routeSTD.VDQ
+    SSA_STD.value = collect.routeSTD.SSA
+    RRU_STD.value = collect.routeSTD.RRU
+    REK_STD.value = collect.routeSTD.REK
+    PRN_STD.value = collect.routeSTD.PRN
+    NTA_STD.value = collect.routeSTD.NTA
+    JPS_STD.value = collect.routeSTD.JPS
+    JPA_STD.value = collect.routeSTD.JPA
+    ITN_STD.value = collect.routeSTD.ITN
+    FEK_STD.value = collect.routeSTD.FEK
+    CER_STD.value = collect.routeSTD.CER
+    AJU_STD.value = collect.routeSTD.AJU
+    VIX_STD.value = collect.routeSTD.VIX
+    RIO_STD.value = collect.routeSTD.RIO
+    MAC_STD.value = collect.routeSTD.MAC
+    FOR_STD.value = collect.ForSTD
+    TOTAL_STD.value = collect.STD
 }
-function setMessage(collect, collect1, collect2, collect3, collect4, collect5){
-    const dadosInfo = []
+function setMessage(collect, collect1, collect2, collect3, collect4, collect5, collect6, collect7, collect8, collect9, collect10){
+    console.log(collect6);
+    console.log(collect1);
     const name = document.querySelector('#name').value
     const arrivalTime = document.querySelectorAll('.arrivalTime')
     const dateArrived = document.querySelector('.dateArrived')
@@ -629,40 +503,34 @@ function setMessage(collect, collect1, collect2, collect3, collect4, collect5){
     const VRID = document.querySelectorAll('.VRID')
     const sheetQuantity = document.querySelectorAll('.sheetQuantity')
 
-    const collectMSG = document.querySelectorAll('.collectMSG')
-    const arrivalTimeMSG = document.querySelectorAll('.arrivalTimeMSG')
-    const collectSTDMSG = document.querySelectorAll('.collectSTDMSG')
-    const collectSTDValueMSG = document.querySelectorAll('.collectSTDValueMSG')
-    const collectEXPMSG = document.querySelectorAll('.collectEXPMSG')
-    const collectEXPValueMSG = document.querySelectorAll('.collectEXPValueMSG')
-    const TotalGeralMSG = document.querySelectorAll('.TotalGeralMSG')
-    const TotalForMSG = document.querySelectorAll('.TotalForMSG')
-    const NameMSG = document.querySelector('.NameMSG')
-
     const withTheTable = document.querySelector(".withTheTable")
     const withTheLeaf = document.querySelector('.withTheLeaf')
     const withGraphic = document.querySelector('.withGraphic')
     const theTruck = document.querySelector('.theTruck')
-
-    for(let i = 0; i < arrivalTime.length; i++){
-        dadosInfo.push({
-            name: name,
-            arrivalTime: arrivalTime[i].value, 
-            dateArrived: dateArrived,
-            collectSTD: collectSTD[i].value, 
-            collectEXP: collectEXP[i].value, 
-            VRID: VRID[i].value, 
-            sheetQuantity: sheetQuantity[i].value,
-        })
-    }
-    if(collect != undefined && collect1 != undefined && collect2 != undefined && collect3 != undefined && collect4 != undefined && collect5 != undefined ){
+    if(collect != undefined && collect1 != undefined && collect2 != undefined && collect3 != undefined && collect4 != undefined && collect5 != undefined && collect6 != undefined && collect7 != undefined && collect8 != undefined && collect9 != undefined && collect10 != undefined ){
         let p = 1
         let html = ''
 
         let collectSTDLocal
-        if(collect5.Total > 0){
+        if(collect10.Total > 0){
+            p = 10
+        }
+        else if(collect9.Total > 0){
+            p = 9
+        }
+        else if(collect8.Total > 0){
+            p = 8
+        }
+        else if(collect7.Total > 0){
+            p = 7
+        }
+        else if(collect6.Total > 0){
+            p = 6
+        }
+        else if(collect5.Total > 0){
             p = 5
-        }else if(collect4.Total > 0){
+        }
+        else if(collect4.Total > 0){
             p = 4
         }
         else if(collect3.Total > 0){
@@ -689,6 +557,21 @@ function setMessage(collect, collect1, collect2, collect3, collect4, collect5){
             else if(y == 5){
                 collectSTDLocal = collect5
             }
+            else if(y == 6){
+                collectSTDLocal = collect6
+            }
+            else if(y == 7){
+                collectSTDLocal = collect7
+            }
+            else if(y == 8){
+                collectSTDLocal = collect7
+            }
+            else if(y == 9){
+                collectSTDLocal = collect9
+            }
+            else if(y == 10){
+                collectSTDLocal = collect10
+            }
             html += 
                 `${y}° Coleta Amazon... *${arrivalTime[y - 1].value}h* *${collectSTDLocal.Total}*/*${collectSTDLocal.ForTotal}* <span style="display: none;">br</span>
 
@@ -705,16 +588,32 @@ function setMessage(collect, collect1, collect2, collect3, collect4, collect5){
         `
         withTheTable.innerHTML = html
     }
-    if(collect != undefined && collect1 != undefined && collect2 != undefined && collect3 != undefined && collect4 != undefined && collect5 != undefined ){
+    if(collect != undefined && collect1 != undefined && collect2 != undefined && collect3 != undefined && collect4 != undefined && collect5 != undefined && collect6 != undefined && collect7 != undefined && collect8 != undefined && collect9 != undefined && collect10 != undefined ){
         let y = 0
         let html2 = ''
         let html3 = ''
         let html4 = ''
         let sheetQuantityLocal = 0
 
-        if(collect5.Total > 0){
+        if(collect10.Total > 0){
+            p = 10
+        }
+        else if(collect9.Total > 0){
+            p = 9
+        }
+        else if(collect8.Total > 0){
+            p = 8
+        }
+        else if(collect7.Total > 0){
+            p = 7
+        }
+        else if(collect6.Total > 0){
+            p = 6
+        }
+        else if(collect5.Total > 0){
             p = 5
-        }else if(collect4.Total > 0){
+        }
+        else if(collect4.Total > 0){
             p = 4
         }
         else if(collect3.Total > 0){
@@ -806,7 +705,223 @@ function setMessage(collect, collect1, collect2, collect3, collect4, collect5){
             Horario: *${arrivalTime[4].value}*
             VRID: *${VRID[4].value}*
             Qntd: *${sheetQuantity[4].value}*.`
-          }
+        }
+        if(collect6.Total > 0){
+            html2 = `O VRID: *${VRID[0].value}* (*${sheetQuantity[0].value}*) / *${VRID[1].value}* (*${sheetQuantity[1].value}*) / *${VRID[2].value}* (*${sheetQuantity[2].value}*) / *${VRID[3].value}* (*${sheetQuantity[3].value}*) / *${VRID[4].value}* (*${sheetQuantity[4].value} / *${VRID[5].value}* (*${sheetQuantity[5].value}*)`
+            sheetQuantityLocal += parseInt(sheetQuantity[4].value)
+            html4 = `1° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            Horario: *${arrivalTime[0].value}*
+            VRID: *${VRID[0].value}*
+            Qntd: *${sheetQuantity[0].value}*.
+
+            2° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            Horario: *${arrivalTime[1].value}*
+            VRID: *${VRID[1].value}*
+            Qntd: *${sheetQuantity[1].value}*.
+            
+            3° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            Horario: *${arrivalTime[2].value}*
+            VRID: *${VRID[2].value}*
+            Qntd: *${sheetQuantity[2].value}*.
+            
+            4° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            Horario: *${arrivalTime[3].value}*
+            VRID: *${VRID[3].value}*
+            Qntd: *${sheetQuantity[3].value}*.
+            
+            5° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            Horario: *${arrivalTime[4].value}*
+            VRID: *${VRID[4].value}*
+            Qntd: *${sheetQuantity[4].value}*.
+            
+            6° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            Horario: *${arrivalTime[5].value}*
+            VRID: *${VRID[5].value}*
+            Qntd: *${sheetQuantity[5].value}*.
+            `
+            
+        }
+        if(collect7.Total > 0){
+            html2 = `O VRID: *${VRID[0].value}* (*${sheetQuantity[0].value}*) / *${VRID[1].value}* (*${sheetQuantity[1].value}*) / *${VRID[2].value}* (*${sheetQuantity[2].value}*) / *${VRID[3].value}* (*${sheetQuantity[3].value}*) / *${VRID[4].value}* (*${sheetQuantity[4].value}*) / *${VRID[5].value}* (*${sheetQuantity[5].value}*) / *${VRID[6].value}* (*${sheetQuantity[6].value}*)`
+            sheetQuantityLocal += parseInt(sheetQuantity[4].value)
+            html4 = `1° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            Horario: *${arrivalTime[0].value}*
+            VRID: *${VRID[0].value}*
+            Qntd: *${sheetQuantity[0].value}*.
+
+            2° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            Horario: *${arrivalTime[1].value}*
+            VRID: *${VRID[1].value}*
+            Qntd: *${sheetQuantity[1].value}*.
+            
+            3° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            Horario: *${arrivalTime[2].value}*
+            VRID: *${VRID[2].value}*
+            Qntd: *${sheetQuantity[2].value}*.
+            
+            4° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            Horario: *${arrivalTime[3].value}*
+            VRID: *${VRID[3].value}*
+            Qntd: *${sheetQuantity[3].value}*.
+            
+            5° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            Horario: *${arrivalTime[4].value}*
+            VRID: *${VRID[4].value}*
+            Qntd: *${sheetQuantity[4].value}*.
+
+            6° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            Horario: *${arrivalTime[5].value}*
+            VRID: *${VRID[5].value}*
+            Qntd: *${sheetQuantity[5].value}*.
+            
+            7° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            Horario: *${arrivalTime[6].value}*
+            VRID: *${VRID[6].value}*
+            Qntd: *${sheetQuantity[6].value}*.`
+        }
+        if(collect8.Total > 0){
+            html2 = `O VRID: *${VRID[0].value}* (*${sheetQuantity[0].value}*) / *${VRID[1].value}* (*${sheetQuantity[1].value}*) / *${VRID[2].value}* (*${sheetQuantity[2].value}*) / *${VRID[3].value}* (*${sheetQuantity[3].value}*) / *${VRID[4].value}* (*${sheetQuantity[4].value}*) / *${VRID[5].value}* (*${sheetQuantity[5].value}*) / *${VRID[6].value}* (*${sheetQuantity[6].value}*) / *${VRID[7].value}* (*${sheetQuantity[7].value}*)`
+            sheetQuantityLocal += parseInt(sheetQuantity[4].value)
+            html4 = `1° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            Horario: *${arrivalTime[0].value}*
+            VRID: *${VRID[0].value}*
+            Qntd: *${sheetQuantity[0].value}*.
+
+            2° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            Horario: *${arrivalTime[1].value}*
+            VRID: *${VRID[1].value}*
+            Qntd: *${sheetQuantity[1].value}*.
+            
+            3° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            Horario: *${arrivalTime[2].value}*
+            VRID: *${VRID[2].value}*
+            Qntd: *${sheetQuantity[2].value}*.
+            
+            4° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            Horario: *${arrivalTime[3].value}*
+            VRID: *${VRID[3].value}*
+            Qntd: *${sheetQuantity[3].value}*.
+            
+            5° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            Horario: *${arrivalTime[4].value}*
+            VRID: *${VRID[4].value}*
+            Qntd: *${sheetQuantity[4].value}*.
+            
+            6° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            Horario: *${arrivalTime[5].value}*
+            VRID: *${VRID[5].value}*
+            Qntd: *${sheetQuantity[5].value}*.
+            
+            7° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            Horario: *${arrivalTime[6].value}*
+            VRID: *${VRID[6].value}*
+            Qntd: *${sheetQuantity[6].value}*.
+
+            8° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            Horario: *${arrivalTime[7].value}*
+            VRID: *${VRID[7].value}*
+            Qntd: *${sheetQuantity[7].value}*.`
+        }
+        if(collect9.Total > 0){
+            html2 = `O VRID: *${VRID[0].value}* (*${sheetQuantity[0].value}*) / *${VRID[1].value}* (*${sheetQuantity[1].value}*) / *${VRID[2].value}* (*${sheetQuantity[2].value}*) / *${VRID[3].value}* (*${sheetQuantity[3].value}*) / *${VRID[4].value}* (*${sheetQuantity[4].value}*) / *${VRID[5].value}* (*${sheetQuantity[5].value}*) / *${VRID[6].value}* (*${sheetQuantity[6].value}*) / *${VRID[7].value}* (*${sheetQuantity[7].value}*) / *${VRID[8].value}* (*${sheetQuantity[8].value}*)`
+            sheetQuantityLocal += parseInt(sheetQuantity[4].value)
+            html4 = `1° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            Horario: *${arrivalTime[0].value}*
+            VRID: *${VRID[0].value}*
+            Qntd: *${sheetQuantity[0].value}*.
+
+            2° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            Horario: *${arrivalTime[1].value}*
+            VRID: *${VRID[1].value}*
+            Qntd: *${sheetQuantity[1].value}*.
+            
+            3° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            Horario: *${arrivalTime[2].value}*
+            VRID: *${VRID[2].value}*
+            Qntd: *${sheetQuantity[2].value}*.
+            
+            4° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            Horario: *${arrivalTime[3].value}*
+            VRID: *${VRID[3].value}*
+            Qntd: *${sheetQuantity[3].value}*.
+            
+            5° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            Horario: *${arrivalTime[4].value}*
+            VRID: *${VRID[4].value}*
+            Qntd: *${sheetQuantity[4].value}*.
+            
+            6° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            Horario: *${arrivalTime[5].value}*
+            VRID: *${VRID[5].value}*
+            Qntd: *${sheetQuantity[5].value}*.
+            
+            7° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            Horario: *${arrivalTime[6].value}*
+            VRID: *${VRID[6].value}*
+            Qntd: *${sheetQuantity[6].value}*.
+
+            8° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            Horario: *${arrivalTime[7].value}*
+            VRID: *${VRID[7].value}*
+            Qntd: *${sheetQuantity[7].value}*.
+
+            9° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            Horario: *${arrivalTime[8].value}*
+            VRID: *${VRID[8].value}*
+            Qntd: *${sheetQuantity[8].value}*.`
+        }
+        if(collect10.Total > 0){
+            html2 = `O VRID: *${VRID[0].value}* (*${sheetQuantity[0].value}*) / *${VRID[1].value}* (*${sheetQuantity[1].value}*) / *${VRID[2].value}* (*${sheetQuantity[2].value}*) / *${VRID[3].value}* (*${sheetQuantity[3].value}*) / *${VRID[4].value}* (*${sheetQuantity[4].value}*) / *${VRID[5].value}* (*${sheetQuantity[5].value}*) / *${VRID[6].value}* (*${sheetQuantity[6].value}*) / *${VRID[7].value}* (*${sheetQuantity[7].value}*) / *${VRID[8].value}* (*${sheetQuantity[8].value}*) / *${VRID[9].value}* (*${sheetQuantity[9].value}*)`
+            sheetQuantityLocal += parseInt(sheetQuantity[4].value)
+            html4 = `1° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            Horario: *${arrivalTime[0].value}*
+            VRID: *${VRID[0].value}*
+            Qntd: *${sheetQuantity[0].value}*.
+
+            2° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            Horario: *${arrivalTime[1].value}*
+            VRID: *${VRID[1].value}*
+            Qntd: *${sheetQuantity[1].value}*.
+            
+            3° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            Horario: *${arrivalTime[2].value}*
+            VRID: *${VRID[2].value}*
+            Qntd: *${sheetQuantity[2].value}*.
+            
+            4° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            Horario: *${arrivalTime[3].value}*
+            VRID: *${VRID[3].value}*
+            Qntd: *${sheetQuantity[3].value}*.
+            
+            5° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            Horario: *${arrivalTime[4].value}*
+            VRID: *${VRID[4].value}*
+            Qntd: *${sheetQuantity[4].value}*.
+            6° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            Horario: *${arrivalTime[5].value}*
+            VRID: *${VRID[5].value}*
+            Qntd: *${sheetQuantity[5].value}*.
+            
+            7° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            Horario: *${arrivalTime[6].value}*
+            VRID: *${VRID[6].value}*
+            Qntd: *${sheetQuantity[6].value}*.
+
+            8° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            Horario: *${arrivalTime[7].value}*
+            VRID: *${VRID[7].value}*
+            Qntd: *${sheetQuantity[7].value}*.
+
+            9° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            Horario: *${arrivalTime[8].value}*
+            VRID: *${VRID[8].value}*
+            Qntd: *${sheetQuantity[8].value}*.
+
+            10° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            Horario: *${arrivalTime[9].value}*
+            VRID: *${VRID[9].value}*
+            Qntd: *${sheetQuantity[9].value}*.`
+        }
         if (collect2.Total > 0){
             html2 += `
             somados deram exatos *${sheetQuantityLocal}*, porém como sabemos da divergencia que estamos tendo entre VRID e SISTEMA, logo o ICS acusou um valor de *"${collect.Total}"* AWB'
@@ -1052,9 +1167,204 @@ function setMessage(collect, collect1, collect2, collect3, collect4, collect5){
         withTheLeaf.innerHTML = html2
         withGraphic.innerHTML = html3
         theTruck.innerHTML = html4
-    }  
+    }
+    else if(collect6 != undefined){
+        let html2 = ''
+        html2= `O VRID: *${VRID[5].value}* deu exatos *${sheetQuantity[5].value}*, porém como sabemos da
+        divergencia que estamos tendo entre VRID e SISTEMA, logo o ICS acusou um valor de *${collect6.Total}* AWB'
+        deixando um total de *${parseInt(collect6.Total - sheetQuantity[5].value)}* AWB's fora do informativo do VRID.`
+        
+        html = `Coleta Amazon FOR2 -> TEXBR *<span class="dateArrivedMSG">${dateArrived.value}</span>* <span style="display: none;">br</span>
+        <span class="collectMSG">6</span>° Coleta Amazon... *<span class="arrivalTimeMSG">${arrivalTime[5].value}</span>h* <span style="display: none;">br</span>
+
+        *<span class="collectSTDMSG">${collectSTD[5].value}</span>* STD *<span class="collectSTDValueMSG">${collect6.STD}</span>*
+        *<span class="collectEXPMSG">${collectEXP[5].value}</span>* EXP *<span class="collectEXPValueMSG">${collect6.EXP}</span>* <span style="display: none;">br</span>
+            
+        TOTAL: *<span class="TotalGeralMSG">${collect6.Total}</span>*/*<span class="TotalForMSG">${collect6.ForTotal}</span>* <span style="display: none;">br</span>
+
+        ~*<span class="NameMSG">${name}</span>.*
+        `
+        html3 = `Boa noite, segue aqui os relatórios de Recebimento de turno, AWB's e de
+        Peças locais referente as coletas amazon dessa data. *${dateArrived.value}*<span style="display: none;">br</span>
+
+        MH vem recebendo um total de *${collect6.ForTotal}* peças locais, sendo  elas *${collect6.ForSTD}* STD e *${collect6.ForEXP}* EXP
+        como mostrados na tabela acima.
+        Hoje estamos recebendo um total de *${collect6.ForTotalPriority}* prioridades sendo elas *${collect6.ForEXPPriority}* EXP e *${collect6.ForSTDPriority}* STD,
+        a serem entregue no dia seguinte. *${datePriority.value}*<span style="display: none;">br</span>
+
+        STD: *${collect6.STD}*
+        EXP: *${collect6.EXP}*<span style="display: none;">br</span>
+
+        *AWB'S EXTRAS*: SLX: *${collect6.SLX}* | PSX: *${collect6.PSX}* | BEC: *${collect6.BEC}* | SOB: *${collect6.SOB}* | BEP: *${collect6.BEP}* | BLM: *${collect6.BLM}*<span style="display: none;">br</span>
+
+        ~*${name}.*`
+        html4 = `6° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            Horario: *${arrivalTime[5].value}*
+            VRID: *${VRID[5].value}*
+            Qntd: *${sheetQuantity[5].value}*.`
+        withTheTable.innerHTML = html
+        withTheLeaf.innerHTML = html2
+        withGraphic.innerHTML = html3
+        theTruck.innerHTML = html4
+    }
+    else if(collect7 != undefined){
+        let html2 = ''
+        html2= `O VRID: *${VRID[6].value}* deu exatos *${sheetQuantity[6].value}*, porém como sabemos da
+        divergencia que estamos tendo entre VRID e SISTEMA, logo o ICS acusou um valor de *${collect7.Total}* AWB'
+        deixando um total de *${parseInt(collect7.Total - sheetQuantity[6].value)}* AWB's fora do informativo do VRID.`
+        
+        html = `Coleta Amazon FOR2 -> TEXBR *<span class="dateArrivedMSG">${dateArrived.value}</span>* <span style="display: none;">br</span>
+        <span class="collectMSG">7</span>° Coleta Amazon... *<span class="arrivalTimeMSG">${arrivalTime[6].value}</span>h* <span style="display: none;">br</span>
+
+        *<span class="collectSTDMSG">${collectSTD[6].value}</span>* STD *<span class="collectSTDValueMSG">${collect7.STD}</span>*
+        *<span class="collectEXPMSG">${collectEXP[6].value}</span>* EXP *<span class="collectEXPValueMSG">${collect7.EXP}</span>* <span style="display: none;">br</span>
+            
+        TOTAL: *<span class="TotalGeralMSG">${collect7.Total}</span>*/*<span class="TotalForMSG">${collect7.ForTotal}</span>* <span style="display: none;">br</span>
+
+        ~*<span class="NameMSG">${name}</span>.*
+        `
+        html3 = `Boa noite, segue aqui os relatórios de Recebimento de turno, AWB's e de
+        Peças locais referente as coletas amazon dessa data. *${dateArrived.value}*<span style="display: none;">br</span>
+
+        MH vem recebendo um total de *${collect7.ForTotal}* peças locais, sendo  elas *${collect7.ForSTD}* STD e *${collect7.ForEXP}* EXP
+        como mostrados na tabela acima.
+        Hoje estamos recebendo um total de *${collect7.ForTotalPriority}* prioridades sendo elas *${collect7.ForEXPPriority}* EXP e *${collect7.ForSTDPriority}* STD,
+        a serem entregue no dia seguinte. *${datePriority.value}*<span style="display: none;">br</span>
+
+        STD: *${collect7.STD}*
+        EXP: *${collect7.EXP}*<span style="display: none;">br</span>
+
+        *AWB'S EXTRAS*: SLX: *${collect7.SLX}* | PSX: *${collect7.PSX}* | BEC: *${collect7.BEC}* | SOB: *${collect7.SOB}* | BEP: *${collect7.BEP}* | BLM: *${collect7.BLM}*<span style="display: none;">br</span>
+
+        ~*${name}.*`
+        html4 = `7° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            Horario: *${arrivalTime[6].value}*
+            VRID: *${VRID[6].value}*
+            Qntd: *${sheetQuantity[6].value}*.`
+        withTheTable.innerHTML = html
+        withTheLeaf.innerHTML = html2
+        withGraphic.innerHTML = html3
+        theTruck.innerHTML = html4
+    }
+    else if(collect8 != undefined){
+        let html2 = ''
+        html2= `O VRID: *${VRID[7].value}* deu exatos *${sheetQuantity[7].value}*, porém como sabemos da
+        divergencia que estamos tendo entre VRID e SISTEMA, logo o ICS acusou um valor de *${collect8.Total}* AWB'
+        deixando um total de *${parseInt(collect8.Total - sheetQuantity[7].value)}* AWB's fora do informativo do VRID.`
+        
+        html = `Coleta Amazon FOR2 -> TEXBR *<span class="dateArrivedMSG">${dateArrived.value}</span>* <span style="display: none;">br</span>
+        <span class="collectMSG">8</span>° Coleta Amazon... *<span class="arrivalTimeMSG">${arrivalTime[7].value}</span>h* <span style="display: none;">br</span>
+
+        *<span class="collectSTDMSG">${collectSTD[7].value}</span>* STD *<span class="collectSTDValueMSG">${collect8.STD}</span>*
+        *<span class="collectEXPMSG">${collectEXP[7].value}</span>* EXP *<span class="collectEXPValueMSG">${collect8.EXP}</span>* <span style="display: none;">br</span>
+            
+        TOTAL: *<span class="TotalGeralMSG">${collect8.Total}</span>*/*<span class="TotalForMSG">${collect8.ForTotal}</span>* <span style="display: none;">br</span>
+
+        ~*<span class="NameMSG">${name}</span>.*
+        `
+        html3 = `Boa noite, segue aqui os relatórios de Recebimento de turno, AWB's e de
+        Peças locais referente as coletas amazon dessa data. *${dateArrived.value}*<span style="display: none;">br</span>
+
+        MH vem recebendo um total de *${collect8.ForTotal}* peças locais, sendo  elas *${collect8.ForSTD}* STD e *${collect8.ForEXP}* EXP
+        como mostrados na tabela acima.
+        Hoje estamos recebendo um total de *${collect8.ForTotalPriority}* prioridades sendo elas *${collect8.ForEXPPriority}* EXP e *${collect8.ForSTDPriority}* STD,
+        a serem entregue no dia seguinte. *${datePriority.value}*<span style="display: none;">br</span>
+
+        STD: *${collect8.STD}*
+        EXP: *${collect8.EXP}*<span style="display: none;">br</span>
+
+        *AWB'S EXTRAS*: SLX: *${collect8.SLX}* | PSX: *${collect8.PSX}* | BEC: *${collect8.BEC}* | SOB: *${collect8.SOB}* | BEP: *${collect8.BEP}* | BLM: *${collect8.BLM}*<span style="display: none;">br</span>
+
+        ~*${name}.*`
+        html4 = `8° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            Horario: *${arrivalTime[7].value}*
+            VRID: *${VRID[7].value}*
+            Qntd: *${sheetQuantity[7].value}*.`
+        withTheTable.innerHTML = html
+        withTheLeaf.innerHTML = html2
+        withGraphic.innerHTML = html3
+        theTruck.innerHTML = html4
+    }
+    else if(collect9 != undefined){
+        let html2 = ''
+        html2= `O VRID: *${VRID[8].value}* deu exatos *${sheetQuantity[8].value}*, porém como sabemos da
+        divergencia que estamos tendo entre VRID e SISTEMA, logo o ICS acusou um valor de *${collect9.Total}* AWB'
+        deixando um total de *${parseInt(collect9.Total - sheetQuantity[8].value)}* AWB's fora do informativo do VRID.`
+        
+        html = `Coleta Amazon FOR2 -> TEXBR *<span class="dateArrivedMSG">${dateArrived.value}</span>* <span style="display: none;">br</span>
+        <span class="collectMSG">9</span>° Coleta Amazon... *<span class="arrivalTimeMSG">${arrivalTime[8].value}</span>h* <span style="display: none;">br</span>
+
+        *<span class="collectSTDMSG">${collectSTD[8].value}</span>* STD *<span class="collectSTDValueMSG">${collect9.STD}</span>*
+        *<span class="collectEXPMSG">${collectEXP[8].value}</span>* EXP *<span class="collectEXPValueMSG">${collect9.EXP}</span>* <span style="display: none;">br</span>
+            
+        TOTAL: *<span class="TotalGeralMSG">${collect9.Total}</span>*/*<span class="TotalForMSG">${collect9.ForTotal}</span>* <span style="display: none;">br</span>
+
+        ~*<span class="NameMSG">${name}</span>.*
+        `
+        html3 = `Boa noite, segue aqui os relatórios de Recebimento de turno, AWB's e de
+        Peças locais referente as coletas amazon dessa data. *${dateArrived.value}*<span style="display: none;">br</span>
+
+        MH vem recebendo um total de *${collect9.ForTotal}* peças locais, sendo  elas *${collect9.ForSTD}* STD e *${collect9.ForEXP}* EXP
+        como mostrados na tabela acima.
+        Hoje estamos recebendo um total de *${collect9.ForTotalPriority}* prioridades sendo elas *${collect9.ForEXPPriority}* EXP e *${collect9.ForSTDPriority}* STD,
+        a serem entregue no dia seguinte. *${datePriority.value}*<span style="display: none;">br</span>
+
+        STD: *${collect9.STD}*
+        EXP: *${collect9.EXP}*<span style="display: none;">br</span>
+
+        *AWB'S EXTRAS*: SLX: *${collect9.SLX}* | PSX: *${collect9.PSX}* | BEC: *${collect9.BEC}* | SOB: *${collect9.SOB}* | BEP: *${collect9.BEP}* | BLM: *${collect9.BLM}*<span style="display: none;">br</span>
+
+        ~*${name}.*`
+        html4 = `9° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            Horario: *${arrivalTime[8].value}*
+            VRID: *${VRID[8].value}*
+            Qntd: *${sheetQuantity[8].value}*.`
+        withTheTable.innerHTML = html
+        withTheLeaf.innerHTML = html2
+        withGraphic.innerHTML = html3
+        theTruck.innerHTML = html4
+    }
+    else if(collect10 != undefined){
+        let html2 = ''
+        html2= `O VRID: *${VRID[9].value}* deu exatos *${sheetQuantity[9].value}*, porém como sabemos da
+        divergencia que estamos tendo entre VRID e SISTEMA, logo o ICS acusou um valor de *${collect10.Total}* AWB'
+        deixando um total de *${parseInt(collect10.Total - sheetQuantity[9].value)}* AWB's fora do informativo do VRID.`
+        
+        html = `Coleta Amazon FOR2 -> TEXBR *<span class="dateArrivedMSG">${dateArrived.value}</span>* <span style="display: none;">br</span>
+        <span class="collectMSG">10</span>° Coleta Amazon... *<span class="arrivalTimeMSG">${arrivalTime[9].value}</span>h* <span style="display: none;">br</span>
+
+        *<span class="collectSTDMSG">${collectSTD[9].value}</span>* STD *<span class="collectSTDValueMSG">${collect10.STD}</span>*
+        *<span class="collectEXPMSG">${collectEXP[9].value}</span>* EXP *<span class="collectEXPValueMSG">${collect10.EXP}</span>* <span style="display: none;">br</span>
+            
+        TOTAL: *<span class="TotalGeralMSG">${collect10.Total}</span>*/*<span class="TotalForMSG">${collect10.ForTotal}</span>* <span style="display: none;">br</span>
+
+        ~*<span class="NameMSG">${name}</span>.*
+        `
+        html3 = `Boa noite, segue aqui os relatórios de Recebimento de turno, AWB's e de
+        Peças locais referente as coletas amazon dessa data. *${dateArrived.value}*<span style="display: none;">br</span>
+
+        MH vem recebendo um total de *${collect10.ForTotal}* peças locais, sendo  elas *${collect10.ForSTD}* STD e *${collect10.ForEXP}* EXP
+        como mostrados na tabela acima.
+        Hoje estamos recebendo um total de *${collect10.ForTotalPriority}* prioridades sendo elas *${collect10.ForEXPPriority}* EXP e *${collect10.ForSTDPriority}* STD,
+        a serem entregue no dia seguinte. *${datePriority.value}*<span style="display: none;">br</span>
+
+        STD: *${collect10.STD}*
+        EXP: *${collect10.EXP}*<span style="display: none;">br</span>
+
+        *AWB'S EXTRAS*: SLX: *${collect10.SLX}* | PSX: *${collect10.PSX}* | BEC: *${collect10.BEC}* | SOB: *${collect10.SOB}* | BEP: *${collect10.BEP}* | BLM: *${collect10.BLM}*<span style="display: none;">br</span>
+
+        ~*${name}.*`
+        html4 = `10° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            Horario: *${arrivalTime[9].value}*
+            VRID: *${VRID[9].value}*
+            Qntd: *${sheetQuantity[9].value}*.`
+        withTheTable.innerHTML = html
+        withTheLeaf.innerHTML = html2
+        withGraphic.innerHTML = html3
+        theTruck.innerHTML = html4
+    } 
 }
-function setTable(collect, collect1, collect2, collect3, collect4, collect5){
+function setTable(collect, collect1, collect2, collect3, collect4, collect5, collect6, collect7, collect8, collect9, collect10){
     let clt
     let countTotal = 0;
     let countSTD = 0;
@@ -1082,6 +1392,16 @@ function setTable(collect, collect1, collect2, collect3, collect4, collect5){
         clt = collect4
     }else if(collect5 != undefined){
         clt = collect5
+    }else if(collect6 != undefined){
+        clt = collect6
+    }else if(collect7 != undefined){
+        clt = collect7
+    }else if(collect8 != undefined){
+        clt = collect8
+    }else if(collect9 != undefined){
+        clt = collect9
+    }else if(collect10 != undefined){
+        clt = collect10
     }
     
     let elementos = [];
@@ -1148,7 +1468,7 @@ function setTable(collect, collect1, collect2, collect3, collect4, collect5){
     std.innerHTML = countSTD
     exp.innerHTML = countEXP
 }
-function Graphic(collect, collect1, collect2, collect3, collect4, collect5){
+function Graphic(collect, collect1, collect2, collect3, collect4, collect5, collect6, collect7, collect8, collect9, collect10){
 
     let clt
     google.charts.load('current', {'packages':['corechart']});
@@ -1165,6 +1485,16 @@ function Graphic(collect, collect1, collect2, collect3, collect4, collect5){
         clt = collect4
     }else if(collect5 != undefined){
         clt = collect5
+    }else if(collect6 != undefined){
+        clt = collect6
+    }else if(collect7 != undefined){
+        clt = collect7
+    }else if(collect8 != undefined){
+        clt = collect8
+    }else if(collect9 != undefined){
+        clt = collect9
+    }else if(collect10 != undefined){
+        clt = collect10
     }
     google.charts.setOnLoadCallback(() => {
         let data = google.visualization.arrayToDataTable([
@@ -1267,7 +1597,16 @@ function imprimirDiv(divId) {
     janelaImpressao.print();
     janelaImpressao.close();
 }
-
 function redirectHelp(){
-    window.location.href = "/components/help.html";
+    const path = window.location.href;
+    const lastIndex = path.lastIndexOf("/");
+
+    if (lastIndex !== -1) {
+        const newPath = path.substring(0, lastIndex);
+        const newURL = newPath + "/components/help.html";
+
+        window.location.href = newURL;
+    } else {
+        console.error("Não foi possível determinar o caminho correto.");
+    }
 }

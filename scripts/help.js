@@ -1,3 +1,3 @@
 function redirectHelp(){
-    window.location.href = "/";
+    window.history.back();
 }

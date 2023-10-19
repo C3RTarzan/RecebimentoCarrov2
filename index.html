@@ -110,6 +110,96 @@
                 <span class="types">Rotas/Tipo/Data</span>
                 <textarea class="collections" id="data5"></textarea>
             </div>
+            <div class="collect">
+                <div class="inffo">
+                    <div>
+                        <input type="text" class="arrivalTime" placeholder="Horário">
+                    </div>
+                    <div>
+                        <input type="text" class="collectSTD" placeholder="Coleta STD">
+                        <input type="text" class="VRID" placeholder="VRID">
+                    </div>
+                    <div>
+                        <input type="text" class="collectEXP" placeholder="Coleta EXP">
+                        <input type="text" class="sheetQuantity" placeholder="Qntd folha">
+                    </div>
+                </div>
+                <span class="title">Coleta 6</span>
+                <span class="types">Rotas/Tipo/Data</span>
+                <textarea class="collections" id="data6"></textarea>
+            </div>
+            <div class="collect">
+                <div class="inffo">
+                    <div>
+                        <input type="text" class="arrivalTime" placeholder="Horário">
+                    </div>
+                    <div>
+                        <input type="text" class="collectSTD" placeholder="Coleta STD">
+                        <input type="text" class="VRID" placeholder="VRID">
+                    </div>
+                    <div>
+                        <input type="text" class="collectEXP" placeholder="Coleta EXP">
+                        <input type="text" class="sheetQuantity" placeholder="Qntd folha">
+                    </div>
+                </div>
+                <span class="title">Coleta 07</span>
+                <span class="types">Rotas/Tipo/Data</span>
+                <textarea class="collections" id="data7"></textarea>
+            </div>
+            <div class="collect">
+                <div class="inffo">
+                    <div>
+                        <input type="text" class="arrivalTime" placeholder="Horário">
+                    </div>
+                    <div>
+                        <input type="text" class="collectSTD" placeholder="Coleta STD">
+                        <input type="text" class="VRID" placeholder="VRID">
+                    </div>
+                    <div>
+                        <input type="text" class="collectEXP" placeholder="Coleta EXP">
+                        <input type="text" class="sheetQuantity" placeholder="Qntd folha">
+                    </div>
+                </div>
+                <span class="title">Coleta 08</span>
+                <span class="types">Rotas/Tipo/Data</span>
+                <textarea class="collections" id="data8"></textarea>
+            </div>
+            <div class="collect">
+                <div class="inffo">
+                    <div>
+                        <input type="text" class="arrivalTime" placeholder="Horário">
+                    </div>
+                    <div>
+                        <input type="text" class="collectSTD" placeholder="Coleta STD">
+                        <input type="text" class="VRID" placeholder="VRID">
+                    </div>
+                    <div>
+                        <input type="text" class="collectEXP" placeholder="Coleta EXP">
+                        <input type="text" class="sheetQuantity" placeholder="Qntd folha">
+                    </div>
+                </div>
+                <span class="title">Coleta 09</span>
+                <span class="types">Rotas/Tipo/Data</span>
+                <textarea class="collections" id="data9"></textarea>
+            </div>
+            <div class="collect">
+                <div class="inffo">
+                    <div>
+                        <input type="text" class="arrivalTime" placeholder="Horário">
+                    </div>
+                    <div>
+                        <input type="text" class="collectSTD" placeholder="Coleta STD">
+                        <input type="text" class="VRID" placeholder="VRID">
+                    </div>
+                    <div>
+                        <input type="text" class="collectEXP" placeholder="Coleta EXP">
+                        <input type="text" class="sheetQuantity" placeholder="Qntd folha">
+                    </div>
+                </div>
+                <span class="title">Coleta 10</span>
+                <span class="types">Rotas/Tipo/Data</span>
+                <textarea class="collections" id="data10"></textarea>
+            </div>
             <div class="button">
                 <button class="buttonsole" onclick="getData()">Gerar</button>
             </div>
@@ -125,11 +215,16 @@
                 <option value="collect3">Coleta 03</option>
                 <option value="collect4">Coleta 04</option>
                 <option value="collect5">Coleta 05</option>
+                <option value="collect6">Coleta 06</option>
+                <option value="collect7">Coleta 07</option>
+                <option value="collect8">Coleta 08</option>
+                <option value="collect9">Coleta 09</option>
+                <option value="collect10">Coleta 10</option>
             </select>
         </div>
         <span class="tt">Valores</span>   
         <div class="info">    
-            <div class="collectInffo">
+            <div class="collectInffo clInffo1">
                 <div class="titles">
                     <div class="top">
 
@@ -181,7 +276,7 @@
                     </div>
                 </div>
             </div>
-            <div class="collectInffoEx collectInffo">
+            <div class="collectInffoEx collectInffo clInffo2">
                 <div class="titles">
                     <div class="sec secSao">
                         <span class="tl">SAO</span>
@@ -209,6 +304,7 @@
                     </div>
                 </div>
             </div>
+            
         </div>
         <div class="info infoEXP" id="conteudo">
             <span class="tt">Rotas EXP</span>
@@ -273,6 +369,103 @@
             </div>
             
         </div>
+        <div class="info infoSTD infoEXP" id="conteudo">
+            <span class="tt">Rotas STD</span>
+            <input class="dateToday" value="00/00/0000" readonly></input>
+            <div class="collectInffo collectInffoEx collectInffoSTD">
+                <div class="titles">
+                    <div class="sec">
+                        <span class="tl">BHX</span>
+                        <span class="inpt"><input class="BHX_STD" type="text" value="0" readonly></span>
+                        <span class="tl">BHI</span>
+                        <span class="inpt"><input class="BHI_STD" type="text" value="0" readonly></span>
+                        <span class="tl">BHZ</span>
+                        <span class="inpt"><input class="BHZ_STD" type="text" value="0" readonly></span>
+                        <span class="tl">BSB</span>
+                        <span class="inpt"><input class="BSB_STD" type="text" value="0" readonly></span>
+                    </div>
+                </div>
+                <div class="titles">
+                    <div class="sec">
+                        <span class="tl">BSI</span>
+                        <span class="inpt"><input class="BSI_STD" type="text" value="0" readonly></span>
+                        <span class="tl">ENP</span>
+                        <span class="inpt"><input class="ENP_STD" type="text" value="0" readonly></span>
+                        <span class="tl">PTK</span>
+                        <span class="inpt"><input class="PTK_STD" type="text" value="0" readonly></span>
+                        <span class="tl">RZN</span>
+                        <span class="inpt"><input class="RZN_STD" type="text" value="0" readonly></span>
+                    </div>
+                </div>
+                <div class="titles">
+                    <div class="sec">
+                        <span class="tl">RZO</span>
+                        <span class="inpt"><input class="RZO_STD" type="text" value="0" readonly></span>
+                        <span class="tl">RZS</span>
+                        <span class="inpt"><input class="RZS_STD" type="text" value="0" readonly></span>
+                        <span class="tl">SGI</span>
+                        <span class="inpt"><input class="SGI_STD" type="text" value="0" readonly></span>
+                        <span class="tl">VDQ</span>
+                        <span class="inpt"><input class="VDQ_STD" type="text" value="0" readonly></span>
+                    </div>
+                </div>
+                <div class="titles">
+                    <div class="sec">
+                        <span class="tl">SSA</span>
+                        <span class="inpt"><input class="SSA_STD" type="text" value="0" readonly></span>
+                        <span class="tl">RRU</span>
+                        <span class="inpt"><input class="RRU_STD" type="text" value="0" readonly></span>
+                        <span class="tl">REK</span>
+                        <span class="inpt"><input class="REK_STD" type="text" value="0" readonly></span>
+                        <span class="tl">PRN</span>
+                        <span class="inpt"><input class="PRN_STD" type="text" value="0" readonly></span>
+                    </div>
+                </div>
+                <div class="titles">
+                    <div class="sec">
+                        <span class="tl">NTA</span>
+                        <span class="inpt"><input class="NTA_STD" type="text" value="0" readonly></span>
+                        <span class="tl">JPS</span>
+                        <span class="inpt"><input class="JPS_STD" type="text" value="0" readonly></span>
+                        <span class="tl">JPA</span>
+                        <span class="inpt"><input class="JPA_STD" type="text" value="0" readonly></span>
+                        <span class="tl">ITN</span>
+                        <span class="inpt"><input class="ITN_STD" type="text" value="0" readonly></span>
+                    </div>
+                </div>
+                <div class="titles">
+                    <div class="sec">
+                        <span class="tl">FEK</span>
+                        <span class="inpt"><input class="FEK_STD" type="text" value="0" readonly></span>
+                        <span class="tl">CER</span>
+                        <span class="inpt"><input class="CER_STD" type="text" value="0" readonly></span>
+                        <span class="tl">AJU</span>
+                        <span class="inpt"><input class="AJU_STD" type="text" value="0" readonly></span>
+                        <span class="tl">JZN</span>
+                        <span class="inpt"><input class="JZN_STD" type="text" value="0" readonly></span> 
+                    </div>
+                </div>
+                <div class="titles">
+                    <div class="sec">
+                        <span class="tl">VIX</span>
+                        <span class="inpt"><input class="VIX_STD" type="text" value="0" readonly></span>
+                        <span class="tl">RIO</span>
+                        <span class="inpt"><input class="RIO_STD" type="text" value="0" readonly></span>
+                        <span class="tl">MAC</span>
+                        <span class="inpt"><input class="MAC_STD" type="text" value="0" readonly></span>
+                        <span class="tl">FOR</span>
+                        <span class="inpt"><input class="FOR_STD" type="text" value="0" readonly></span>
+                    </div>
+                </div>
+                <div class="titles">
+                    <div class="sec">
+                        <span class="tl">TOTAL</span>
+                        <span class="inpt"><input class="TOTAL_STD" type="text" value="0" readonly></span>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
         <div class="info infoMSG">
             <span class="tt">Mensagens</span>
             <div class="collectInffo collectInffoMSG">
@@ -329,7 +522,7 @@
                 </div>
             </div>
         </div>
-        <div class="info infoEXP">
+        <div class="info infoEXP infoGraphcs">
             <span class="tt">Grafico</span>
             <div class="collectInffo">
                 <div id="barChart" style="width: 600px; height: 400px;"></div>
@@ -355,7 +548,7 @@
                 </div>
             </div>
         </div>
-        <a href="https://github.com/C3RTarzan" target="_blank">@PinkUppers</a> <span class="version">v5.2</span>
+        <a href="https://github.com/C3RTarzan" target="_blank">@PinkUppers</a> <span class="version">v5.3</span>
     </div>
 </body>
 </html>
