@@ -331,6 +331,12 @@ a:hover {
 .result .infoGraphcs .collectInffo {
   width: auto;
 }
+.result .infoGraphcs .collectInffo #barChart {
+  user-select: none;
+}
+.result .infoGraphcs .collectInffo #barChart text, .result .infoGraphcs .collectInffo #barChart line, .result .infoGraphcs .collectInffo #barChart path {
+  color: rgba(255, 255, 255, 0.4);
+}
 .result .infoTable .collectInffo {
   width: 500px;
   flex-direction: column;

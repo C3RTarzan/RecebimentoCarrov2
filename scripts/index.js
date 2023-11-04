@@ -8,8 +8,6 @@ document.addEventListener("DOMContentLoaded", function() {
     for(let i = 0; i < dateToday.length; i++){
         dateToday[i].value = `${data.getDate()}/${data.getMonth() + 1}/${data.getFullYear()}`;
     }
-
-
 });
 
 
@@ -572,13 +570,23 @@ function setMessage(collect, collect1, collect2, collect3, collect4, collect5, c
             else if(y == 10){
                 collectSTDLocal = collect10
             }
-            html += 
-                `${y}° Coleta Amazon... *${arrivalTime[y - 1].value}h* *${collectSTDLocal.Total}*/*${collectSTDLocal.ForTotal}* <span style="display: none;">br</span>
-
-                *${collectSTD[y - 1].value}* STD *${collectSTDLocal.STD}*
-                *${collectEXP[y - 1].value}* EXP *${collectSTDLocal.EXP}* <span style="display: none;">br</span>
-                
-                `
+            if(collect2.Total > 0){
+                html += 
+                    `${y}° Coleta Amazon... *${arrivalTime[y - 1].value}h* *${collectSTDLocal.Total}*/*${collectSTDLocal.ForTotal}* <span style="display: none;">br</span>
+    
+                    *${collectSTD[y - 1].value}* STD *${collectSTDLocal.STD}*
+                    *${collectEXP[y - 1].value}* EXP *${collectSTDLocal.EXP}* <span style="display: none;">br</span>
+                    
+                    `
+            }else{
+                html += 
+                    `${y}° Coleta Amazon... *${arrivalTime[y - 1].value}h*<span style="display: none;">br</span>
+    
+                    *${collectSTD[y - 1].value}* STD *${collectSTDLocal.STD}*
+                    *${collectEXP[y - 1].value}* EXP *${collectSTDLocal.EXP}* <span style="display: none;">br</span>
+                    
+                    `
+            }
             
         }
 
@@ -1496,37 +1504,98 @@ function Graphic(collect, collect1, collect2, collect3, collect4, collect5, coll
     }else if(collect10 != undefined){
         clt = collect10
     }
-    google.charts.setOnLoadCallback(() => {
-        let data = google.visualization.arrayToDataTable([
-            ['Rotas', 'Quantidade', { role: 'annotation' }, { role: 'style' }],
-            ['CER', clt.CerTotal, clt.CerTotal, 'color: red'],
-            ['CER EXP', clt.CerEXP, clt.CerEXP, 'color: red'], 
-            ['CER STD', clt.CerSTD, clt.CerSTD, 'color: red'], 
-            ['FOR', clt.ForTotal, clt.ForTotal, 'color: green'],
-            ['FOR EXP', clt.ForEXP, clt.ForEXP, 'color: green'],
-            ['FOR STD', clt.ForSTD, clt.ForSTD, 'color: green'], 
-            ['SAO', clt.SAO, clt.SAO, 'color: purple'], 
-            ['Total', clt.Total, clt.Total, 'color: blue'],
-            ['Total EXP', clt.EXP, clt.EXP, 'color: blue'],
-            ['Total STD', clt.STD, clt.STD, 'color: blue'], 
-        ]);
-    
-        let options = {
-            title: '',
-            width: 600,
-            height: 400,
-            legend: { position: 'none' },
-            hAxis: { title: '' },
-            vAxis: { title: '', minValue: 0 }
-        };
-    
-        let chart = new google.visualization.ColumnChart(document.getElementById('barChart'));
-        chart.draw(data, options);
-    });
-    
 
+    const existingChart = d3.select('#barChart svg');
 
-    
+      if (!existingChart.empty()) {
+        existingChart.remove();
+      }
+
+    const data = [
+        { category: 'Total', value: clt.Total },
+        { category: ' EXP ', value: clt.EXP },
+        { category: ' STD ', value: clt.STD },
+        { category: ' ', value: null },   
+        { category: 'FOR', value: clt.ForTotal },
+        { category: 'EXP ', value: clt.ForEXP },
+        { category: 'STD ', value: clt.ForSTD },
+        { category: '   ', value: null },
+        { category: 'CER', value: clt.CerTotal },
+        { category: 'EXP', value: clt.CerEXP },
+        { category: 'STD', value: clt.CerSTD },
+        { category: '  ', value: null },
+        { category: 'SAO', value: clt.SAO },
+        
+      ];
+  
+    const margin = { top: 20, right: 20, bottom: 30, left: 40 };
+    const width = 600 - margin.left - margin.right;
+    const height = 400 - margin.top - margin.bottom;
+
+    const svg = d3.select('#barChart')
+    .append('svg')
+    .attr('width', width + margin.left + margin.right)
+    .attr('height', height + margin.top + margin.bottom)
+    .append('g')
+    .attr('transform', `translate(${margin.left},${margin.top})`);
+
+    const x = d3.scaleBand()
+    .domain(data.map(d => d.category))
+    .range([0, width])
+    .padding(0.1);
+
+    const y = d3.scaleLinear()
+    .domain([0, d3.max(data, d => d.value)])
+    .nice()
+    .range([height, 0]);
+
+    svg.selectAll('rect')
+    .data(data)
+    .enter()
+    .append('rect')
+    .attr('x', d => x(d.category))
+    .attr('y', d => y(d.value))
+    .attr('width', x.bandwidth())
+    .attr('height', d => height - y(d.value))
+    .attr('fill', d => {
+            if (d.category === 'CER' || d.category === 'EXP' || d.category === 'STD') {
+              return '#e0e0e0';
+            } else if (d.category === 'FOR' || d.category === 'EXP ' || d.category === 'STD ') {
+              return '#00b16a';
+            } else if (d.category === 'SAO') {
+              return '#d9534f';
+            } else {
+              return '#084d6e';
+            }
+          })
+    svg.append('g')
+    .attr('transform', `translate(0, ${height})`)
+    .call(d3.axisBottom(x));
+
+    svg.append('g')
+    .call(d3.axisLeft(y).ticks(5))
+    .selectAll('text')
+    .style('font-size', '10px'); 
+
+    svg.selectAll('.bar-label')
+      .data(data)
+      .enter()
+      .append('text')
+      .attr('class', 'bar-label')
+      .attr('x', d => x(d.category) + x.bandwidth() / 2)
+      .attr('y', d => y(d.value) - 5)
+      .attr('text-anchor', 'middle')
+      .text(d => d.value)
+      .style('font-size', '10px')
+      .style('font-weight', '300')
+      .attr('stroke', 'white');
+
+    svg.append('g')
+      .attr('transform', `translate(0, ${height})`)
+      .call(d3.axisBottom(x));
+
+    svg.append('g')
+      .call(d3.axisLeft(y).ticks(5));
 }
 function copy(v){
     const msgcopy = document.querySelectorAll('.textcopy')

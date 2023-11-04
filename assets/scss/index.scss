@@ -253,6 +253,12 @@
     .infoGraphcs{
         .collectInffo{
             width: auto;
+            #barChart{
+                user-select: none;
+                text, line, path{
+                    color: rgba(255, 255, 255, 0.4);
+                }
+            }
         }
     }
     .infoTable{
