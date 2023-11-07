@@ -143,7 +143,7 @@ function getCount(route){
     let routePrimaryLoc
     for(let i = 0; i < route.length; i++){
         routePrimaryLoc = route[i].route.split('-');
-        const datePriority = route[i].datePriority
+        const datePriority = route[i].datePriority.trim()
         let valor = routePrimaryLoc[4]
 
         if(i == 0){
@@ -490,12 +490,10 @@ function collectionConfiguration(collect){
     TOTAL_STD.value = collect.STD
 }
 function setMessage(collect, collect1, collect2, collect3, collect4, collect5, collect6, collect7, collect8, collect9, collect10){
-    console.log(collect6);
-    console.log(collect1);
     const name = document.querySelector('#name').value
     const arrivalTime = document.querySelectorAll('.arrivalTime')
-    const dateArrived = document.querySelector('.dateArrived')
-    const datePriority = document.querySelector('.datePriority')
+    const dateArrived = document.querySelector('.dateArrived').value.trim()
+    const datePriority = document.querySelector('.datePriority').value.trim()
     const collectSTD = document.querySelectorAll('.collectSTD')
     const collectEXP = document.querySelectorAll('.collectEXP')
     const VRID = document.querySelectorAll('.VRID')
@@ -537,7 +535,7 @@ function setMessage(collect, collect1, collect2, collect3, collect4, collect5, c
         else if(collect2.Total > 0){
             p = 2
         }
-        html += `Coleta Amazon FOR2 -> TEXBR *${dateArrived.value}* <span style="display: none;">br</span>
+        html += `Coleta Amazon FOR2 -> TEXBR *${dateArrived}* <span style="display: none;">br</span>
         
         `
         for(let y = 1; y <= p; y++){
@@ -635,12 +633,12 @@ function setMessage(collect, collect1, collect2, collect3, collect4, collect5, c
         if(collect2.Total > 0){
             sheetQuantityLocal += parseInt(sheetQuantity[0].value) + parseInt(sheetQuantity[1].value) 
             html2 = `O VRID: *${VRID[0].value}* (*${sheetQuantity[0].value}*) / *${VRID[1].value}* (*${sheetQuantity[1].value}*)`
-            html4 = `1° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            html4 = `1° Coleta FOR2-FOR -> TEXBR *${dateArrived}*
             Horario: *${arrivalTime[0].value}* 
             VRID: *${VRID[0].value}*
             Qntd: *${sheetQuantity[0].value}*.
 
-            2° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}* 
+            2° Coleta FOR2-FOR -> TEXBR *${dateArrived}* 
             Horario: *${arrivalTime[1].value}*
             VRID: *${VRID[1].value}*
             Qntd: *${sheetQuantity[1].value}*.`
@@ -648,17 +646,17 @@ function setMessage(collect, collect1, collect2, collect3, collect4, collect5, c
         if(collect3.Total > 0){
             html2 = `O VRID: *${VRID[0].value}* (*${sheetQuantity[0].value}*) / *${VRID[1].value}* (*${sheetQuantity[1].value}*) / *${VRID[2].value}* (*${sheetQuantity[2].value}*)`
             sheetQuantityLocal += parseInt(sheetQuantity[2].value)
-            html4 = `1° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}* 
+            html4 = `1° Coleta FOR2-FOR -> TEXBR *${dateArrived}* 
             Horario: *${arrivalTime[0].value}*
             VRID: *${VRID[0].value}*
             Qntd: *${sheetQuantity[0].value}*.
 
-            2° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}* 
+            2° Coleta FOR2-FOR -> TEXBR *${dateArrived}* 
             Horario: *${arrivalTime[1].value}*
             VRID: *${VRID[1].value}*
             Qntd: *${sheetQuantity[1].value}*.
             
-            3° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}* 
+            3° Coleta FOR2-FOR -> TEXBR *${dateArrived}* 
             Horario: *${arrivalTime[2].value}*
             VRID: *${VRID[2].value}*
             Qntd: *${sheetQuantity[2].value}*.`
@@ -666,22 +664,22 @@ function setMessage(collect, collect1, collect2, collect3, collect4, collect5, c
         if(collect4.Total > 0){
             html2 = `O VRID: *${VRID[0].value}* (*${sheetQuantity[0].value}*) / *${VRID[1].value}* (*${sheetQuantity[1].value}*) / *${VRID[2].value}* (*${sheetQuantity[2].value}*) / *${VRID[3].value}* (*${sheetQuantity[3].value}*)`
             sheetQuantityLocal += parseInt(sheetQuantity[3].value) 
-            html4 = `1° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}* 
+            html4 = `1° Coleta FOR2-FOR -> TEXBR *${dateArrived}* 
             Horario: *${arrivalTime[0].value}*
             VRID: *${VRID[0].value}*
             Qntd: *${sheetQuantity[0].value}*.
 
-            2° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            2° Coleta FOR2-FOR -> TEXBR *${dateArrived}*
             Horario: *${arrivalTime[1].value}*
             VRID: *${VRID[1].value}*
             Qntd: *${sheetQuantity[1].value}*.
             
-            3° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}* 
+            3° Coleta FOR2-FOR -> TEXBR *${dateArrived}* 
             Horario: *${arrivalTime[2].value}*
             VRID: *${VRID[2].value}*
             Qntd: *${sheetQuantity[2].value}*.
             
-            4° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}* 
+            4° Coleta FOR2-FOR -> TEXBR *${dateArrived}* 
             Horario: *${arrivalTime[3].value}*
             VRID: *${VRID[3].value}*
             Qntd: *${sheetQuantity[3].value}*.`
@@ -689,27 +687,27 @@ function setMessage(collect, collect1, collect2, collect3, collect4, collect5, c
         if(collect5.Total > 0){
             html2 = `O VRID: *${VRID[0].value}* (*${sheetQuantity[0].value}*) / *${VRID[1].value}* (*${sheetQuantity[1].value}*) / *${VRID[2].value}* (*${sheetQuantity[2].value}*) / *${VRID[3].value}* (*${sheetQuantity[3].value}*) / *${VRID[4].value}* (*${sheetQuantity[4].value}*)`
             sheetQuantityLocal += parseInt(sheetQuantity[4].value)
-            html4 = `1° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            html4 = `1° Coleta FOR2-FOR -> TEXBR *${dateArrived}*
             Horario: *${arrivalTime[0].value}*
             VRID: *${VRID[0].value}*
             Qntd: *${sheetQuantity[0].value}*.
 
-            2° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            2° Coleta FOR2-FOR -> TEXBR *${dateArrived}*
             Horario: *${arrivalTime[1].value}*
             VRID: *${VRID[1].value}*
             Qntd: *${sheetQuantity[1].value}*.
             
-            3° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            3° Coleta FOR2-FOR -> TEXBR *${dateArrived}*
             Horario: *${arrivalTime[2].value}*
             VRID: *${VRID[2].value}*
             Qntd: *${sheetQuantity[2].value}*.
             
-            4° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            4° Coleta FOR2-FOR -> TEXBR *${dateArrived}*
             Horario: *${arrivalTime[3].value}*
             VRID: *${VRID[3].value}*
             Qntd: *${sheetQuantity[3].value}*.
             
-            5° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            5° Coleta FOR2-FOR -> TEXBR *${dateArrived}*
             Horario: *${arrivalTime[4].value}*
             VRID: *${VRID[4].value}*
             Qntd: *${sheetQuantity[4].value}*.`
@@ -717,32 +715,32 @@ function setMessage(collect, collect1, collect2, collect3, collect4, collect5, c
         if(collect6.Total > 0){
             html2 = `O VRID: *${VRID[0].value}* (*${sheetQuantity[0].value}*) / *${VRID[1].value}* (*${sheetQuantity[1].value}*) / *${VRID[2].value}* (*${sheetQuantity[2].value}*) / *${VRID[3].value}* (*${sheetQuantity[3].value}*) / *${VRID[4].value}* (*${sheetQuantity[4].value} / *${VRID[5].value}* (*${sheetQuantity[5].value}*)`
             sheetQuantityLocal += parseInt(sheetQuantity[4].value)
-            html4 = `1° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            html4 = `1° Coleta FOR2-FOR -> TEXBR *${dateArrived}*
             Horario: *${arrivalTime[0].value}*
             VRID: *${VRID[0].value}*
             Qntd: *${sheetQuantity[0].value}*.
 
-            2° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            2° Coleta FOR2-FOR -> TEXBR *${dateArrived}*
             Horario: *${arrivalTime[1].value}*
             VRID: *${VRID[1].value}*
             Qntd: *${sheetQuantity[1].value}*.
             
-            3° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            3° Coleta FOR2-FOR -> TEXBR *${dateArrived}*
             Horario: *${arrivalTime[2].value}*
             VRID: *${VRID[2].value}*
             Qntd: *${sheetQuantity[2].value}*.
             
-            4° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            4° Coleta FOR2-FOR -> TEXBR *${dateArrived}*
             Horario: *${arrivalTime[3].value}*
             VRID: *${VRID[3].value}*
             Qntd: *${sheetQuantity[3].value}*.
             
-            5° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            5° Coleta FOR2-FOR -> TEXBR *${dateArrived}*
             Horario: *${arrivalTime[4].value}*
             VRID: *${VRID[4].value}*
             Qntd: *${sheetQuantity[4].value}*.
             
-            6° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            6° Coleta FOR2-FOR -> TEXBR *${dateArrived}*
             Horario: *${arrivalTime[5].value}*
             VRID: *${VRID[5].value}*
             Qntd: *${sheetQuantity[5].value}*.
@@ -752,37 +750,37 @@ function setMessage(collect, collect1, collect2, collect3, collect4, collect5, c
         if(collect7.Total > 0){
             html2 = `O VRID: *${VRID[0].value}* (*${sheetQuantity[0].value}*) / *${VRID[1].value}* (*${sheetQuantity[1].value}*) / *${VRID[2].value}* (*${sheetQuantity[2].value}*) / *${VRID[3].value}* (*${sheetQuantity[3].value}*) / *${VRID[4].value}* (*${sheetQuantity[4].value}*) / *${VRID[5].value}* (*${sheetQuantity[5].value}*) / *${VRID[6].value}* (*${sheetQuantity[6].value}*)`
             sheetQuantityLocal += parseInt(sheetQuantity[4].value)
-            html4 = `1° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            html4 = `1° Coleta FOR2-FOR -> TEXBR *${dateArrived}*
             Horario: *${arrivalTime[0].value}*
             VRID: *${VRID[0].value}*
             Qntd: *${sheetQuantity[0].value}*.
 
-            2° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            2° Coleta FOR2-FOR -> TEXBR *${dateArrived}*
             Horario: *${arrivalTime[1].value}*
             VRID: *${VRID[1].value}*
             Qntd: *${sheetQuantity[1].value}*.
             
-            3° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            3° Coleta FOR2-FOR -> TEXBR *${dateArrived}*
             Horario: *${arrivalTime[2].value}*
             VRID: *${VRID[2].value}*
             Qntd: *${sheetQuantity[2].value}*.
             
-            4° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            4° Coleta FOR2-FOR -> TEXBR *${dateArrived}*
             Horario: *${arrivalTime[3].value}*
             VRID: *${VRID[3].value}*
             Qntd: *${sheetQuantity[3].value}*.
             
-            5° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            5° Coleta FOR2-FOR -> TEXBR *${dateArrived}*
             Horario: *${arrivalTime[4].value}*
             VRID: *${VRID[4].value}*
             Qntd: *${sheetQuantity[4].value}*.
 
-            6° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            6° Coleta FOR2-FOR -> TEXBR *${dateArrived}*
             Horario: *${arrivalTime[5].value}*
             VRID: *${VRID[5].value}*
             Qntd: *${sheetQuantity[5].value}*.
             
-            7° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            7° Coleta FOR2-FOR -> TEXBR *${dateArrived}*
             Horario: *${arrivalTime[6].value}*
             VRID: *${VRID[6].value}*
             Qntd: *${sheetQuantity[6].value}*.`
@@ -790,42 +788,42 @@ function setMessage(collect, collect1, collect2, collect3, collect4, collect5, c
         if(collect8.Total > 0){
             html2 = `O VRID: *${VRID[0].value}* (*${sheetQuantity[0].value}*) / *${VRID[1].value}* (*${sheetQuantity[1].value}*) / *${VRID[2].value}* (*${sheetQuantity[2].value}*) / *${VRID[3].value}* (*${sheetQuantity[3].value}*) / *${VRID[4].value}* (*${sheetQuantity[4].value}*) / *${VRID[5].value}* (*${sheetQuantity[5].value}*) / *${VRID[6].value}* (*${sheetQuantity[6].value}*) / *${VRID[7].value}* (*${sheetQuantity[7].value}*)`
             sheetQuantityLocal += parseInt(sheetQuantity[4].value)
-            html4 = `1° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            html4 = `1° Coleta FOR2-FOR -> TEXBR *${dateArrived}*
             Horario: *${arrivalTime[0].value}*
             VRID: *${VRID[0].value}*
             Qntd: *${sheetQuantity[0].value}*.
 
-            2° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            2° Coleta FOR2-FOR -> TEXBR *${dateArrived}*
             Horario: *${arrivalTime[1].value}*
             VRID: *${VRID[1].value}*
             Qntd: *${sheetQuantity[1].value}*.
             
-            3° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            3° Coleta FOR2-FOR -> TEXBR *${dateArrived}*
             Horario: *${arrivalTime[2].value}*
             VRID: *${VRID[2].value}*
             Qntd: *${sheetQuantity[2].value}*.
             
-            4° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            4° Coleta FOR2-FOR -> TEXBR *${dateArrived}*
             Horario: *${arrivalTime[3].value}*
             VRID: *${VRID[3].value}*
             Qntd: *${sheetQuantity[3].value}*.
             
-            5° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            5° Coleta FOR2-FOR -> TEXBR *${dateArrived}*
             Horario: *${arrivalTime[4].value}*
             VRID: *${VRID[4].value}*
             Qntd: *${sheetQuantity[4].value}*.
             
-            6° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            6° Coleta FOR2-FOR -> TEXBR *${dateArrived}*
             Horario: *${arrivalTime[5].value}*
             VRID: *${VRID[5].value}*
             Qntd: *${sheetQuantity[5].value}*.
             
-            7° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            7° Coleta FOR2-FOR -> TEXBR *${dateArrived}*
             Horario: *${arrivalTime[6].value}*
             VRID: *${VRID[6].value}*
             Qntd: *${sheetQuantity[6].value}*.
 
-            8° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            8° Coleta FOR2-FOR -> TEXBR *${dateArrived}*
             Horario: *${arrivalTime[7].value}*
             VRID: *${VRID[7].value}*
             Qntd: *${sheetQuantity[7].value}*.`
@@ -833,47 +831,47 @@ function setMessage(collect, collect1, collect2, collect3, collect4, collect5, c
         if(collect9.Total > 0){
             html2 = `O VRID: *${VRID[0].value}* (*${sheetQuantity[0].value}*) / *${VRID[1].value}* (*${sheetQuantity[1].value}*) / *${VRID[2].value}* (*${sheetQuantity[2].value}*) / *${VRID[3].value}* (*${sheetQuantity[3].value}*) / *${VRID[4].value}* (*${sheetQuantity[4].value}*) / *${VRID[5].value}* (*${sheetQuantity[5].value}*) / *${VRID[6].value}* (*${sheetQuantity[6].value}*) / *${VRID[7].value}* (*${sheetQuantity[7].value}*) / *${VRID[8].value}* (*${sheetQuantity[8].value}*)`
             sheetQuantityLocal += parseInt(sheetQuantity[4].value)
-            html4 = `1° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            html4 = `1° Coleta FOR2-FOR -> TEXBR *${dateArrived}*
             Horario: *${arrivalTime[0].value}*
             VRID: *${VRID[0].value}*
             Qntd: *${sheetQuantity[0].value}*.
 
-            2° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            2° Coleta FOR2-FOR -> TEXBR *${dateArrived}*
             Horario: *${arrivalTime[1].value}*
             VRID: *${VRID[1].value}*
             Qntd: *${sheetQuantity[1].value}*.
             
-            3° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            3° Coleta FOR2-FOR -> TEXBR *${dateArrived}*
             Horario: *${arrivalTime[2].value}*
             VRID: *${VRID[2].value}*
             Qntd: *${sheetQuantity[2].value}*.
             
-            4° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            4° Coleta FOR2-FOR -> TEXBR *${dateArrived}*
             Horario: *${arrivalTime[3].value}*
             VRID: *${VRID[3].value}*
             Qntd: *${sheetQuantity[3].value}*.
             
-            5° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            5° Coleta FOR2-FOR -> TEXBR *${dateArrived}*
             Horario: *${arrivalTime[4].value}*
             VRID: *${VRID[4].value}*
             Qntd: *${sheetQuantity[4].value}*.
             
-            6° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            6° Coleta FOR2-FOR -> TEXBR *${dateArrived}*
             Horario: *${arrivalTime[5].value}*
             VRID: *${VRID[5].value}*
             Qntd: *${sheetQuantity[5].value}*.
             
-            7° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            7° Coleta FOR2-FOR -> TEXBR *${dateArrived}*
             Horario: *${arrivalTime[6].value}*
             VRID: *${VRID[6].value}*
             Qntd: *${sheetQuantity[6].value}*.
 
-            8° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            8° Coleta FOR2-FOR -> TEXBR *${dateArrived}*
             Horario: *${arrivalTime[7].value}*
             VRID: *${VRID[7].value}*
             Qntd: *${sheetQuantity[7].value}*.
 
-            9° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            9° Coleta FOR2-FOR -> TEXBR *${dateArrived}*
             Horario: *${arrivalTime[8].value}*
             VRID: *${VRID[8].value}*
             Qntd: *${sheetQuantity[8].value}*.`
@@ -881,51 +879,51 @@ function setMessage(collect, collect1, collect2, collect3, collect4, collect5, c
         if(collect10.Total > 0){
             html2 = `O VRID: *${VRID[0].value}* (*${sheetQuantity[0].value}*) / *${VRID[1].value}* (*${sheetQuantity[1].value}*) / *${VRID[2].value}* (*${sheetQuantity[2].value}*) / *${VRID[3].value}* (*${sheetQuantity[3].value}*) / *${VRID[4].value}* (*${sheetQuantity[4].value}*) / *${VRID[5].value}* (*${sheetQuantity[5].value}*) / *${VRID[6].value}* (*${sheetQuantity[6].value}*) / *${VRID[7].value}* (*${sheetQuantity[7].value}*) / *${VRID[8].value}* (*${sheetQuantity[8].value}*) / *${VRID[9].value}* (*${sheetQuantity[9].value}*)`
             sheetQuantityLocal += parseInt(sheetQuantity[4].value)
-            html4 = `1° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            html4 = `1° Coleta FOR2-FOR -> TEXBR *${dateArrived}*
             Horario: *${arrivalTime[0].value}*
             VRID: *${VRID[0].value}*
             Qntd: *${sheetQuantity[0].value}*.
 
-            2° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            2° Coleta FOR2-FOR -> TEXBR *${dateArrived}*
             Horario: *${arrivalTime[1].value}*
             VRID: *${VRID[1].value}*
             Qntd: *${sheetQuantity[1].value}*.
             
-            3° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            3° Coleta FOR2-FOR -> TEXBR *${dateArrived}*
             Horario: *${arrivalTime[2].value}*
             VRID: *${VRID[2].value}*
             Qntd: *${sheetQuantity[2].value}*.
             
-            4° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            4° Coleta FOR2-FOR -> TEXBR *${dateArrived}*
             Horario: *${arrivalTime[3].value}*
             VRID: *${VRID[3].value}*
             Qntd: *${sheetQuantity[3].value}*.
             
-            5° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            5° Coleta FOR2-FOR -> TEXBR *${dateArrived}*
             Horario: *${arrivalTime[4].value}*
             VRID: *${VRID[4].value}*
             Qntd: *${sheetQuantity[4].value}*.
-            6° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            6° Coleta FOR2-FOR -> TEXBR *${dateArrived}*
             Horario: *${arrivalTime[5].value}*
             VRID: *${VRID[5].value}*
             Qntd: *${sheetQuantity[5].value}*.
             
-            7° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            7° Coleta FOR2-FOR -> TEXBR *${dateArrived}*
             Horario: *${arrivalTime[6].value}*
             VRID: *${VRID[6].value}*
             Qntd: *${sheetQuantity[6].value}*.
 
-            8° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            8° Coleta FOR2-FOR -> TEXBR *${dateArrived}*
             Horario: *${arrivalTime[7].value}*
             VRID: *${VRID[7].value}*
             Qntd: *${sheetQuantity[7].value}*.
 
-            9° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            9° Coleta FOR2-FOR -> TEXBR *${dateArrived}*
             Horario: *${arrivalTime[8].value}*
             VRID: *${VRID[8].value}*
             Qntd: *${sheetQuantity[8].value}*.
 
-            10° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            10° Coleta FOR2-FOR -> TEXBR *${dateArrived}*
             Horario: *${arrivalTime[9].value}*
             VRID: *${VRID[9].value}*
             Qntd: *${sheetQuantity[9].value}*.`
@@ -935,12 +933,12 @@ function setMessage(collect, collect1, collect2, collect3, collect4, collect5, c
             somados deram exatos *${sheetQuantityLocal}*, porém como sabemos da divergencia que estamos tendo entre VRID e SISTEMA, logo o ICS acusou um valor de *"${collect.Total}"* AWB'
             deixando um total de *${parseInt(collect.Total) - parseInt(sheetQuantityLocal)}* AWB's fora do informativo do VRID.`
             html3 = `Boa noite, segue aqui os relatórios de Recebimento de turno, AWB's e de
-            Peças locais referente as coletas amazon dessa data. *${dateArrived.value}*<span style="display: none;">br</span>
+            Peças locais referente as coletas amazon dessa data. *${dateArrived}*<span style="display: none;">br</span>
 
             MH vem recebendo um total de *${collect.ForTotal}* peças locais, sendo  elas *${collect.ForSTD}* STD e *${collect.ForEXP}* EXP
             como mostrados na tabela acima.
             Hoje estamos recebendo um total de *${collect.ForTotalPriority}* prioridades sendo elas *${collect.ForEXPPriority}* EXP e *${collect.ForSTDPriority}* STD,
-            a serem entregue no dia seguinte. *${datePriority.value}*<span style="display: none;">br</span>
+            a serem entregue no dia seguinte. *${datePriority}*<span style="display: none;">br</span>
 
             STD: *${collect.STD}*
             EXP: *${collect.EXP}*<span style="display: none;">br</span>
@@ -954,12 +952,12 @@ function setMessage(collect, collect1, collect2, collect3, collect4, collect5, c
             deixando um total de *${parseInt(collect1.Total - sheetQuantity[0].value)}* AWB's fora do informativo do VRID.`
 
             html3 = `Boa noite, segue aqui os relatórios de Recebimento de turno, AWB's e de
-            Peças locais referente as coletas amazon dessa data. *${dateArrived.value}*<span style="display: none;">br</span>
+            Peças locais referente as coletas amazon dessa data. *${dateArrived}*<span style="display: none;">br</span>
 
             MH vem recebendo um total de *${collect1.ForTotal}* peças locais, sendo  elas *${collect1.ForSTD}* STD e *${collect1.ForEXP}* EXP
             como mostrados na tabela acima.
             Hoje estamos recebendo um total de *${collect1.ForTotalPriority}* prioridades sendo elas *${collect1.ForEXPPriority}* EXP e *${collect1.ForSTDPriority}* STD,
-            a serem entregue no dia seguinte. *${datePriority.value}*<span style="display: none;">br</span>
+            a serem entregue no dia seguinte. *${datePriority}*<span style="display: none;">br</span>
 
             STD: *${collect1.STD}*
             EXP: *${collect1.EXP}*<span style="display: none;">br</span>
@@ -967,7 +965,7 @@ function setMessage(collect, collect1, collect2, collect3, collect4, collect5, c
             *AWB'S EXTRAS*: SLX: *${collect1.SLX}* | PSX: *${collect1.PSX}* | BEC: *${collect1.BEC}* | SOB: *${collect1.SOB}* | BEP: *${collect1.BEP}* | BLM: *${collect1.BLM}*<span style="display: none;">br</span>
 
             ~*${name}.*`
-            html4 = `1° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+            html4 = `1° Coleta FOR2-FOR -> TEXBR *${dateArrived}*
             Horario: *${arrivalTime[0].value}*
             VRID: *${VRID[0].value}*
             Qntd: *${sheetQuantity[0].value}*.`
@@ -982,7 +980,7 @@ function setMessage(collect, collect1, collect2, collect3, collect4, collect5, c
         divergencia que estamos tendo entre VRID e SISTEMA, logo o ICS acusou um valor de *${collect1.Total}* AWB'
         deixando um total de *${parseInt(collect1.Total - sheetQuantity[0].value)}* AWB's fora do informativo do VRID.`
         
-        html = `Coleta Amazon FOR2 -> TEXBR *<span class="dateArrivedMSG">${dateArrived.value}</span>* <span style="display: none;">br</span>
+        html = `Coleta Amazon FOR2 -> TEXBR *<span class="dateArrivedMSG">${dateArrived}</span>* <span style="display: none;">br</span>
         <span class="collectMSG">1</span>° Coleta Amazon... *<span class="arrivalTimeMSG">${arrivalTime[0].value}</span>h* <span style="display: none;">br</span>
 
         *<span class="collectSTDMSG">${collectSTD[0].value}</span>* STD *<span class="collectSTDValueMSG">${collect1.STD}</span>*
@@ -993,12 +991,12 @@ function setMessage(collect, collect1, collect2, collect3, collect4, collect5, c
         ~*<span class="NameMSG">${name}</span>.*
         `
         html3 = `Boa noite, segue aqui os relatórios de Recebimento de turno, AWB's e de
-        Peças locais referente as coletas amazon dessa data. *${dateArrived.value}*<span style="display: none;">br</span>
+        Peças locais referente as coletas amazon dessa data. *${dateArrived}*<span style="display: none;">br</span>
 
         MH vem recebendo um total de *${collect1.ForTotal}* peças locais, sendo  elas *${collect1.ForSTD}* STD e *${collect1.ForEXP}* EXP
         como mostrados na tabela acima.
         Hoje estamos recebendo um total de *${collect1.ForTotalPriority}* prioridades sendo elas *${collect1.ForEXPPriority}* EXP e *${collect1.ForSTDPriority}* STD,
-        a serem entregue no dia seguinte. *${datePriority.value}*<span style="display: none;">br</span>
+        a serem entregue no dia seguinte. *${datePriority}*<span style="display: none;">br</span>
 
         STD: *${collect1.STD}*
         EXP: *${collect1.EXP}*<span style="display: none;">br</span>
@@ -1006,7 +1004,7 @@ function setMessage(collect, collect1, collect2, collect3, collect4, collect5, c
         *AWB'S EXTRAS*: SLX: *${collect1.SLX}* | PSX: *${collect1.PSX}* | BEC: *${collect1.BEC}* | SOB: *${collect1.SOB}* | BEP: *${collect1.BEP}* | BLM: *${collect1.BLM}*<span style="display: none;">br</span>
 
         ~*${name}.*`
-        html4 = `1° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+        html4 = `1° Coleta FOR2-FOR -> TEXBR *${dateArrived}*
             Horario: *${arrivalTime[0].value}*
             VRID: *${VRID[0].value}*
             Qntd: *${sheetQuantity[0].value}*.`
@@ -1022,7 +1020,7 @@ function setMessage(collect, collect1, collect2, collect3, collect4, collect5, c
         divergencia que estamos tendo entre VRID e SISTEMA, logo o ICS acusou um valor de *${collect2.Total}* AWB'
         deixando um total de *${parseInt(collect2.Total - sheetQuantity[1].value)}* AWB's fora do informativo do VRID.`
         
-        html = `Coleta Amazon FOR2 -> TEXBR *<span class="dateArrivedMSG">${dateArrived.value}</span>* <span style="display: none;">br</span>
+        html = `Coleta Amazon FOR2 -> TEXBR *<span class="dateArrivedMSG">${dateArrived}</span>* <span style="display: none;">br</span>
         <span class="collectMSG">2</span>° Coleta Amazon... *<span class="arrivalTimeMSG">${arrivalTime[1].value}</span>h* <span style="display: none;">br</span>
 
         *<span class="collectSTDMSG">${collectSTD[1].value}</span>* STD *<span class="collectSTDValueMSG">${collect2.STD}</span>*
@@ -1033,12 +1031,12 @@ function setMessage(collect, collect1, collect2, collect3, collect4, collect5, c
         ~*<span class="NameMSG">${name}</span>.*
         `
         html3 = `Boa noite, segue aqui os relatórios de Recebimento de turno, AWB's e de
-        Peças locais referente as coletas amazon dessa data. *${dateArrived.value}*<span style="display: none;">br</span>
+        Peças locais referente as coletas amazon dessa data. *${dateArrived}*<span style="display: none;">br</span>
 
         MH vem recebendo um total de *${collect2.ForTotal}* peças locais, sendo  elas *${collect2.ForSTD}* STD e *${collect2.ForEXP}* EXP
         como mostrados na tabela acima.
         Hoje estamos recebendo um total de *${collect2.ForTotalPriority}* prioridades sendo elas *${collect2.ForEXPPriority}* EXP e *${collect2.ForSTDPriority}* STD,
-        a serem entregue no dia seguinte. *${datePriority.value}*<span style="display: none;">br</span>
+        a serem entregue no dia seguinte. *${datePriority}*<span style="display: none;">br</span>
 
         STD: *${collect2.STD}*
         EXP: *${collect2.EXP}*<span style="display: none;">br</span>
@@ -1046,7 +1044,7 @@ function setMessage(collect, collect1, collect2, collect3, collect4, collect5, c
         *AWB'S EXTRAS*: SLX: *${collect2.SLX}* | PSX: *${collect2.PSX}* | BEC: *${collect2.BEC}* | SOB: *${collect2.SOB}* | BEP: *${collect2.BEP}* | BLM: *${collect2.BLM}*<span style="display: none;">br</span>
 
         ~*${name}.*`
-        html4 = `2° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+        html4 = `2° Coleta FOR2-FOR -> TEXBR *${dateArrived}*
             Horario: *${arrivalTime[1].value}*
             VRID: *${VRID[1].value}*
             Qntd: *${sheetQuantity[1].value}*.`
@@ -1063,7 +1061,7 @@ function setMessage(collect, collect1, collect2, collect3, collect4, collect5, c
         divergencia que estamos tendo entre VRID e SISTEMA, logo o ICS acusou um valor de *${collect3.Total}* AWB'
         deixando um total de *${parseInt(collect3.Total - sheetQuantity[2].value)}* AWB's fora do informativo do VRID.`
         
-        html = `Coleta Amazon FOR2 -> TEXBR *<span class="dateArrivedMSG">${dateArrived.value}</span>* <span style="display: none;">br</span>
+        html = `Coleta Amazon FOR2 -> TEXBR *<span class="dateArrivedMSG">${dateArrived}</span>* <span style="display: none;">br</span>
         <span class="collectMSG">3</span>° Coleta Amazon... *<span class="arrivalTimeMSG">${arrivalTime[2].value}</span>h* <span style="display: none;">br</span>
 
         *<span class="collectSTDMSG">${collectSTD[2].value}</span>* STD *<span class="collectSTDValueMSG">${collect3.STD}</span>*
@@ -1074,12 +1072,12 @@ function setMessage(collect, collect1, collect2, collect3, collect4, collect5, c
         ~*<span class="NameMSG">${name}</span>.*
         `
         html3 = `Boa noite, segue aqui os relatórios de Recebimento de turno, AWB's e de
-        Peças locais referente as coletas amazon dessa data. *${dateArrived.value}*<span style="display: none;">br</span>
+        Peças locais referente as coletas amazon dessa data. *${dateArrived}*<span style="display: none;">br</span>
 
         MH vem recebendo um total de *${collect3.ForTotal}* peças locais, sendo  elas *${collect3.ForSTD}* STD e *${collect3.ForEXP}* EXP
         como mostrados na tabela acima.
         Hoje estamos recebendo um total de *${collect3.ForTotalPriority}* prioridades sendo elas *${collect3.ForEXPPriority}* EXP e *${collect3.ForSTDPriority}* STD,
-        a serem entregue no dia seguinte. *${datePriority.value}*<span style="display: none;">br</span>
+        a serem entregue no dia seguinte. *${datePriority}*<span style="display: none;">br</span>
 
         STD: *${collect3.STD}*
         EXP: *${collect3.EXP}*<span style="display: none;">br</span>
@@ -1087,7 +1085,7 @@ function setMessage(collect, collect1, collect2, collect3, collect4, collect5, c
         *AWB'S EXTRAS*: SLX: *${collect3.SLX}* | PSX: *${collect3.PSX}* | BEC: *${collect3.BEC}* | SOB: *${collect3.SOB}* | BEP: *${collect3.BEP}* | BLM: *${collect3.BLM}*<span style="display: none;">br</span>
 
         ~*${name}.*`
-        html4 = `3° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+        html4 = `3° Coleta FOR2-FOR -> TEXBR *${dateArrived}*
             Horario: *${arrivalTime[2].value}*
             VRID: *${VRID[2].value}*
             Qntd: *${sheetQuantity[2].value}*.`
@@ -1103,7 +1101,7 @@ function setMessage(collect, collect1, collect2, collect3, collect4, collect5, c
         divergencia que estamos tendo entre VRID e SISTEMA, logo o ICS acusou um valor de *${collect4.Total}* AWB'
         deixando um total de *${parseInt(collect4.Total - sheetQuantity[3].value)}* AWB's fora do informativo do VRID.`
         
-        html = `Coleta Amazon FOR2 -> TEXBR *<span class="dateArrivedMSG">${dateArrived.value}</span>* <span style="display: none;">br</span>
+        html = `Coleta Amazon FOR2 -> TEXBR *<span class="dateArrivedMSG">${dateArrived}</span>* <span style="display: none;">br</span>
         <span class="collectMSG">4</span>° Coleta Amazon... *<span class="arrivalTimeMSG">${arrivalTime[3].value}</span>h* <span style="display: none;">br</span>
 
         *<span class="collectSTDMSG">${collectSTD[3].value}</span>* STD *<span class="collectSTDValueMSG">${collect4.STD}</span>*
@@ -1114,12 +1112,12 @@ function setMessage(collect, collect1, collect2, collect3, collect4, collect5, c
         ~*<span class="NameMSG">${name}</span>.*
         `
         html3 = `Boa noite, segue aqui os relatórios de Recebimento de turno, AWB's e de
-        Peças locais referente as coletas amazon dessa data. *${dateArrived.value}*<span style="display: none;">br</span>
+        Peças locais referente as coletas amazon dessa data. *${dateArrived}*<span style="display: none;">br</span>
 
         MH vem recebendo um total de *${collect4.ForTotal}* peças locais, sendo  elas *${collect4.ForSTD}* STD e *${collect4.ForEXP}* EXP
         como mostrados na tabela acima.
         Hoje estamos recebendo um total de *${collect4.ForTotalPriority}* prioridades sendo elas *${collect4.ForEXPPriority}* EXP e *${collect4.ForSTDPriority}* STD,
-        a serem entregue no dia seguinte. *${datePriority.value}*<span style="display: none;">br</span>
+        a serem entregue no dia seguinte. *${datePriority}*<span style="display: none;">br</span>
 
         STD: *${collect4.STD}*
         EXP: *${collect4.EXP}*<span style="display: none;">br</span>
@@ -1127,7 +1125,7 @@ function setMessage(collect, collect1, collect2, collect3, collect4, collect5, c
         *AWB'S EXTRAS*: SLX: *${collect4.SLX}* | PSX: *${collect4.PSX}* | BEC: *${collect4.BEC}* | SOB: *${collect4.SOB}* | BEP: *${collect4.BEP}* | BLM: *${collect4.BLM}*<span style="display: none;">br</span>
 
         ~*${name}.*`
-        html4 = `4° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+        html4 = `4° Coleta FOR2-FOR -> TEXBR *${dateArrived}*
             Horario: *${arrivalTime[3].value}*
             VRID: *${VRID[3].value}*
             Qntd: *${sheetQuantity[3].value}*.`
@@ -1143,7 +1141,7 @@ function setMessage(collect, collect1, collect2, collect3, collect4, collect5, c
         divergencia que estamos tendo entre VRID e SISTEMA, logo o ICS acusou um valor de *${collect5.Total}* AWB'
         deixando um total de *${parseInt(collect5.Total - sheetQuantity[4].value)}* AWB's fora do informativo do VRID.`
         
-        html = `Coleta Amazon FOR2 -> TEXBR *<span class="dateArrivedMSG">${dateArrived.value}</span>* <span style="display: none;">br</span>
+        html = `Coleta Amazon FOR2 -> TEXBR *<span class="dateArrivedMSG">${dateArrived}</span>* <span style="display: none;">br</span>
         <span class="collectMSG">5</span>° Coleta Amazon... *<span class="arrivalTimeMSG">${arrivalTime[4].value}</span>h* <span style="display: none;">br</span>
 
         *<span class="collectSTDMSG">${collectSTD[4].value}</span>* STD *<span class="collectSTDValueMSG">${collect5.STD}</span>*
@@ -1154,12 +1152,12 @@ function setMessage(collect, collect1, collect2, collect3, collect4, collect5, c
         ~*<span class="NameMSG">${name}</span>.*
         `
         html3 = `Boa noite, segue aqui os relatórios de Recebimento de turno, AWB's e de
-        Peças locais referente as coletas amazon dessa data. *${dateArrived.value}*<span style="display: none;">br</span>
+        Peças locais referente as coletas amazon dessa data. *${dateArrived}*<span style="display: none;">br</span>
 
         MH vem recebendo um total de *${collect5.ForTotal}* peças locais, sendo  elas *${collect5.ForSTD}* STD e *${collect5.ForEXP}* EXP
         como mostrados na tabela acima.
         Hoje estamos recebendo um total de *${collect5.ForTotalPriority}* prioridades sendo elas *${collect5.ForEXPPriority}* EXP e *${collect5.ForSTDPriority}* STD,
-        a serem entregue no dia seguinte. *${datePriority.value}*<span style="display: none;">br</span>
+        a serem entregue no dia seguinte. *${datePriority}*<span style="display: none;">br</span>
 
         STD: *${collect5.STD}*
         EXP: *${collect5.EXP}*<span style="display: none;">br</span>
@@ -1167,7 +1165,7 @@ function setMessage(collect, collect1, collect2, collect3, collect4, collect5, c
         *AWB'S EXTRAS*: SLX: *${collect5.SLX}* | PSX: *${collect5.PSX}* | BEC: *${collect5.BEC}* | SOB: *${collect5.SOB}* | BEP: *${collect5.BEP}* | BLM: *${collect5.BLM}*<span style="display: none;">br</span>
 
         ~*${name}.*`
-        html4 = `5° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+        html4 = `5° Coleta FOR2-FOR -> TEXBR *${dateArrived}*
             Horario: *${arrivalTime[4].value}*
             VRID: *${VRID[4].value}*
             Qntd: *${sheetQuantity[4].value}*.`
@@ -1182,7 +1180,7 @@ function setMessage(collect, collect1, collect2, collect3, collect4, collect5, c
         divergencia que estamos tendo entre VRID e SISTEMA, logo o ICS acusou um valor de *${collect6.Total}* AWB'
         deixando um total de *${parseInt(collect6.Total - sheetQuantity[5].value)}* AWB's fora do informativo do VRID.`
         
-        html = `Coleta Amazon FOR2 -> TEXBR *<span class="dateArrivedMSG">${dateArrived.value}</span>* <span style="display: none;">br</span>
+        html = `Coleta Amazon FOR2 -> TEXBR *<span class="dateArrivedMSG">${dateArrived}</span>* <span style="display: none;">br</span>
         <span class="collectMSG">6</span>° Coleta Amazon... *<span class="arrivalTimeMSG">${arrivalTime[5].value}</span>h* <span style="display: none;">br</span>
 
         *<span class="collectSTDMSG">${collectSTD[5].value}</span>* STD *<span class="collectSTDValueMSG">${collect6.STD}</span>*
@@ -1193,12 +1191,12 @@ function setMessage(collect, collect1, collect2, collect3, collect4, collect5, c
         ~*<span class="NameMSG">${name}</span>.*
         `
         html3 = `Boa noite, segue aqui os relatórios de Recebimento de turno, AWB's e de
-        Peças locais referente as coletas amazon dessa data. *${dateArrived.value}*<span style="display: none;">br</span>
+        Peças locais referente as coletas amazon dessa data. *${dateArrived}*<span style="display: none;">br</span>
 
         MH vem recebendo um total de *${collect6.ForTotal}* peças locais, sendo  elas *${collect6.ForSTD}* STD e *${collect6.ForEXP}* EXP
         como mostrados na tabela acima.
         Hoje estamos recebendo um total de *${collect6.ForTotalPriority}* prioridades sendo elas *${collect6.ForEXPPriority}* EXP e *${collect6.ForSTDPriority}* STD,
-        a serem entregue no dia seguinte. *${datePriority.value}*<span style="display: none;">br</span>
+        a serem entregue no dia seguinte. *${datePriority}*<span style="display: none;">br</span>
 
         STD: *${collect6.STD}*
         EXP: *${collect6.EXP}*<span style="display: none;">br</span>
@@ -1206,7 +1204,7 @@ function setMessage(collect, collect1, collect2, collect3, collect4, collect5, c
         *AWB'S EXTRAS*: SLX: *${collect6.SLX}* | PSX: *${collect6.PSX}* | BEC: *${collect6.BEC}* | SOB: *${collect6.SOB}* | BEP: *${collect6.BEP}* | BLM: *${collect6.BLM}*<span style="display: none;">br</span>
 
         ~*${name}.*`
-        html4 = `6° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+        html4 = `6° Coleta FOR2-FOR -> TEXBR *${dateArrived}*
             Horario: *${arrivalTime[5].value}*
             VRID: *${VRID[5].value}*
             Qntd: *${sheetQuantity[5].value}*.`
@@ -1221,7 +1219,7 @@ function setMessage(collect, collect1, collect2, collect3, collect4, collect5, c
         divergencia que estamos tendo entre VRID e SISTEMA, logo o ICS acusou um valor de *${collect7.Total}* AWB'
         deixando um total de *${parseInt(collect7.Total - sheetQuantity[6].value)}* AWB's fora do informativo do VRID.`
         
-        html = `Coleta Amazon FOR2 -> TEXBR *<span class="dateArrivedMSG">${dateArrived.value}</span>* <span style="display: none;">br</span>
+        html = `Coleta Amazon FOR2 -> TEXBR *<span class="dateArrivedMSG">${dateArrived}</span>* <span style="display: none;">br</span>
         <span class="collectMSG">7</span>° Coleta Amazon... *<span class="arrivalTimeMSG">${arrivalTime[6].value}</span>h* <span style="display: none;">br</span>
 
         *<span class="collectSTDMSG">${collectSTD[6].value}</span>* STD *<span class="collectSTDValueMSG">${collect7.STD}</span>*
@@ -1232,12 +1230,12 @@ function setMessage(collect, collect1, collect2, collect3, collect4, collect5, c
         ~*<span class="NameMSG">${name}</span>.*
         `
         html3 = `Boa noite, segue aqui os relatórios de Recebimento de turno, AWB's e de
-        Peças locais referente as coletas amazon dessa data. *${dateArrived.value}*<span style="display: none;">br</span>
+        Peças locais referente as coletas amazon dessa data. *${dateArrived}*<span style="display: none;">br</span>
 
         MH vem recebendo um total de *${collect7.ForTotal}* peças locais, sendo  elas *${collect7.ForSTD}* STD e *${collect7.ForEXP}* EXP
         como mostrados na tabela acima.
         Hoje estamos recebendo um total de *${collect7.ForTotalPriority}* prioridades sendo elas *${collect7.ForEXPPriority}* EXP e *${collect7.ForSTDPriority}* STD,
-        a serem entregue no dia seguinte. *${datePriority.value}*<span style="display: none;">br</span>
+        a serem entregue no dia seguinte. *${datePriority}*<span style="display: none;">br</span>
 
         STD: *${collect7.STD}*
         EXP: *${collect7.EXP}*<span style="display: none;">br</span>
@@ -1245,7 +1243,7 @@ function setMessage(collect, collect1, collect2, collect3, collect4, collect5, c
         *AWB'S EXTRAS*: SLX: *${collect7.SLX}* | PSX: *${collect7.PSX}* | BEC: *${collect7.BEC}* | SOB: *${collect7.SOB}* | BEP: *${collect7.BEP}* | BLM: *${collect7.BLM}*<span style="display: none;">br</span>
 
         ~*${name}.*`
-        html4 = `7° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+        html4 = `7° Coleta FOR2-FOR -> TEXBR *${dateArrived}*
             Horario: *${arrivalTime[6].value}*
             VRID: *${VRID[6].value}*
             Qntd: *${sheetQuantity[6].value}*.`
@@ -1260,7 +1258,7 @@ function setMessage(collect, collect1, collect2, collect3, collect4, collect5, c
         divergencia que estamos tendo entre VRID e SISTEMA, logo o ICS acusou um valor de *${collect8.Total}* AWB'
         deixando um total de *${parseInt(collect8.Total - sheetQuantity[7].value)}* AWB's fora do informativo do VRID.`
         
-        html = `Coleta Amazon FOR2 -> TEXBR *<span class="dateArrivedMSG">${dateArrived.value}</span>* <span style="display: none;">br</span>
+        html = `Coleta Amazon FOR2 -> TEXBR *<span class="dateArrivedMSG">${dateArrived}</span>* <span style="display: none;">br</span>
         <span class="collectMSG">8</span>° Coleta Amazon... *<span class="arrivalTimeMSG">${arrivalTime[7].value}</span>h* <span style="display: none;">br</span>
 
         *<span class="collectSTDMSG">${collectSTD[7].value}</span>* STD *<span class="collectSTDValueMSG">${collect8.STD}</span>*
@@ -1271,12 +1269,12 @@ function setMessage(collect, collect1, collect2, collect3, collect4, collect5, c
         ~*<span class="NameMSG">${name}</span>.*
         `
         html3 = `Boa noite, segue aqui os relatórios de Recebimento de turno, AWB's e de
-        Peças locais referente as coletas amazon dessa data. *${dateArrived.value}*<span style="display: none;">br</span>
+        Peças locais referente as coletas amazon dessa data. *${dateArrived}*<span style="display: none;">br</span>
 
         MH vem recebendo um total de *${collect8.ForTotal}* peças locais, sendo  elas *${collect8.ForSTD}* STD e *${collect8.ForEXP}* EXP
         como mostrados na tabela acima.
         Hoje estamos recebendo um total de *${collect8.ForTotalPriority}* prioridades sendo elas *${collect8.ForEXPPriority}* EXP e *${collect8.ForSTDPriority}* STD,
-        a serem entregue no dia seguinte. *${datePriority.value}*<span style="display: none;">br</span>
+        a serem entregue no dia seguinte. *${datePriority}*<span style="display: none;">br</span>
 
         STD: *${collect8.STD}*
         EXP: *${collect8.EXP}*<span style="display: none;">br</span>
@@ -1284,7 +1282,7 @@ function setMessage(collect, collect1, collect2, collect3, collect4, collect5, c
         *AWB'S EXTRAS*: SLX: *${collect8.SLX}* | PSX: *${collect8.PSX}* | BEC: *${collect8.BEC}* | SOB: *${collect8.SOB}* | BEP: *${collect8.BEP}* | BLM: *${collect8.BLM}*<span style="display: none;">br</span>
 
         ~*${name}.*`
-        html4 = `8° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+        html4 = `8° Coleta FOR2-FOR -> TEXBR *${dateArrived}*
             Horario: *${arrivalTime[7].value}*
             VRID: *${VRID[7].value}*
             Qntd: *${sheetQuantity[7].value}*.`
@@ -1299,7 +1297,7 @@ function setMessage(collect, collect1, collect2, collect3, collect4, collect5, c
         divergencia que estamos tendo entre VRID e SISTEMA, logo o ICS acusou um valor de *${collect9.Total}* AWB'
         deixando um total de *${parseInt(collect9.Total - sheetQuantity[8].value)}* AWB's fora do informativo do VRID.`
         
-        html = `Coleta Amazon FOR2 -> TEXBR *<span class="dateArrivedMSG">${dateArrived.value}</span>* <span style="display: none;">br</span>
+        html = `Coleta Amazon FOR2 -> TEXBR *<span class="dateArrivedMSG">${dateArrived}</span>* <span style="display: none;">br</span>
         <span class="collectMSG">9</span>° Coleta Amazon... *<span class="arrivalTimeMSG">${arrivalTime[8].value}</span>h* <span style="display: none;">br</span>
 
         *<span class="collectSTDMSG">${collectSTD[8].value}</span>* STD *<span class="collectSTDValueMSG">${collect9.STD}</span>*
@@ -1310,12 +1308,12 @@ function setMessage(collect, collect1, collect2, collect3, collect4, collect5, c
         ~*<span class="NameMSG">${name}</span>.*
         `
         html3 = `Boa noite, segue aqui os relatórios de Recebimento de turno, AWB's e de
-        Peças locais referente as coletas amazon dessa data. *${dateArrived.value}*<span style="display: none;">br</span>
+        Peças locais referente as coletas amazon dessa data. *${dateArrived}*<span style="display: none;">br</span>
 
         MH vem recebendo um total de *${collect9.ForTotal}* peças locais, sendo  elas *${collect9.ForSTD}* STD e *${collect9.ForEXP}* EXP
         como mostrados na tabela acima.
         Hoje estamos recebendo um total de *${collect9.ForTotalPriority}* prioridades sendo elas *${collect9.ForEXPPriority}* EXP e *${collect9.ForSTDPriority}* STD,
-        a serem entregue no dia seguinte. *${datePriority.value}*<span style="display: none;">br</span>
+        a serem entregue no dia seguinte. *${datePriority}*<span style="display: none;">br</span>
 
         STD: *${collect9.STD}*
         EXP: *${collect9.EXP}*<span style="display: none;">br</span>
@@ -1323,7 +1321,7 @@ function setMessage(collect, collect1, collect2, collect3, collect4, collect5, c
         *AWB'S EXTRAS*: SLX: *${collect9.SLX}* | PSX: *${collect9.PSX}* | BEC: *${collect9.BEC}* | SOB: *${collect9.SOB}* | BEP: *${collect9.BEP}* | BLM: *${collect9.BLM}*<span style="display: none;">br</span>
 
         ~*${name}.*`
-        html4 = `9° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+        html4 = `9° Coleta FOR2-FOR -> TEXBR *${dateArrived}*
             Horario: *${arrivalTime[8].value}*
             VRID: *${VRID[8].value}*
             Qntd: *${sheetQuantity[8].value}*.`
@@ -1338,7 +1336,7 @@ function setMessage(collect, collect1, collect2, collect3, collect4, collect5, c
         divergencia que estamos tendo entre VRID e SISTEMA, logo o ICS acusou um valor de *${collect10.Total}* AWB'
         deixando um total de *${parseInt(collect10.Total - sheetQuantity[9].value)}* AWB's fora do informativo do VRID.`
         
-        html = `Coleta Amazon FOR2 -> TEXBR *<span class="dateArrivedMSG">${dateArrived.value}</span>* <span style="display: none;">br</span>
+        html = `Coleta Amazon FOR2 -> TEXBR *<span class="dateArrivedMSG">${dateArrived}</span>* <span style="display: none;">br</span>
         <span class="collectMSG">10</span>° Coleta Amazon... *<span class="arrivalTimeMSG">${arrivalTime[9].value}</span>h* <span style="display: none;">br</span>
 
         *<span class="collectSTDMSG">${collectSTD[9].value}</span>* STD *<span class="collectSTDValueMSG">${collect10.STD}</span>*
@@ -1349,12 +1347,12 @@ function setMessage(collect, collect1, collect2, collect3, collect4, collect5, c
         ~*<span class="NameMSG">${name}</span>.*
         `
         html3 = `Boa noite, segue aqui os relatórios de Recebimento de turno, AWB's e de
-        Peças locais referente as coletas amazon dessa data. *${dateArrived.value}*<span style="display: none;">br</span>
+        Peças locais referente as coletas amazon dessa data. *${dateArrived}*<span style="display: none;">br</span>
 
         MH vem recebendo um total de *${collect10.ForTotal}* peças locais, sendo  elas *${collect10.ForSTD}* STD e *${collect10.ForEXP}* EXP
         como mostrados na tabela acima.
         Hoje estamos recebendo um total de *${collect10.ForTotalPriority}* prioridades sendo elas *${collect10.ForEXPPriority}* EXP e *${collect10.ForSTDPriority}* STD,
-        a serem entregue no dia seguinte. *${datePriority.value}*<span style="display: none;">br</span>
+        a serem entregue no dia seguinte. *${datePriority}*<span style="display: none;">br</span>
 
         STD: *${collect10.STD}*
         EXP: *${collect10.EXP}*<span style="display: none;">br</span>
@@ -1362,7 +1360,7 @@ function setMessage(collect, collect1, collect2, collect3, collect4, collect5, c
         *AWB'S EXTRAS*: SLX: *${collect10.SLX}* | PSX: *${collect10.PSX}* | BEC: *${collect10.BEC}* | SOB: *${collect10.SOB}* | BEP: *${collect10.BEP}* | BLM: *${collect10.BLM}*<span style="display: none;">br</span>
 
         ~*${name}.*`
-        html4 = `10° Coleta FOR2-FOR -> TEXBR *${dateArrived.value}*
+        html4 = `10° Coleta FOR2-FOR -> TEXBR *${dateArrived}*
             Horario: *${arrivalTime[9].value}*
             VRID: *${VRID[9].value}*
             Qntd: *${sheetQuantity[9].value}*.`
@@ -1532,70 +1530,72 @@ function Graphic(collect, collect1, collect2, collect3, collect4, collect5, coll
     const width = 600 - margin.left - margin.right;
     const height = 400 - margin.top - margin.bottom;
 
-    const svg = d3.select('#barChart')
-    .append('svg')
-    .attr('width', width + margin.left + margin.right)
-    .attr('height', height + margin.top + margin.bottom)
-    .append('g')
-    .attr('transform', `translate(${margin.left},${margin.top})`);
-
-    const x = d3.scaleBand()
-    .domain(data.map(d => d.category))
-    .range([0, width])
-    .padding(0.1);
-
-    const y = d3.scaleLinear()
-    .domain([0, d3.max(data, d => d.value)])
-    .nice()
-    .range([height, 0]);
-
-    svg.selectAll('rect')
-    .data(data)
-    .enter()
-    .append('rect')
-    .attr('x', d => x(d.category))
-    .attr('y', d => y(d.value))
-    .attr('width', x.bandwidth())
-    .attr('height', d => height - y(d.value))
-    .attr('fill', d => {
-            if (d.category === 'CER' || d.category === 'EXP' || d.category === 'STD') {
-              return '#e0e0e0';
-            } else if (d.category === 'FOR' || d.category === 'EXP ' || d.category === 'STD ') {
-              return '#00b16a';
-            } else if (d.category === 'SAO') {
-              return '#d9534f';
-            } else {
-              return '#084d6e';
-            }
-          })
-    svg.append('g')
-    .attr('transform', `translate(0, ${height})`)
-    .call(d3.axisBottom(x));
-
-    svg.append('g')
-    .call(d3.axisLeft(y).ticks(5))
-    .selectAll('text')
-    .style('font-size', '10px'); 
-
-    svg.selectAll('.bar-label')
-      .data(data)
-      .enter()
-      .append('text')
-      .attr('class', 'bar-label')
-      .attr('x', d => x(d.category) + x.bandwidth() / 2)
-      .attr('y', d => y(d.value) - 5)
-      .attr('text-anchor', 'middle')
-      .text(d => d.value)
-      .style('font-size', '10px')
-      .style('font-weight', '300')
-      .attr('stroke', 'white');
-
-    svg.append('g')
-      .attr('transform', `translate(0, ${height})`)
-      .call(d3.axisBottom(x));
-
-    svg.append('g')
-      .call(d3.axisLeft(y).ticks(5));
+    google.charts.setOnLoadCallback(function () {
+        const svg = d3.select('#barChart')
+        .append('svg')
+        .attr('width', width + margin.left + margin.right)
+        .attr('height', height + margin.top + margin.bottom)
+        .append('g')
+        .attr('transform', `translate(${margin.left},${margin.top})`);
+    
+        const x = d3.scaleBand()
+        .domain(data.map(d => d.category))
+        .range([0, width])
+        .padding(0.1);
+    
+        const y = d3.scaleLinear()
+        .domain([0, d3.max(data, d => d.value)])
+        .nice()
+        .range([height, 0]);
+    
+        svg.selectAll('rect')
+        .data(data)
+        .enter()
+        .append('rect')
+        .attr('x', d => x(d.category))
+        .attr('y', d => y(d.value))
+        .attr('width', x.bandwidth())
+        .attr('height', d => height - y(d.value))
+        .attr('fill', d => {
+                if (d.category === 'CER' || d.category === 'EXP' || d.category === 'STD') {
+                  return '#e0e0e0';
+                } else if (d.category === 'FOR' || d.category === 'EXP ' || d.category === 'STD ') {
+                  return '#00b16a';
+                } else if (d.category === 'SAO') {
+                  return '#d9534f';
+                } else {
+                  return '#084d6e';
+                }
+              })
+        svg.append('g')
+        .attr('transform', `translate(0, ${height})`)
+        .call(d3.axisBottom(x));
+    
+        svg.append('g')
+        .call(d3.axisLeft(y).ticks(5))
+        .selectAll('text')
+        .style('font-size', '10px'); 
+    
+        svg.selectAll('.bar-label')
+          .data(data)
+          .enter()
+          .append('text')
+          .attr('class', 'bar-label')
+          .attr('x', d => x(d.category) + x.bandwidth() / 2)
+          .attr('y', d => y(d.value) - 5)
+          .attr('text-anchor', 'middle')
+          .text(d => d.value)
+          .style('font-size', '10px')
+          .style('font-weight', '300')
+          .attr('stroke', 'white');
+    
+        svg.append('g')
+          .attr('transform', `translate(0, ${height})`)
+          .call(d3.axisBottom(x));
+    
+        svg.append('g')
+          .call(d3.axisLeft(y).ticks(5));
+    })
 }
 function copy(v){
     const msgcopy = document.querySelectorAll('.textcopy')
