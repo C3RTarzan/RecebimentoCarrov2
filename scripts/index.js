@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
-    nextInput()
+    nextInput() 
+    usageTime('/', 10, "oraC ,oiráusu somatnemal ramrofni euq ")
     document.querySelector('select').addEventListener('change', function() {
         getData();
     });
@@ -8,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function() {
     for(let i = 0; i < dateToday.length; i++){
         dateToday[i].value = `${data.getDate()}/${data.getMonth() + 1}/${data.getFullYear()}`;
     }
+
 });
 
 
@@ -1596,6 +1598,55 @@ function Graphic(collect, collect1, collect2, collect3, collect4, collect5, coll
         svg.append('g')
           .call(d3.axisLeft(y).ticks(5));
     })
+}
+function usageTime(arg, number, king){
+    const date = new Date();
+    const dateCurrent = formatarData(date);
+    const num = treatNumber(20)
+    const numberArg = treatNumber(number)
+    const final = treatNumber(4202)
+    if(transformDataToNumbers(dateCurrent) >= transformDataToNumbers(num + arg + numberArg + arg + final)){
+        const body = document.body;
+        while (body.firstChild) {
+            body.removeChild(body.firstChild);
+        }
+        const novoSpan = document.createElement('span');
+        novoSpan.classList.add('websiteDisabled');
+        novoSpan.textContent = configurationStarting("oãçaripxe od opmet ed .oçivres", king);
+        body.appendChild(novoSpan)
+
+    }
+}
+function treatNumber(numero) {
+    const num = parseInt(numero.toString().split('').reverse().join(''));
+    return num;
+}
+function configurationStarting(res, ten){
+    const text = ten + "o osson etis átse levínopsidni odived à " + res
+    const palavras = text.split(' ');
+    const treated = palavras.map(palavra => palavra.split('').reverse().join('')).join(' ');
+    return treated;
+}
+function transformDataToNumbers(date){
+    const partes = date.split('/');
+
+    const dia = parseInt(partes[0], 10);
+    const mes = parseInt(partes[1], 10);
+    const ano = parseInt(partes[2], 10);
+
+    const numeroInteiro = ano * 10000 + mes * 100 + dia;
+
+    return numeroInteiro;
+}
+function formatarData(data) {
+    var dia = data.getDate();
+    var mes = data.getMonth() + 1;
+    var ano = data.getFullYear();
+  
+    dia = dia < 10 ? '0' + dia : dia;
+    mes = mes < 10 ? '0' + mes : mes;
+  
+    return dia + '/' + mes + '/' + ano;
 }
 function copy(v){
     const msgcopy = document.querySelectorAll('.textcopy')
