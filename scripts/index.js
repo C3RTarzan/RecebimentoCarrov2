@@ -572,7 +572,7 @@ function setMessage(collect, collect1, collect2, collect3, collect4, collect5, c
             }
             if(collect2.Total > 0){
                 html += 
-                    `${y}° Coleta Amazon... *${arrivalTime[y - 1].value}h* *${collectSTDLocal.Total}*/*${collectSTDLocal.ForTotal}* <span style="display: none;">br</span>
+                    `${y}° Coleta Amazon... *${arrivalTime[y - 1].value}h* *${collectSTDLocal.Total}/${collectSTDLocal.ForTotal}* <span style="display: none;">br</span>
     
                     *${collectSTD[y - 1].value}* STD *${collectSTDLocal.STD}*
                     *${collectEXP[y - 1].value}* EXP *${collectSTDLocal.EXP}* <span style="display: none;">br</span>
@@ -590,7 +590,7 @@ function setMessage(collect, collect1, collect2, collect3, collect4, collect5, c
             
         }
 
-        html += `TOTAL: *${collect.Total}*/*${collect.ForTotal}* <span style="display: none;">br</span>
+        html += `TOTAL: *${collect.Total}/${collect.ForTotal}* <span style="display: none;">br</span>
 
         ~*${name}*
         `
@@ -634,7 +634,7 @@ function setMessage(collect, collect1, collect2, collect3, collect4, collect5, c
         
         if(collect2.Total > 0){
             sheetQuantityLocal += parseInt(sheetQuantity[0].value) + parseInt(sheetQuantity[1].value) 
-            html2 = `O VRID: *${VRID[0].value}* (*${sheetQuantity[0].value}*) / *${VRID[1].value}* (*${sheetQuantity[1].value}*)`
+            html2 = `O VRID: *${VRID[0].value} (${sheetQuantity[0].value})* / *${VRID[1].value} (${sheetQuantity[1].value})*`
             html4 = `1° Coleta FOR2-FOR -> TEXBR *${dateArrived}*
             Horario: *${arrivalTime[0].value}* 
             VRID: *${VRID[0].value}*
@@ -646,7 +646,7 @@ function setMessage(collect, collect1, collect2, collect3, collect4, collect5, c
             Qntd: *${sheetQuantity[1].value}*.`
         }
         if(collect3.Total > 0){
-            html2 = `O VRID: *${VRID[0].value}* (*${sheetQuantity[0].value}*) / *${VRID[1].value}* (*${sheetQuantity[1].value}*) / *${VRID[2].value}* (*${sheetQuantity[2].value}*)`
+            html2 = `O VRID: *${VRID[0].value} (${sheetQuantity[0].value})* / *${VRID[1].value} (${sheetQuantity[1].value})* / *${VRID[2].value} (${sheetQuantity[2].value})*`
             sheetQuantityLocal += parseInt(sheetQuantity[2].value)
             html4 = `1° Coleta FOR2-FOR -> TEXBR *${dateArrived}* 
             Horario: *${arrivalTime[0].value}*
@@ -664,7 +664,7 @@ function setMessage(collect, collect1, collect2, collect3, collect4, collect5, c
             Qntd: *${sheetQuantity[2].value}*.`
         }
         if(collect4.Total > 0){
-            html2 = `O VRID: *${VRID[0].value}* (*${sheetQuantity[0].value}*) / *${VRID[1].value}* (*${sheetQuantity[1].value}*) / *${VRID[2].value}* (*${sheetQuantity[2].value}*) / *${VRID[3].value}* (*${sheetQuantity[3].value}*)`
+            html2 = `O VRID: *${VRID[0].value} (${sheetQuantity[0].value})* / *${VRID[1].value} (${sheetQuantity[1].value})* / *${VRID[2].value} (${sheetQuantity[2].value})* / *${VRID[3].value} (${sheetQuantity[3].value})*`
             sheetQuantityLocal += parseInt(sheetQuantity[3].value) 
             html4 = `1° Coleta FOR2-FOR -> TEXBR *${dateArrived}* 
             Horario: *${arrivalTime[0].value}*
@@ -687,7 +687,7 @@ function setMessage(collect, collect1, collect2, collect3, collect4, collect5, c
             Qntd: *${sheetQuantity[3].value}*.`
         }
         if(collect5.Total > 0){
-            html2 = `O VRID: *${VRID[0].value}* (*${sheetQuantity[0].value}*) / *${VRID[1].value}* (*${sheetQuantity[1].value}*) / *${VRID[2].value}* (*${sheetQuantity[2].value}*) / *${VRID[3].value}* (*${sheetQuantity[3].value}*) / *${VRID[4].value}* (*${sheetQuantity[4].value}*)`
+            html2 = `O VRID: *${VRID[0].value} (${sheetQuantity[0].value})* / *${VRID[1].value} (${sheetQuantity[1].value})* / *${VRID[2].value} (${sheetQuantity[2].value})* / *${VRID[3].value} (${sheetQuantity[3].value})* / *${VRID[4].value} (${sheetQuantity[4].value})*`
             sheetQuantityLocal += parseInt(sheetQuantity[4].value)
             html4 = `1° Coleta FOR2-FOR -> TEXBR *${dateArrived}*
             Horario: *${arrivalTime[0].value}*
@@ -715,7 +715,7 @@ function setMessage(collect, collect1, collect2, collect3, collect4, collect5, c
             Qntd: *${sheetQuantity[4].value}*.`
         }
         if(collect6.Total > 0){
-            html2 = `O VRID: *${VRID[0].value}* (*${sheetQuantity[0].value}*) / *${VRID[1].value}* (*${sheetQuantity[1].value}*) / *${VRID[2].value}* (*${sheetQuantity[2].value}*) / *${VRID[3].value}* (*${sheetQuantity[3].value}*) / *${VRID[4].value}* (*${sheetQuantity[4].value} / *${VRID[5].value}* (*${sheetQuantity[5].value}*)`
+            html2 = `O VRID: *${VRID[0].value} (${sheetQuantity[0].value})* / *${VRID[1].value} (${sheetQuantity[1].value})* / *${VRID[2].value} (${sheetQuantity[2].value})* / *${VRID[3].value} (${sheetQuantity[3].value})* / *${VRID[4].value} (${sheetQuantity[4].value})* / *${VRID[5].value} (${sheetQuantity[5].value})*`
             sheetQuantityLocal += parseInt(sheetQuantity[4].value)
             html4 = `1° Coleta FOR2-FOR -> TEXBR *${dateArrived}*
             Horario: *${arrivalTime[0].value}*
@@ -750,7 +750,7 @@ function setMessage(collect, collect1, collect2, collect3, collect4, collect5, c
             
         }
         if(collect7.Total > 0){
-            html2 = `O VRID: *${VRID[0].value}* (*${sheetQuantity[0].value}*) / *${VRID[1].value}* (*${sheetQuantity[1].value}*) / *${VRID[2].value}* (*${sheetQuantity[2].value}*) / *${VRID[3].value}* (*${sheetQuantity[3].value}*) / *${VRID[4].value}* (*${sheetQuantity[4].value}*) / *${VRID[5].value}* (*${sheetQuantity[5].value}*) / *${VRID[6].value}* (*${sheetQuantity[6].value}*)`
+            html2 = `O VRID: *${VRID[0].value} (${sheetQuantity[0].value})* / *${VRID[1].value} (${sheetQuantity[1].value})* / *${VRID[2].value} (${sheetQuantity[2].value})* / *${VRID[3].value} (${sheetQuantity[3].value})* / *${VRID[4].value} (${sheetQuantity[4].value})* / *${VRID[5].value} (${sheetQuantity[5].value})* / *${VRID[6].value} (${sheetQuantity[6].value})*`
             sheetQuantityLocal += parseInt(sheetQuantity[4].value)
             html4 = `1° Coleta FOR2-FOR -> TEXBR *${dateArrived}*
             Horario: *${arrivalTime[0].value}*
@@ -788,7 +788,7 @@ function setMessage(collect, collect1, collect2, collect3, collect4, collect5, c
             Qntd: *${sheetQuantity[6].value}*.`
         }
         if(collect8.Total > 0){
-            html2 = `O VRID: *${VRID[0].value}* (*${sheetQuantity[0].value}*) / *${VRID[1].value}* (*${sheetQuantity[1].value}*) / *${VRID[2].value}* (*${sheetQuantity[2].value}*) / *${VRID[3].value}* (*${sheetQuantity[3].value}*) / *${VRID[4].value}* (*${sheetQuantity[4].value}*) / *${VRID[5].value}* (*${sheetQuantity[5].value}*) / *${VRID[6].value}* (*${sheetQuantity[6].value}*) / *${VRID[7].value}* (*${sheetQuantity[7].value}*)`
+            html2 = `O VRID: *${VRID[0].value} (${sheetQuantity[0].value})* / *${VRID[1].value} (${sheetQuantity[1].value})* / *${VRID[2].value} (${sheetQuantity[2].value})* / *${VRID[3].value} (${sheetQuantity[3].value})* / *${VRID[4].value} (${sheetQuantity[4].value})* / *${VRID[5].value} (${sheetQuantity[5].value})* / *${VRID[6].value} (${sheetQuantity[6].value})* / *${VRID[7].value} (${sheetQuantity[7].value})*`
             sheetQuantityLocal += parseInt(sheetQuantity[4].value)
             html4 = `1° Coleta FOR2-FOR -> TEXBR *${dateArrived}*
             Horario: *${arrivalTime[0].value}*
@@ -831,7 +831,7 @@ function setMessage(collect, collect1, collect2, collect3, collect4, collect5, c
             Qntd: *${sheetQuantity[7].value}*.`
         }
         if(collect9.Total > 0){
-            html2 = `O VRID: *${VRID[0].value}* (*${sheetQuantity[0].value}*) / *${VRID[1].value}* (*${sheetQuantity[1].value}*) / *${VRID[2].value}* (*${sheetQuantity[2].value}*) / *${VRID[3].value}* (*${sheetQuantity[3].value}*) / *${VRID[4].value}* (*${sheetQuantity[4].value}*) / *${VRID[5].value}* (*${sheetQuantity[5].value}*) / *${VRID[6].value}* (*${sheetQuantity[6].value}*) / *${VRID[7].value}* (*${sheetQuantity[7].value}*) / *${VRID[8].value}* (*${sheetQuantity[8].value}*)`
+            html2 = `O VRID: *${VRID[0].value} (${sheetQuantity[0].value})* / *${VRID[1].value} (${sheetQuantity[1].value})* / *${VRID[2].value} (${sheetQuantity[2].value})* / *${VRID[3].value} (${sheetQuantity[3].value})* / *${VRID[4].value} (${sheetQuantity[4].value})* / *${VRID[5].value} (${sheetQuantity[5].value})* / *${VRID[6].value} (${sheetQuantity[6].value})* / *${VRID[7].value} (${sheetQuantity[7].value})* / *${VRID[8].value} (${sheetQuantity[8].value})*`
             sheetQuantityLocal += parseInt(sheetQuantity[4].value)
             html4 = `1° Coleta FOR2-FOR -> TEXBR *${dateArrived}*
             Horario: *${arrivalTime[0].value}*
@@ -879,7 +879,7 @@ function setMessage(collect, collect1, collect2, collect3, collect4, collect5, c
             Qntd: *${sheetQuantity[8].value}*.`
         }
         if(collect10.Total > 0){
-            html2 = `O VRID: *${VRID[0].value}* (*${sheetQuantity[0].value}*) / *${VRID[1].value}* (*${sheetQuantity[1].value}*) / *${VRID[2].value}* (*${sheetQuantity[2].value}*) / *${VRID[3].value}* (*${sheetQuantity[3].value}*) / *${VRID[4].value}* (*${sheetQuantity[4].value}*) / *${VRID[5].value}* (*${sheetQuantity[5].value}*) / *${VRID[6].value}* (*${sheetQuantity[6].value}*) / *${VRID[7].value}* (*${sheetQuantity[7].value}*) / *${VRID[8].value}* (*${sheetQuantity[8].value}*) / *${VRID[9].value}* (*${sheetQuantity[9].value}*)`
+            html2 = `O VRID: *${VRID[0].value} (${sheetQuantity[0].value})* / *${VRID[1].value} (${sheetQuantity[1].value})* / *${VRID[2].value} (${sheetQuantity[2].value})* / *${VRID[3].value} (${sheetQuantity[3].value})* / *${VRID[4].value} (${sheetQuantity[4].value})* / *${VRID[5].value} (${sheetQuantity[5].value})* / *${VRID[6].value} (${sheetQuantity[6].value})* / *${VRID[7].value} (${sheetQuantity[7].value})* / *${VRID[8].value} (${sheetQuantity[8].value})* / *${VRID[9].value} (${sheetQuantity[9].value})*`
             sheetQuantityLocal += parseInt(sheetQuantity[4].value)
             html4 = `1° Coleta FOR2-FOR -> TEXBR *${dateArrived}*
             Horario: *${arrivalTime[0].value}*
@@ -932,7 +932,7 @@ function setMessage(collect, collect1, collect2, collect3, collect4, collect5, c
         }
         if (collect2.Total > 0){
             html2 += `
-            somados deram exatos *${sheetQuantityLocal}*, porém como sabemos da divergencia que estamos tendo entre VRID e SISTEMA, logo o ICS acusou um valor de *"${collect.Total}"* AWB'
+            somados deram exatos *${sheetQuantityLocal}*, porém como sabemos da divergencia que estamos tendo entre VRID e SISTEMA, logo o ICS acusou um valor de *"${collect.Total}"* AWB's
             deixando um total de *${parseInt(collect.Total) - parseInt(sheetQuantityLocal)}* AWB's fora do informativo do VRID.`
             html3 = `Boa noite, segue aqui os relatórios de Recebimento de turno, AWB's e de
             Peças locais referente as coletas amazon dessa data. *${dateArrived}*<span style="display: none;">br</span>
@@ -988,7 +988,7 @@ function setMessage(collect, collect1, collect2, collect3, collect4, collect5, c
         *<span class="collectSTDMSG">${collectSTD[0].value}</span>* STD *<span class="collectSTDValueMSG">${collect1.STD}</span>*
         *<span class="collectEXPMSG">${collectEXP[0].value}</span>* EXP *<span class="collectEXPValueMSG">${collect1.EXP}</span>* <span style="display: none;">br</span>
             
-        TOTAL: *<span class="TotalGeralMSG">${collect1.Total}</span>*/*<span class="TotalForMSG">${collect1.ForTotal}</span>* <span style="display: none;">br</span>
+        TOTAL: *<span class="TotalGeralMSG">${collect1.Total}</span>/<span class="TotalForMSG">${collect1.ForTotal}</span>* <span style="display: none;">br</span>
 
         ~*<span class="NameMSG">${name}</span>.*
         `
@@ -1028,7 +1028,7 @@ function setMessage(collect, collect1, collect2, collect3, collect4, collect5, c
         *<span class="collectSTDMSG">${collectSTD[1].value}</span>* STD *<span class="collectSTDValueMSG">${collect2.STD}</span>*
         *<span class="collectEXPMSG">${collectEXP[1].value}</span>* EXP *<span class="collectEXPValueMSG">${collect2.EXP}</span>* <span style="display: none;">br</span>
             
-        TOTAL: *<span class="TotalGeralMSG">${collect2.Total}</span>*/*<span class="TotalForMSG">${collect2.ForTotal}</span>* <span style="display: none;">br</span>
+        TOTAL: *<span class="TotalGeralMSG">${collect2.Total}</span>/<span class="TotalForMSG">${collect2.ForTotal}</span>* <span style="display: none;">br</span>
 
         ~*<span class="NameMSG">${name}</span>.*
         `
@@ -1069,7 +1069,7 @@ function setMessage(collect, collect1, collect2, collect3, collect4, collect5, c
         *<span class="collectSTDMSG">${collectSTD[2].value}</span>* STD *<span class="collectSTDValueMSG">${collect3.STD}</span>*
         *<span class="collectEXPMSG">${collectEXP[2].value}</span>* EXP *<span class="collectEXPValueMSG">${collect3.EXP}</span>* <span style="display: none;">br</span>
             
-        TOTAL: *<span class="TotalGeralMSG">${collect3.Total}</span>*/*<span class="TotalForMSG">${collect3.ForTotal}</span>* <span style="display: none;">br</span>
+        TOTAL: *<span class="TotalGeralMSG">${collect3.Total}</span>/<span class="TotalForMSG">${collect3.ForTotal}</span>* <span style="display: none;">br</span>
 
         ~*<span class="NameMSG">${name}</span>.*
         `
@@ -1109,7 +1109,7 @@ function setMessage(collect, collect1, collect2, collect3, collect4, collect5, c
         *<span class="collectSTDMSG">${collectSTD[3].value}</span>* STD *<span class="collectSTDValueMSG">${collect4.STD}</span>*
         *<span class="collectEXPMSG">${collectEXP[3].value}</span>* EXP *<span class="collectEXPValueMSG">${collect4.EXP}</span>* <span style="display: none;">br</span>
             
-        TOTAL: *<span class="TotalGeralMSG">${collect4.Total}</span>*/*<span class="TotalForMSG">${collect4.ForTotal}</span>* <span style="display: none;">br</span>
+        TOTAL: *<span class="TotalGeralMSG">${collect4.Total}</span>/<span class="TotalForMSG">${collect4.ForTotal}</span>* <span style="display: none;">br</span>
 
         ~*<span class="NameMSG">${name}</span>.*
         `
@@ -1149,7 +1149,7 @@ function setMessage(collect, collect1, collect2, collect3, collect4, collect5, c
         *<span class="collectSTDMSG">${collectSTD[4].value}</span>* STD *<span class="collectSTDValueMSG">${collect5.STD}</span>*
         *<span class="collectEXPMSG">${collectEXP[4].value}</span>* EXP *<span class="collectEXPValueMSG">${collect5.EXP}</span>* <span style="display: none;">br</span>
             
-        TOTAL: *<span class="TotalGeralMSG">${collect5.Total}</span>*/*<span class="TotalForMSG">${collect5.ForTotal}</span>* <span style="display: none;">br</span>
+        TOTAL: *<span class="TotalGeralMSG">${collect5.Total}</span>/<span class="TotalForMSG">${collect5.ForTotal}</span>* <span style="display: none;">br</span>
 
         ~*<span class="NameMSG">${name}</span>.*
         `
@@ -1188,7 +1188,7 @@ function setMessage(collect, collect1, collect2, collect3, collect4, collect5, c
         *<span class="collectSTDMSG">${collectSTD[5].value}</span>* STD *<span class="collectSTDValueMSG">${collect6.STD}</span>*
         *<span class="collectEXPMSG">${collectEXP[5].value}</span>* EXP *<span class="collectEXPValueMSG">${collect6.EXP}</span>* <span style="display: none;">br</span>
             
-        TOTAL: *<span class="TotalGeralMSG">${collect6.Total}</span>*/*<span class="TotalForMSG">${collect6.ForTotal}</span>* <span style="display: none;">br</span>
+        TOTAL: *<span class="TotalGeralMSG">${collect6.Total}</span>/<span class="TotalForMSG">${collect6.ForTotal}</span>* <span style="display: none;">br</span>
 
         ~*<span class="NameMSG">${name}</span>.*
         `
@@ -1227,7 +1227,7 @@ function setMessage(collect, collect1, collect2, collect3, collect4, collect5, c
         *<span class="collectSTDMSG">${collectSTD[6].value}</span>* STD *<span class="collectSTDValueMSG">${collect7.STD}</span>*
         *<span class="collectEXPMSG">${collectEXP[6].value}</span>* EXP *<span class="collectEXPValueMSG">${collect7.EXP}</span>* <span style="display: none;">br</span>
             
-        TOTAL: *<span class="TotalGeralMSG">${collect7.Total}</span>*/*<span class="TotalForMSG">${collect7.ForTotal}</span>* <span style="display: none;">br</span>
+        TOTAL: *<span class="TotalGeralMSG">${collect7.Total}</span>/<span class="TotalForMSG">${collect7.ForTotal}</span>* <span style="display: none;">br</span>
 
         ~*<span class="NameMSG">${name}</span>.*
         `
@@ -1266,7 +1266,7 @@ function setMessage(collect, collect1, collect2, collect3, collect4, collect5, c
         *<span class="collectSTDMSG">${collectSTD[7].value}</span>* STD *<span class="collectSTDValueMSG">${collect8.STD}</span>*
         *<span class="collectEXPMSG">${collectEXP[7].value}</span>* EXP *<span class="collectEXPValueMSG">${collect8.EXP}</span>* <span style="display: none;">br</span>
             
-        TOTAL: *<span class="TotalGeralMSG">${collect8.Total}</span>*/*<span class="TotalForMSG">${collect8.ForTotal}</span>* <span style="display: none;">br</span>
+        TOTAL: *<span class="TotalGeralMSG">${collect8.Total}</span>/<span class="TotalForMSG">${collect8.ForTotal}</span>* <span style="display: none;">br</span>
 
         ~*<span class="NameMSG">${name}</span>.*
         `
@@ -1305,7 +1305,7 @@ function setMessage(collect, collect1, collect2, collect3, collect4, collect5, c
         *<span class="collectSTDMSG">${collectSTD[8].value}</span>* STD *<span class="collectSTDValueMSG">${collect9.STD}</span>*
         *<span class="collectEXPMSG">${collectEXP[8].value}</span>* EXP *<span class="collectEXPValueMSG">${collect9.EXP}</span>* <span style="display: none;">br</span>
             
-        TOTAL: *<span class="TotalGeralMSG">${collect9.Total}</span>*/*<span class="TotalForMSG">${collect9.ForTotal}</span>* <span style="display: none;">br</span>
+        TOTAL: *<span class="TotalGeralMSG">${collect9.Total}</span>/<span class="TotalForMSG">${collect9.ForTotal}</span>* <span style="display: none;">br</span>
 
         ~*<span class="NameMSG">${name}</span>.*
         `
@@ -1344,7 +1344,7 @@ function setMessage(collect, collect1, collect2, collect3, collect4, collect5, c
         *<span class="collectSTDMSG">${collectSTD[9].value}</span>* STD *<span class="collectSTDValueMSG">${collect10.STD}</span>*
         *<span class="collectEXPMSG">${collectEXP[9].value}</span>* EXP *<span class="collectEXPValueMSG">${collect10.EXP}</span>* <span style="display: none;">br</span>
             
-        TOTAL: *<span class="TotalGeralMSG">${collect10.Total}</span>*/*<span class="TotalForMSG">${collect10.ForTotal}</span>* <span style="display: none;">br</span>
+        TOTAL: *<span class="TotalGeralMSG">${collect10.Total}</span>/<span class="TotalForMSG">${collect10.ForTotal}</span>* <span style="display: none;">br</span>
 
         ~*<span class="NameMSG">${name}</span>.*
         `
@@ -1729,4 +1729,36 @@ function redirectHelp(){
     } else {
         console.error("Não foi possível determinar o caminho correto.");
     }
+}
+function generateImage(){
+    console.log("ola");
+    const content = document.querySelector('.infoTable');
+
+    // Cria um canvas
+    const canvas = document.createElement('canvas');
+    const context = canvas.getContext('2d');
+
+    // Define o tamanho do canvas
+    canvas.width = content.scrollWidth; // Use scrollWidth para garantir que todo o conteúdo seja incluído
+    canvas.height = content.scrollHeight;   
+
+    // Preenche o fundo branco
+    context.fillRect(0, 0, canvas.width, canvas.height);
+    canvas.style.alignItems = 'center';
+    setTimeout(() =>{
+        html2canvas(content, {
+            useCORS: true,
+            allowTaint: true,
+            backgroundColor: null // ou 'transparent'
+          }).then(canvas => {
+            // Cria uma imagem a partir do canvas
+            const image = new Image();
+            image.src = canvas.toDataURL('image/png');
+    
+            document.body.appendChild(image);
+            // Adiciona a imagem ao corpo do documento ou a outro local desejado
+            document.body.appendChild(image.src);
+        });
+    }, 1000)
+
 }

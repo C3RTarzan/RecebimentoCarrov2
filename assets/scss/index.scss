@@ -262,6 +262,8 @@
         }
     }
     .infoTable{
+        background-color: $dark3;
+        align-items: center;
         .collectInffo{
             width: 500px;
             flex-direction: column;

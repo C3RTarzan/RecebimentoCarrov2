@@ -346,6 +346,10 @@ a:hover {
 .result .infoGraphcs .collectInffo #barChart text, .result .infoGraphcs .collectInffo #barChart line, .result .infoGraphcs .collectInffo #barChart path {
   color: rgba(255, 255, 255, 0.4);
 }
+.result .infoTable {
+  background-color: #292b2f;
+  align-items: center;
+}
 .result .infoTable .collectInffo {
   width: 500px;
   flex-direction: column;
