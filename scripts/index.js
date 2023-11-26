@@ -65,6 +65,9 @@ function getData(){
     const count9 = getCount(dadosFormatadoscoleta9)
     const count10 = getCount(dadosFormatadoscoleta10)
     getCollect(count,count1,count2,count3,count4,count5,count6,count7,count8,count9,count10)
+    setTimeout(() =>{
+        generateImage()
+    }, 1000)
 }
 function processarDados(coleta, coletaNumber) {
     const data = document.querySelector(`#data${coletaNumber}`).value.split('\n');
@@ -1731,34 +1734,34 @@ function redirectHelp(){
     }
 }
 function generateImage(){
-    console.log("ola");
-    const content = document.querySelector('.infoTable');
+    const content = document.querySelector('.infoTable .TableInffoHTML .collectInffo ');
+    const replaceContainer = document.querySelector('.infoTable .TableInffoImage')
+    content.style.display = 'flex'
+    replaceContainer.innerHTML = '';
 
-    // Cria um canvas
+    const textElements = content.querySelectorAll('span'); 
+    textElements.forEach(element => {
+        element.style.marginTop = '25px';
+    });
+
     const canvas = document.createElement('canvas');
     const context = canvas.getContext('2d');
 
-    // Define o tamanho do canvas
-    canvas.width = content.scrollWidth; // Use scrollWidth para garantir que todo o conteúdo seja incluído
+    canvas.width = content.scrollWidth;
     canvas.height = content.scrollHeight;   
 
-    // Preenche o fundo branco
     context.fillRect(0, 0, canvas.width, canvas.height);
-    canvas.style.alignItems = 'center';
-    setTimeout(() =>{
-        html2canvas(content, {
-            useCORS: true,
-            allowTaint: true,
-            backgroundColor: null // ou 'transparent'
-          }).then(canvas => {
-            // Cria uma imagem a partir do canvas
-            const image = new Image();
-            image.src = canvas.toDataURL('image/png');
-    
-            document.body.appendChild(image);
-            // Adiciona a imagem ao corpo do documento ou a outro local desejado
-            document.body.appendChild(image.src);
-        });
-    }, 1000)
 
+    html2canvas(content, {
+        useCORS: true,
+        allowTaint: true,
+        backgroundColor: "#292b2f"
+        }).then(canvas => {
+
+        const image = new Image();
+        image.src = canvas.toDataURL('image/png');
+
+        replaceContainer.appendChild(image);
+        content.style.display = 'none'
+    });
 }

@@ -264,58 +264,69 @@
     .infoTable{
         background-color: $dark3;
         align-items: center;
-        .collectInffo{
-            width: 500px;
+        flex-direction: column;
+        .TableInffoHTML{
+            width: 100%;
+            height: auto;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            text-align: center;
-            .title{
-                width: 100%;
-                height: 40px;
-                justify-content: space-around;
-                align-items: center;
-                background-color: $dark2;
-                border: solid 1px $dark1;
-                border-top-right-radius: 5px;
-                border-top-left-radius: 5px;
-                div{
-                    width: 50px;
-                    justify-content: center;
-                }
+            .tt{
+                text-align: center;
             }
-            .title2{
-                border-top-right-radius: 0px;
-                border-bottom-left-radius: 5px;
-                border-bottom-right-radius: 5px;
-                border-top-left-radius: 0px;
-            }
-            .itens{
-                width: 100%;
-                justify-content: center;
-                border-left: solid 1px $dark1;
-                border-right: solid 1px $dark1;
-                border-bottom: solid 1px $dark1;
+            .collectInffo{
+                width: 500px;
                 flex-direction: column;
-                .item{
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                .title{
                     width: 100%;
-                    height: 25px;
+                    height: 40px;
                     justify-content: space-around;
                     align-items: center;
-                    .rt{
+                    background-color: $dark2;
+                    border: solid 1px $dark1;
+                    border-top-right-radius: 5px;
+                    border-top-left-radius: 5px;
+                    div{
                         width: 50px;
                         justify-content: center;
-                        span{
+                    }
+                }
+                .title2{
+                    border-top-right-radius: 0px;
+                    border-bottom-left-radius: 5px;
+                    border-bottom-right-radius: 5px;
+                    border-top-left-radius: 0px;
+                }
+                .itens{
+                    width: 100%;
+                    justify-content: center;
+                    border-left: solid 1px $dark1;
+                    border-right: solid 1px $dark1;
+                    border-bottom: solid 1px $dark1;
+                    flex-direction: column;
+                    .item{
+                        width: 100%;
+                        height: 25px;
+                        justify-content: space-around;
+                        align-items: center;
+                        .rt{
+                            width: 50px;
+                            justify-content: center;
+                            span{
+                            }
                         }
-                    }
-                    .rtEXP{
-    
-                    }
-                    .rtSTD{
-    
-                    }
-                    .rtTotal{
-    
+                        .rtEXP{
+        
+                        }
+                        .rtSTD{
+        
+                        }
+                        .rtTotal{
+        
+                        }
                     }
                 }
             }
