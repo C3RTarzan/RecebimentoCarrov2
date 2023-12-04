@@ -1,9 +1,15 @@
 document.addEventListener("DOMContentLoaded", function() {
     nextInput() 
+    getUser()
     usageTime('/', 10, "oraC ,oiráusu somatnemal ramrofni euq ")
-    document.querySelector('select').addEventListener('change', function() {
+    document.querySelector('.collectSelect').addEventListener('change', function() {
         getData();
     });
+    document.querySelector('.collectSelectName').addEventListener('change', function() {
+        selectName();
+    });
+    getName()
+    setDate()
     const data = new Date();
     const dateToday = document.querySelectorAll(".dateToday")
     for(let i = 0; i < dateToday.length; i++){
@@ -1764,4 +1770,124 @@ function generateImage(){
         replaceContainer.appendChild(image);
         content.style.display = 'none'
     });
+}
+function selectName(){
+    const name = document.querySelector("#name")
+    const valueSelect = document.querySelector(".collectSelectName")
+
+    const selectedOption = valueSelect.options[valueSelect.selectedIndex];
+
+    const selectedValue = selectedOption.value;
+    const selectedText = selectedOption.text;
+
+    if(selectedValue > 0){
+        name.value = selectedText
+        name.disabled = true
+    }else{
+        name.value = ""
+        name.disabled = false
+    }
+
+}
+function getName() {
+    //localStorage.setItem("Username", "Alan H. Silva, Natali alguma coisa, Ailson ferreira");
+    const userName = localStorage.getItem("Username");
+
+    const listNames = userName.split(", ");
+
+    listNames.sort();
+
+    const selectElement = document.querySelector(".collectSelectName");
+    
+    const optionsToRemove = Array.from(selectElement.children).filter(option => option.value !== "0");
+    optionsToRemove.forEach(option => selectElement.removeChild(option));
+
+    if (userName) {
+        listNames.forEach(function (name, index) {
+            const newOption = document.createElement("option");
+            newOption.value = index + 1; 
+            newOption.text = name.trim();
+            selectElement.add(newOption);
+        });
+    }
+}
+function configOpen(){
+    const config = document.querySelector(".config")
+    if (window.getComputedStyle(config).top === "-600px") {
+        config.style = "top: auto";
+    } else {
+        config.style = "top: -600px";
+    }
+}
+function addUser(){
+    const user = document.querySelector(".userADD").value.trim()
+    let userName = localStorage.getItem("Username");
+    let listUser
+    if(userName){
+        listUser = userName + ', ' + user
+    }else{
+        listUser = user
+    }
+    if(user.length > 0){
+        localStorage.setItem("Username", listUser)
+        getUser()
+        getName()
+        selectName()
+    }
+}
+function getUser(){
+    const userName = localStorage.getItem("Username");
+    const listaNomesContainer = document.querySelector(".config .namesUsers");
+    listaNomesContainer.innerHTML = ''
+    if (userName) {
+
+        const listNames = userName.split(", ");
+        listNames.sort();
+
+        listNames.forEach(function (name) {
+            const divElement = document.createElement("div");
+
+            const spanElement = document.createElement("span");
+            spanElement.textContent = name;
+
+            const iconElement = document.createElement("iconify-icon");
+            iconElement.className = "iconDelet";
+            iconElement.onclick = function () {
+                deletUser(name);
+            };
+            iconElement.setAttribute("icon", "jam:delete-f");
+
+            divElement.appendChild(spanElement);
+            divElement.appendChild(iconElement);
+
+            listaNomesContainer.appendChild(divElement);
+        });
+    }
+}
+function deletUser(user){
+    const userName = localStorage.getItem("Username");
+    const listNames = userName.split(", ");
+
+    const indexToDelete = listNames.indexOf(user);
+
+    if (indexToDelete !== -1) {
+        listNames.splice(indexToDelete, 1);
+
+        localStorage.setItem("Username", listNames.join(", "));
+
+        getUser()
+        getName()
+        selectName()
+    }
+}
+function setDate(){
+    var dateToday = new Date();
+    var dateTomorrow = new Date();
+    
+    dateTomorrow.setDate(dateToday.getDate() + 1);
+
+    const dateTodayForm = formatarData(dateToday);
+    const dateTomorrowForm = formatarData(dateTomorrow);
+    document.querySelector(".dateArrived").value = dateTodayForm
+    document.querySelector(".datePriority").value = dateTomorrowForm
 }

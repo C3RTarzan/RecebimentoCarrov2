@@ -95,6 +95,10 @@ a:hover {
   font-weight: 600;
 }
 
+button {
+  user-select: none;
+}
+
 .help {
   position: relative;
   padding: 10px;
