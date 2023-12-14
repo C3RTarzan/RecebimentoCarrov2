@@ -106,11 +106,9 @@ button {
   padding: 10px;
   background-color: #292b2f;
   border-right: solid 1px #36393f;
+  flex-direction: column;
 }
-.data form {
-  width: 100%;
-}
-.data form .collect {
+.data .collect {
   flex-direction: column;
   width: 100%;
   justify-content: center;
@@ -120,36 +118,39 @@ button {
   border: solid 1px #36393f;
   background-color: #292b2f;
 }
-.data form .collect .inffo {
+.data .collect .inffo {
   flex-direction: column;
 }
-.data form .collect .inffo div {
+.data .collect .inffo div {
   justify-content: center;
   text-align: center;
 }
-.data form .collect .inffo div input {
+.data .collect .inffo div input {
   text-align: center;
   width: 100px;
   margin: 5px;
 }
-.data form .collect .title {
+.data .collect .inffo div input[type=checkbox] {
+  cursor: pointer;
+}
+.data .collect .title {
   color: #d6d7d9;
   font-size: 20px;
   font-weight: 600;
   margin: 10px 0;
 }
-.data form .collect .types {
+.data .collect .types {
   color: rgba(255, 255, 255, 0.4);
   font-size: 13px;
 }
-.data form .collect .collections {
+.data .collect .collections {
   text-align: center;
   background-color: #292b2f;
   color: #d6d7d9;
   padding: 5px;
   border-radius: 5px;
 }
-.data form .button {
+.data .button {
   position: relative;
   width: 100%;
   height: auto;
@@ -157,7 +158,7 @@ button {
   justify-content: center;
   align-items: center;
 }
-.data form .button button {
+.data .button button {
   width: 150px;
   border: none;
   background-color: #3545f3;
@@ -169,17 +170,17 @@ button {
   cursor: pointer;
   margin-bottom: 20px;
 }
-.data form .button button:hover {
+.data .button button:hover {
   background-color: #1523b8;
 }
-.data form .button .buttonsole {
+.data .button .buttonsole {
   margin-bottom: 10px;
   width: 200px;
 }
-.data form .button input {
+.data .button input {
   text-align: center;
 }
-.data form .button .collectSelectName {
+.data .button .collectSelectName {
   appearance: none;
   height: 25px;
   margin-bottom: 10px;
@@ -190,7 +191,7 @@ button {
   border-radius: 3px;
   cursor: pointer;
 }
-.data form .button .icon {
+.data .button .icon {
   position: absolute;
   top: 0px;
   left: 0px;
@@ -198,7 +199,7 @@ button {
   color: #d6d7d9;
   cursor: pointer;
 }
-.data form .button .icon:hover {
+.data .button .icon:hover {
   opacity: 0.8;
 }
 

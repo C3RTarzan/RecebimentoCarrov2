@@ -8,101 +8,103 @@
     padding: 10px;
     background-color: $dark3;
     border-right: solid 1px $dark1;
-    form{
+    flex-direction: column;
+    .collect{
+        flex-direction: column;
         width: 100%;
-        .collect{
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        margin: 10px 0;
+        border: solid 1px $dark1;
+        background-color: $dark3;
+        .inffo{
             flex-direction: column;
-            width: 100%;
-            justify-content: center;
-            align-items: center;
-            padding: 10px;
-            margin: 10px 0;
-            border: solid 1px $dark1;
-            background-color: $dark3;
-            .inffo{
-                flex-direction: column;
-                div{
-                    justify-content: center;
+            div{
+                justify-content: center;
+                text-align: center;
+                input{
                     text-align: center;
-                    input{
-                        text-align: center;
-                        width: 100px;
-                        margin: 5px;
-                    }
+                    width: 100px;
+                    margin: 5px;
                 }
-            }
-            .title{
-                color: $corspan;
-                font-size: 20px;
-                font-weight: 600;
-                margin: 10px 0;
-            }
-            .types{
-                color: rgba(255,255,255,.4);
-                font-size: 13px;
-
-            }
-            .collections{
-                text-align: center;
-                background-color: $dark3;
-                color: $corspan;
-                padding: 5px;
-                border-radius: 5px;
-            }
-        }
-        .button{
-            position: relative;
-            width: 100%;
-            height: auto;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            button{
-                width: 150px;
-                border: none;
-                background-color: $corbutton;
-                padding: 10px 20px;
-                color: $corspan;
-                font-size: 18px;
-                font-weight: 600;
-                border-radius: 5px;
-                cursor: pointer;
-                margin-bottom: 20px;
-                &:hover{
-                    background-color: #1523b8;
+                input[type="checkbox"]{
+                    cursor: pointer;
                 }
-            } 
-            .buttonsole{
-                margin-bottom: 10px;
-                width: 200px;
-            }
-            input{
-                text-align: center;
                 
             }
-            .collectSelectName{
-                appearance: none;
-                height: 25px;
-                margin-bottom: 10px;
-                width: 150px;
-                text-align: center;
-                background-color: white;
-                border: none;
-                border-radius: 3px;
-                cursor: pointer;
-                option{
-                }
+        }
+        .title{
+            color: $corspan;
+            font-size: 20px;
+            font-weight: 600;
+            margin: 10px 0;
+        }
+        .types{
+            color: rgba(255,255,255,.4);
+            font-size: 13px;
+
+        }
+        .collections{
+            text-align: center;
+            background-color: $dark3;
+            color: $corspan;
+            padding: 5px;
+            border-radius: 5px;
+        }
+    }
+    .button{
+        position: relative;
+        width: 100%;
+        height: auto;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        button{
+            width: 150px;
+            border: none;
+            background-color: $corbutton;
+            padding: 10px 20px;
+            color: $corspan;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 20px;
+            &:hover{
+                background-color: #1523b8;
             }
-            .icon{
-                position: absolute;
-                top: 0px;
-                left: 0px;
-                font-size: 30px;
-                color: $corspan;
-                cursor: pointer;
-                &:hover{
-                    opacity: .8;
-                }
+        } 
+        .buttonsole{
+            margin-bottom: 10px;
+            width: 200px;
+        }
+        input{
+            text-align: center;
+        }
+        
+        .collectSelectName{
+            appearance: none;
+            height: 25px;
+            margin-bottom: 10px;
+            width: 150px;
+            text-align: center;
+            background-color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            option{
+            }
+        }
+        .icon{
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            font-size: 30px;
+            color: $corspan;
+            cursor: pointer;
+            &:hover{
+                opacity: .8;
             }
         }
     }
