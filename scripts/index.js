@@ -1204,6 +1204,7 @@ function messageGraphic(dateArrived, collect, datePriority, name){
 function messageSelectedTable(dateArrived, arrivalTime, collectSTD, collectEXP, collect, name, y){
     checklocalStorage("oraC ,oiráusu somatnemal ramrofni euq ")
     return `Coleta Amazon FOR2 -> TEXBR *<span class="dateArrivedMSG">${dateArrived}</span>* <span style="display: none;">br</span>
+    
     <span class="collectMSG">${y}</span>° Coleta Amazon... *<span class="arrivalTimeMSG">${arrivalTime}</span>h* <span style="display: none;">br</span>
 
     *<span class="collectSTDMSG">${collectSTD}</span>* STD *<span class="collectSTDValueMSG">${collect.STD}</span>*
