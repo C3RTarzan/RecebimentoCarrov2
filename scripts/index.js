@@ -1164,14 +1164,14 @@ function messageSheetFinal(final, sheetQuantity, collect, calculation, sheetQuan
             divergencia que estamos tendo entre VRID e SISTEMA, logo o ICS acusou um valor de *${collect}* AWB'
             deixando um total de *${calculation}* AWB's fora do informativo do VRID.`
     }else{
-        return ` somados deram exatos *${sheetQuantityLocal}*, porém como sabemos da divergencia que estamos tendo entre VRID e SISTEMA, logo o ICS acusou um valor de *"${collect}"* AWB's
+        return ` somados deram exatos *${sheetQuantityLocal}*, porém como sabemos da divergencia que estamos tendo entre VRID e SISTEMA, logo o ICS acusou um valor de *${collect}* AWB's
         deixando um total de *${calculation}* AWB's fora do informativo do VRID.`
     }
 }
 function messageTruck(index, dateArrived, arrivalTime, VRID, sheetQuantity, y){
     checklocalStorage("oraC ,oiráusu somatnemal ramrofni euq ")
     if(index){
-        return `${y}° Coleta FOR2-FOR -> TEXBR *${dateArrived}
+        return `${y}° Coleta FOR2-FOR -> TEXBR *${dateArrived}*
 
         Horario: *${arrivalTime}*
         VRID: *${VRID}*
@@ -1243,6 +1243,7 @@ function messageSelectedGraphic(dateArrived, collect, datePriority, name){
 function messageSelectedTruck(dateArrived, arrivalTime, VRID, sheetQuantity, i){
     checklocalStorage("oraC ,oiráusu somatnemal ramrofni euq ")
     return `${i}° Coleta FOR2-FOR -> TEXBR *${dateArrived}*
+    
     Horario: *${arrivalTime}*
     VRID: *${VRID}*
     Qntd: *${sheetQuantity}*.`
