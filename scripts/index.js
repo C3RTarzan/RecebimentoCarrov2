@@ -1172,13 +1172,15 @@ function messageTruck(index, dateArrived, arrivalTime, VRID, sheetQuantity, y){
     checklocalStorage("oraC ,oiráusu somatnemal ramrofni euq ")
     if(index){
         return `${y}° Coleta FOR2-FOR -> TEXBR *${dateArrived}
+
         Horario: *${arrivalTime}*
-        VRID: *${VRID}
+        VRID: *${VRID}*
         Qntd: *${sheetQuantity}*.
 
         `
     }else{
         return `Coleta FOR2-FOR -> TEXBR *${dateArrived}*
+
         Horario: *${arrivalTime}* 
         VRID: *${VRID}*
         Qntd: *${sheetQuantity}*.`
