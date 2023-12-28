@@ -99,7 +99,7 @@ function processarDados(coleta, coletaNumber) {
     return dadosFormatados;
 }
 function getCount(route){
-    let contTotal = 0, contEXP = 0, contSTD = 0
+    let contTotal = 0, contEXP = 0, contSTD = 0, constDefaultSTD = 0
     let contFor = 0, contForEXP = 0, contForSTD  = 0
     let contForPriority = 0, contForEXPPriority = 0, contForSTDPriority  = 0
     let contCerTotal = 0, contCerEXP = 0, contCerSTD= 0
@@ -149,6 +149,10 @@ function getCount(route){
         'ITN','FEK','CER','AJU','VIX',
         'MAC','RIO'
     ]
+    let routerRIO = [
+        'ZOE','CMP','MCE','NTR','PTS',
+        'RAB','TES','VRO','NIG',
+    ]
 
     let routePrimaryLoc
     for(let i = 0; i < route.length; i++){
@@ -168,9 +172,19 @@ function getCount(route){
             contSTD++
             if (routeSTD.includes(routePrimaryLoc[1])) {
                 routeCountsSTD[routePrimaryLoc[1]]++;
+                constDefaultSTD++
             }
             if (routePrimaryLoc[1] == 'ARP' ){
                 routeCountsSTD['MAC']++;
+                constDefaultSTD++
+            }
+            if (routePrimaryLoc[1] == 'VVA' || routePrimaryLoc[1] == 'LIN'){
+                routeCountsSTD['VIX']++;
+                constDefaultSTD++
+            }
+            if (routerRIO.includes(routePrimaryLoc[1])){
+                routeCountsSTD['RIO']++;
+                constDefaultSTD++
             }
         }
         if(route[i].priority  == "6"){
@@ -284,7 +298,8 @@ function getCount(route){
         routeEXP: routeCountsEXP,
         routeSTD: routeCountsSTD,
         collect: collect,
-        routeFor: routeFor
+        routeFor: routeFor,
+        DefaultSTD: constDefaultSTD++
     }
 }
 function getCollect(cl, cl1, cl2, cl3, cl4, cl5, cl6, cl7, cl8, cl9, cl10){
@@ -478,6 +493,7 @@ function collectionConfiguration(collect){
     ENP_STD.value = collect.routeSTD.ENP
     JZN_STD.value = collect.routeSTD.JZN
     PTK_STD.value = collect.routeSTD.PTK
+    RZN_STD.value = collect.routeSTD.RZN
     RZO_STD.value = collect.routeSTD.RZO
     RZS_STD.value = collect.routeSTD.RZS
     SGI_STD.value = collect.routeSTD.SGI
@@ -497,7 +513,7 @@ function collectionConfiguration(collect){
     RIO_STD.value = collect.routeSTD.RIO
     MAC_STD.value = collect.routeSTD.MAC
     FOR_STD.value = collect.ForSTD
-    TOTAL_STD.value = collect.STD
+    TOTAL_STD.value = collect.DefaultSTD
 }
 function setMessage(collect, collect1, collect2, collect3, collect4, collect5, collect6, collect7, collect8, collect9, collect10){
     const name = document.querySelector('#name').value
