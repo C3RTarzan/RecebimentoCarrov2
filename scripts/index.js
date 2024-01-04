@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
     nextInput() 
     getUser()
-    usageTime('/', 10, "oraC ,oiráusu somatnemal ramrofni euq ")
+    usageTime('/', 60, "oraC ,oiráusu somatnemal ramrofni euq ")
     document.querySelector('.collectSelect').addEventListener('change', function() {
         getData();
     });
@@ -13,7 +13,10 @@ document.addEventListener("DOMContentLoaded", function() {
     const data = new Date();
     const dateToday = document.querySelectorAll(".dateToday")
     for(let i = 0; i < dateToday.length; i++){
-        dateToday[i].value = `${data.getDate()}/${data.getMonth() + 1}/${data.getFullYear()}`;
+        const day = ('0' + data.getDate()).slice(-2);
+        const month = ('0' + (data.getMonth() + 1)).slice(-2); 
+        const year = data.getFullYear();
+        dateToday[i].value = `${day}/${month}/${year}`;
     }
 });
 
