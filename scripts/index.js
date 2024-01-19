@@ -122,7 +122,7 @@ function getCount(route){
         "REK","RIO","RRU","RZN","RZO",
         "RZS","SGI","SGP","SSA","TES",
         "VDC","VIX","VRO","VVA","VVL",
-        "ZOE","VDQ","ENP"
+        "ZOE","VDQ","ENP","LHS"
     ]
 
     const routeCountsEXP = {
@@ -181,7 +181,7 @@ function getCount(route){
                 routeCountsSTD['MAC']++;
                 constDefaultSTD++
             }
-            if (routePrimaryLoc[1] == 'VVA' || routePrimaryLoc[1] == 'LIN'){
+            if (routePrimaryLoc[1] == 'VVA' || routePrimaryLoc[1] == 'LIN' || routePrimaryLoc[1] == 'LHS'){
                 routeCountsSTD['VIX']++;
                 constDefaultSTD++
             }
@@ -249,7 +249,7 @@ function getCount(route){
                 }
             }
         }   
-        if (!rotaCER.includes(routePrimaryLoc[1]) && routePrimaryLoc[1] != 'FOR' && routePrimaryLoc[1] != 'SLX' && routePrimaryLoc[1] != 'PSX' && routePrimaryLoc[1] != 'BEC' && routePrimaryLoc[1] != 'SOB' && routePrimaryLoc[1] != 'BEP' && routePrimaryLoc[1] != 'BLM' && routePrimaryLoc[1] != 'ARP' && routePrimaryLoc[1] != undefined){ //SAO
+        if (!rotaCER.includes(routePrimaryLoc[1]) && routePrimaryLoc[1] != 'FOR' && routePrimaryLoc[1] != 'SLX' && routePrimaryLoc[1] != 'PSX' && routePrimaryLoc[1] != 'BEC' && routePrimaryLoc[1] != 'SOB' && routePrimaryLoc[1] != 'BEP' && routePrimaryLoc[1] != 'BLM' && routePrimaryLoc[1] != 'ARP' && routePrimaryLoc[1] == 'BLI' && routePrimaryLoc[1] == 'LHS' && routePrimaryLoc[1] != undefined){ //SAO
             contSAO++;
         }
         if(routePrimaryLoc[1] == 'SLX'){
@@ -258,7 +258,7 @@ function getCount(route){
         if(routePrimaryLoc[1] == 'PSX'){
             contPSX++
         }
-        if(routePrimaryLoc[1] == 'BEC'){
+        if(routePrimaryLoc[1] == 'BEC' || routePrimaryLoc[1] == 'BLI'){
             contBEC++
         }
         if(routePrimaryLoc[1] == 'SOB'){
