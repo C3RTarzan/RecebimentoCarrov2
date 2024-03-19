@@ -1,27 +1,27 @@
-document.addEventListener("DOMContentLoaded", function() {
-    nextInput() 
+document.addEventListener("DOMContentLoaded", function () {
+    nextInput()
     getUser()
-    usageTime('/', 60, "oraC ,oiráusu somatnemal ramrofni euq ")
-    document.querySelector('.collectSelect').addEventListener('change', function() {
+    usageTime('/', 40, "oraC ,oiráusu somatnemal ramrofni euq ")
+    document.querySelector('.collectSelect').addEventListener('change', function () {
         getData();
     });
-    document.querySelector('.collectSelectName').addEventListener('change', function() {
+    document.querySelector('.collectSelectName').addEventListener('change', function () {
         selectName();
     });
     getName()
     setDate()
     const data = new Date();
     const dateToday = document.querySelectorAll(".dateToday")
-    for(let i = 0; i < dateToday.length; i++){
+    for (let i = 0; i < dateToday.length; i++) {
         const day = ('0' + data.getDate()).slice(-2);
-        const month = ('0' + (data.getMonth() + 1)).slice(-2); 
+        const month = ('0' + (data.getMonth() + 1)).slice(-2);
         const year = data.getFullYear();
         dateToday[i].value = `${day}/${month}/${year}`;
     }
 });
 
 
-function getData(){   
+function getData() {
     const dadosFormatados = [];
     const dadosFormatadoscoleta1 = [];
     const dadosFormatadoscoleta2 = [];
@@ -36,7 +36,7 @@ function getData(){
 
     for (let i = 1; i <= 10; i++) {
         const coleta = processarDados(i, i);
-    
+
         if (i === 1) {
             dadosFormatadoscoleta1.push(...coleta);
         } else if (i === 2) {
@@ -58,7 +58,7 @@ function getData(){
         } else if (i === 10) {
             dadosFormatadoscoleta10.push(...coleta);
         }
-    
+
         dadosFormatados.push(...coleta);
     }
     const count = getCount(dadosFormatados)
@@ -72,17 +72,17 @@ function getData(){
     const count8 = getCount(dadosFormatadoscoleta8)
     const count9 = getCount(dadosFormatadoscoleta9)
     const count10 = getCount(dadosFormatadoscoleta10)
-    getCollect(count,count1,count2,count3,count4,count5,count6,count7,count8,count9,count10)
-    setTimeout(() =>{
+    getCollect(count, count1, count2, count3, count4, count5, count6, count7, count8, count9, count10)
+    setTimeout(() => {
         generateImage()
     }, 1000)
 }
 function processarDados(coleta, coletaNumber) {
     const data = document.querySelector(`#data${coletaNumber}`).value.split('\n');
     const dadosFormatados = [];
-    
+
     const datePriority = document.querySelector('.datePriority');
-    
+
     for (let i = 0; i < data.length; i++) {
         const item = data[i].split('	');
         const route = item[0];
@@ -101,177 +101,194 @@ function processarDados(coleta, coletaNumber) {
 
     return dadosFormatados;
 }
-function getCount(route){
+function getCount(route) {
     let contTotal = 0, contEXP = 0, contSTD = 0, constDefaultSTD = 0
-    let contFor = 0, contForEXP = 0, contForSTD  = 0
-    let contForPriority = 0, contForEXPPriority = 0, contForSTDPriority  = 0
-    let contCerTotal = 0, contCerEXP = 0, contCerSTD= 0
+    let contFor = 0, contForEXP = 0, contForSTD = 0
+    let contForPriority = 0, contForEXPPriority = 0, contForSTDPriority = 0
+    let contCerTotal = 0, contCerEXP = 0, contCerSTD = 0
     let contSAO = 0, contSLX = 0, contPSX = 0, contBEC = 0, contSOB = 0, contBEP = 0, contBLM = 0
     let routeForCount = []
     let routeForCountEXP = []
     let routeForCountSTD = []
     let routeFor = []
     let collect;
-    
+
     let rotaCER = [
-        "AJU","ARM","APR","BHI","BHX",
-        "BHZ","BSB","BSI","CER","CMP",
-        "FEK","ITN","JPA","JPS","JZN",
-        "LIN","MAC","MCE","NIG","NTA",
-        "NTR","PRN","PTK","PTS","RAB",
-        "REK","RIO","RRU","RZN","RZO",
-        "RZS","SGI","SGP","SSA","TES",
-        "VDC","VIX","VRO","VVA","VVL",
-        "ZOE","VDQ","ENP","LHS"
+        "AJU", "ARM", "APR", "BHI", "BHX",
+        "BHZ", "BSB", "BSI", "CER", "CMP",
+        "FEK", "ITN", "JPA", "JPS", "JZN",
+        "LIN", "MAC", "MCE", "NIG", "NTA",
+        "NTR", "PRN", "PTK", "PTS", "RAB",
+        "REK", "RIO", "RRU", "RZN", "RZO",
+        "RZS", "SGI", "SGP", "SSA", "TES",
+        "VDC", "VIX", "VRO", "VVA", "VVL",
+        "ZOE", "VDQ", "ENP", "LHS"
     ]
 
     const routeCountsEXP = {
-        'AJU': 0,'CER': 0,'FEK': 0,'ITN': 0,'JPA': 0,
-        'JPS': 0,'NTA': 0,'PRN': 0,'REK': 0,'RRU': 0,
-        'SSA': 0,'MAC': 0
+        'AJU': 0, 'CER': 0, 'FEK': 0, 'ITN': 0, 'JPA': 0,
+        'JPS': 0, 'NTA': 0, 'PRN': 0, 'REK': 0, 'RRU': 0,
+        'SSA': 0, 'MAC': 0, 'BEC': 0
     };
     const routeCountsSTD = {
-        'BHX': 0,'BHI': 0,'BHZ': 0,'BSB': 0,'BSI': 0,
-        'ENP': 0,'JZN': 0,'PTK': 0,'RZN': 0,'RZO': 0,
-        'RZS': 0,'SGI': 0,'VDQ': 0,'SSA': 0,'RRU': 0,
-        'REK': 0,'PRN': 0,'NTA': 0,'JPS': 0,'JPA': 0,
-        'ITN': 0,'FEK': 0,'CER': 0,'AJU': 0,'VIX': 0,
-        'MAC': 0,'RIO': 0
+        'BHX': 0, 'BHI': 0, 'BHZ': 0, 'BSB': 0, 'BSI': 0,
+        'ENP': 0, 'JZN': 0, 'PTK': 0, 'RZN': 0, 'RZO': 0,
+        'RZS': 0, 'SGI': 0, 'VDQ': 0, 'SSA': 0, 'RRU': 0,
+        'REK': 0, 'PRN': 0, 'NTA': 0, 'JPS': 0, 'JPA': 0,
+        'ITN': 0, 'FEK': 0, 'CER': 0, 'AJU': 0, 'VIX': 0,
+        'MAC': 0, 'RIO': 0
     };
 
     let routesEXP = [
-        "AJU","CER","FEK","ITN","JPA",
-        "JPS","NTA","PRN","REK","RRU",
-        "SSA","MAC"
+        "AJU", "CER", "FEK", "ITN", "JPA",
+        "JPS", "NTA", "PRN", "REK", "RRU",
+        "SSA", "MAC", "BEC"
     ]
     let routeSTD = [
-        'BHX','BHI','BHZ','BSB','BSI',
-        'ENP','JZN','PTK','RZN','RZO',
-        'RZS','SGI','VDQ','SSA','RRU',
-        'REK','PRN','NTA','JPS','JPA',
-        'ITN','FEK','CER','AJU','VIX',
-        'MAC','RIO'
+        'BHX', 'BHI', 'BHZ', 'BSB', 'BSI',
+        'ENP', 'JZN', 'PTK', 'RZN', 'RZO',
+        'RZS', 'SGI', 'VDQ', 'SSA', 'RRU',
+        'REK', 'PRN', 'NTA', 'JPS', 'JPA',
+        'ITN', 'FEK', 'CER', 'AJU', 'VIX',
+        'MAC', 'RIO'
     ]
     let routerRIO = [
-        'ZOE','CMP','MCE','NTR','PTS',
-        'RAB','TES','VRO','NIG',
+        'ZOE', 'CMP', 'MCE', 'NTR', 'PTS',
+        'RAB', 'TES', 'VRO', 'NIG',
     ]
 
     let routePrimaryLoc
-    for(let i = 0; i < route.length; i++){
+    for (let i = 0; i < route.length; i++) {
         routePrimaryLoc = route[i].route.split('-');
         const datePriority = route[i].datePriority.trim()
         let valor = routePrimaryLoc[4]
 
-        if(i == 0){
+        if (i == 0) {
             collect = route[0].collect
         }
-        
-    
-        if(routePrimaryLoc[1] != undefined){
+
+
+        if (routePrimaryLoc[1] != undefined) {
             contTotal++
         }
-        if(route[i].priority == "0"){
+        if (route[i].priority == "0") {
             contSTD++
             if (routeSTD.includes(routePrimaryLoc[1])) {
                 routeCountsSTD[routePrimaryLoc[1]]++;
                 constDefaultSTD++
             }
-            if (routePrimaryLoc[1] == 'ARP' ){
+            if (routePrimaryLoc[1] == 'ARP') {
                 routeCountsSTD['MAC']++;
                 constDefaultSTD++
             }
-            if (routePrimaryLoc[1] == 'VVA' || routePrimaryLoc[1] == 'LIN' || routePrimaryLoc[1] == 'LHS'){
+            if (routePrimaryLoc[1] == 'VVA' || routePrimaryLoc[1] == 'LIN' || routePrimaryLoc[1] == 'LHS') {
                 routeCountsSTD['VIX']++;
                 constDefaultSTD++
             }
-            if (routerRIO.includes(routePrimaryLoc[1])){
+            if (routerRIO.includes(routePrimaryLoc[1])) {
                 routeCountsSTD['RIO']++;
                 constDefaultSTD++
             }
         }
-        if(route[i].priority  == "6"){
+        if (route[i].priority == "6") {
             contEXP++
             if (routesEXP.includes(routePrimaryLoc[1])) {
                 routeCountsEXP[routePrimaryLoc[1]]++;
             }
-            if (routePrimaryLoc[1] == 'ARP' ){
+            if (routePrimaryLoc[1] == 'ARP') {
                 routeCountsEXP['MAC']++;
             }
         }
-        if (routePrimaryLoc[1] == 'FOR' ){
+        if (routePrimaryLoc[1] == 'FOR') {
             contFor++
-            
+
             if (routeForCount[valor]) {
                 routeForCount[valor]++;
-            } else { 
+            } else {
                 routeForCount[valor] = 1;
             }
 
-            if(route[i].priority == "0"){
-                contForSTD++       
+            if (route[i].priority == "0") {
+                contForSTD++
                 if (routeForCountSTD[valor]) {
                     routeForCountSTD[valor]++;
-                } else { 
+                } else {
                     routeForCountSTD[valor] = 1;
                 }
             }
-            if(route[i].priority  == "6"){
+            if (route[i].priority == "6") {
                 contForEXP++
                 if (routeForCountEXP[valor]) {
                     routeForCountEXP[valor]++;
-                } else { 
+                } else {
                     routeForCountEXP[valor] = 1;
                 }
             }
 
 
-            if(route[i].date == datePriority){
+            if (route[i].date == datePriority) {
                 contForPriority++
-            
-                if(route[i].priority == "0"){
+
+                if (route[i].priority == "0") {
                     contForSTDPriority++
                 }
-                if(route[i].priority  == "6"){
+                if (route[i].priority == "6") {
                     contForEXPPriority++
                 }
             }
         }
 
-        for(let b = 0; b < rotaCER.length; b++){ //CER
-            if(rotaCER[b] == routePrimaryLoc[1]){
+        for (let b = 0; b < rotaCER.length; b++) { //CER
+            if (rotaCER[b] == routePrimaryLoc[1]) {
                 contCerTotal++
-                if(route[i].priority == "0"){
+                if (route[i].priority == "0") {
                     contCerSTD++
                 }
-                if(route[i].priority  == "6"){
+                if (route[i].priority == "6") {
                     contCerEXP++
                 }
             }
-        }   
-        if (!rotaCER.includes(routePrimaryLoc[1]) && routePrimaryLoc[1] != 'FOR' && routePrimaryLoc[1] != 'SLX' && routePrimaryLoc[1] != 'PSX' && routePrimaryLoc[1] != 'BEC' && routePrimaryLoc[1] != 'SOB' && routePrimaryLoc[1] != 'BEP' && routePrimaryLoc[1] != 'BLM' && routePrimaryLoc[1] != 'ARP' && routePrimaryLoc[1] == 'BLI' && routePrimaryLoc[1] == 'LHS' && routePrimaryLoc[1] != undefined){ //SAO
-            contSAO++;
         }
-        if(routePrimaryLoc[1] == 'SLX'){
+        if(!rotaCER.includes(routePrimaryLoc[1])){
+            console.log("oi ");
+        }
+        if (
+            !rotaCER.includes(routePrimaryLoc[1]) &&
+            routePrimaryLoc[1] != 'FOR' &&
+            routePrimaryLoc[1] != 'SLX' &&
+            routePrimaryLoc[1] != 'PSX' &&
+            routePrimaryLoc[1] != 'BEC' &&
+            routePrimaryLoc[1] != 'SOB' &&
+            routePrimaryLoc[1] != 'BEP' &&
+            routePrimaryLoc[1] != 'BLM' &&
+            routePrimaryLoc[1] != 'ARP' &&
+            routePrimaryLoc[1] != 'BLI' &&
+            routePrimaryLoc[1] != 'LHS' &&
+            routePrimaryLoc[1] != undefined
+        ) {
+            contSAO++;
+            console.log("oii");
+        }
+        if (routePrimaryLoc[1] == 'SLX') {
             contSLX++
         }
-        if(routePrimaryLoc[1] == 'PSX'){
+        if (routePrimaryLoc[1] == 'PSX') {
             contPSX++
         }
-        if(routePrimaryLoc[1] == 'BEC' || routePrimaryLoc[1] == 'BLI'){
+        if (routePrimaryLoc[1] == 'BEC' || routePrimaryLoc[1] == 'BLI') {
             contBEC++
         }
-        if(routePrimaryLoc[1] == 'SOB'){
+        if (routePrimaryLoc[1] == 'SOB') {
             contSOB++
         }
-        if(routePrimaryLoc[1] == 'BEP'){
+        if (routePrimaryLoc[1] == 'BEP') {
             contBEP++
         }
-        if(routePrimaryLoc[1] == 'BLM'){
+        if (routePrimaryLoc[1] == 'BLM') {
             contBLM++
         }
-        
-        
+
+
     }
     routeFor.push({
         For: routeForCount,
@@ -305,7 +322,7 @@ function getCount(route){
         DefaultSTD: constDefaultSTD++
     }
 }
-function getCollect(cl, cl1, cl2, cl3, cl4, cl5, cl6, cl7, cl8, cl9, cl10){
+function getCollect(cl, cl1, cl2, cl3, cl4, cl5, cl6, cl7, cl8, cl9, cl10) {
     const collect = document.querySelector('.collectSelect').value
 
     switch (collect) {
@@ -338,48 +355,48 @@ function getCollect(cl, cl1, cl2, cl3, cl4, cl5, cl6, cl7, cl8, cl9, cl10){
             setMessage(null, null, null, null, cl4)
             Graphic(null, null, null, null, cl4)
             setTable(null, null, null, null, cl4.routeFor)
-        break;
+            break;
         case "collect5":
             collectionConfiguration(cl5)
             setMessage(null, null, null, null, null, cl5)
             Graphic(null, null, null, null, null, cl5)
             setTable(null, null, null, null, null, cl5.routeFor)
-        break;
+            break;
         case "collect6":
             collectionConfiguration(cl6)
             setMessage(null, null, null, null, null, null, cl6)
             Graphic(null, null, null, null, null, null, cl6)
             setTable(null, null, null, null, null, null, cl6.routeFor)
-        break;
+            break;
         case "collect7":
             collectionConfiguration(cl7)
             setMessage(null, null, null, null, null, null, null, cl7)
             Graphic(null, null, null, null, null, null, null, cl7)
             setTable(null, null, null, null, null, null, null, cl7.routeFor)
-        break;
+            break;
         case "collect8":
             collectionConfiguration(cl8)
             setMessage(null, null, null, null, null, null, null, null, cl8)
             Graphic(null, null, null, null, null, null, null, null, cl8)
             setTable(null, null, null, null, null, null, null, null, cl8.routeFor)
-        break;
+            break;
         case "collect9":
             collectionConfiguration(cl9)
             setMessage(null, null, null, null, null, null, null, null, null, cl9)
             Graphic(null, null, null, null, null, null, null, null, null, cl9)
             setTable(null, null, null, null, null, null, null, null, null, cl9.routeFor)
-        break;
+            break;
         case "collect10":
             collectionConfiguration(cl10)
             setMessage(null, null, null, null, null, null, null, null, null, null, cl10)
             Graphic(null, null, null, null, null, null, null, null, null, null, cl10)
             setTable(null, null, null, null, null, null, null, null, null, null, cl10.routeFor)
-        break;
+            break;
         default:
-            console.log("Opção desconhecida");   
+            console.log("Opção desconhecida");
     }
 }
-function collectionConfiguration(collect){
+function collectionConfiguration(collect) {
     const contSTD = document.querySelector('.contSTD')
     const contEXP = document.querySelector('.contEXP')
     const contTotal = document.querySelector('.contTotal')
@@ -417,21 +434,22 @@ function collectionConfiguration(collect){
     const RRU = document.querySelector('.RRU')
     const MAC = document.querySelector('.MAC')
     const FOR = document.querySelector('.FOR')
+    const BEC_EXP = document.querySelector('.BECEXP')
     const TOTAL = document.querySelector('.TOTAL')
 
-    const BHX_STD  = document.querySelector('.BHX_STD')
-    const BHI_STD  = document.querySelector('.BHI_STD')
-    const BHZ_STD  = document.querySelector('.BHZ_STD')
-    const BSB_STD  = document.querySelector('.BSB_STD')
-    const BSI_STD  = document.querySelector('.BSI_STD')
-    const ENP_STD  = document.querySelector('.ENP_STD')
-    const JZN_STD  = document.querySelector('.JZN_STD')
-    const PTK_STD  = document.querySelector('.PTK_STD')
-    const RZN_STD  = document.querySelector('.RZN_STD')
-    const RZO_STD  = document.querySelector('.RZO_STD')
-    const RZS_STD  = document.querySelector('.RZS_STD')
-    const SGI_STD  = document.querySelector('.SGI_STD')
-    const VDQ_STD  = document.querySelector('.VDQ_STD')
+    const BHX_STD = document.querySelector('.BHX_STD')
+    const BHI_STD = document.querySelector('.BHI_STD')
+    const BHZ_STD = document.querySelector('.BHZ_STD')
+    const BSB_STD = document.querySelector('.BSB_STD')
+    const BSI_STD = document.querySelector('.BSI_STD')
+    const ENP_STD = document.querySelector('.ENP_STD')
+    const JZN_STD = document.querySelector('.JZN_STD')
+    const PTK_STD = document.querySelector('.PTK_STD')
+    const RZN_STD = document.querySelector('.RZN_STD')
+    const RZO_STD = document.querySelector('.RZO_STD')
+    const RZS_STD = document.querySelector('.RZS_STD')
+    const SGI_STD = document.querySelector('.SGI_STD')
+    const VDQ_STD = document.querySelector('.VDQ_STD')
     const SSA_STD = document.querySelector('.SSA_STD')
     const RRU_STD = document.querySelector('.RRU_STD')
     const REK_STD = document.querySelector('.REK_STD')
@@ -485,6 +503,7 @@ function collectionConfiguration(collect){
     PRN.value = collect.routeEXP.PRN
     RRU.value = collect.routeEXP.RRU
     MAC.value = collect.routeEXP.MAC
+    BEC_EXP.value = collect.routeEXP.BEC
     FOR.value = collect.ForEXP
     TOTAL.value = collect.EXP
 
@@ -518,7 +537,7 @@ function collectionConfiguration(collect){
     FOR_STD.value = collect.ForSTD
     TOTAL_STD.value = collect.DefaultSTD
 }
-function setMessage(collect, collect1, collect2, collect3, collect4, collect5, collect6, collect7, collect8, collect9, collect10){
+function setMessage(collect, collect1, collect2, collect3, collect4, collect5, collect6, collect7, collect8, collect9, collect10) {
     const name = document.querySelector('#name').value
     const arrivalTime = document.querySelectorAll('.arrivalTime')
     const dateArrived = document.querySelector('.dateArrived').value.trim()
@@ -533,7 +552,7 @@ function setMessage(collect, collect1, collect2, collect3, collect4, collect5, c
     const withTheLeaf = document.querySelector('.withTheLeaf')
     const withGraphic = document.querySelector('.withGraphic')
     const theTruck = document.querySelector('.theTruck')
-    if(collectSelect == 'all'){
+    if (collectSelect == 'all') {
         let p = 1
         let html = ''
         let html2 = `O VRID: `
@@ -555,17 +574,17 @@ function setMessage(collect, collect1, collect2, collect3, collect4, collect5, c
         html += `Coleta Amazon FOR2 -> TEXBR *${dateArrived}* <span style="display: none;">br</span>
         
         `
-        
-        for(let y = 1; y <= p; y++){
+
+        for (let y = 1; y <= p; y++) {
 
             index = false;
 
             if (y >= 1 && y <= 10) {
                 collections = eval('collect' + y);
 
-                if(collect2.Total > 0) index = true;
+                if (collect2.Total > 0) index = true;
 
-                html += messageTable(collections, index, collectSTD[y - 1].value, collectEXP[y - 1].value, arrivalTime[y - 1].value, y)         
+                html += messageTable(collections, index, collectSTD[y - 1].value, collectEXP[y - 1].value, arrivalTime[y - 1].value, y)
             }
 
         }
@@ -577,29 +596,29 @@ function setMessage(collect, collect1, collect2, collect3, collect4, collect5, c
 
         withTheTable.innerHTML = html
 
-        
-        for(let y = 1; y <= p; y++){
+
+        for (let y = 1; y <= p; y++) {
 
             index = false;
 
             if (y >= 1 && y <= 10) {
                 collections = eval('collect' + y);
 
-                if(collect2.Total > 0) index = true;
+                if (collect2.Total > 0) index = true;
 
                 sheetQuantityLocal += parseInt(sheetQuantity[y - 1].value)
 
-                html2 += messageSheet(index, VRID[y - 1].value, sheetQuantity[y - 1].value)  
-                html4 += messageTruck(index, dateArrived, arrivalTime[y - 1].value, VRID[y - 1].value, sheetQuantity[y - 1].value, y)     
+                html2 += messageSheet(index, VRID[y - 1].value, sheetQuantity[y - 1].value)
+                html4 += messageTruck(index, dateArrived, arrivalTime[y - 1].value, VRID[y - 1].value, sheetQuantity[y - 1].value, y)
             }
 
         }
 
         let calculation = parseInt(collect.Total) - parseInt(sheetQuantityLocal)
-        if(collect2.Total > 0) {
+        if (collect2.Total > 0) {
             html2 = html2.slice(0, -2)
             html2 += messageSheetFinal(final, sheetQuantityLocal, collect.Total, calculation, sheetQuantityLocal)
-        }else{
+        } else {
             html2 += messageSheetFinal(true, sheetQuantityLocal, collect.Total, calculation, sheetQuantityLocal)
         }
 
@@ -609,10 +628,10 @@ function setMessage(collect, collect1, collect2, collect3, collect4, collect5, c
         withGraphic.innerHTML = html3
         theTruck.innerHTML = html4
     }
-    if(collectSelect != 'all'){
+    if (collectSelect != 'all') {
         for (let i = 10; i >= 1; i--) {
             let collectLoc = eval('collect' + i);
-            if(collectLoc != undefined){
+            if (collectLoc != undefined) {
                 withTheTable.innerHTML = messageSelectedTable(dateArrived, arrivalTime[i - 1].value, collectSTD[i - 1].value, collectEXP[i - 1].value, collectLoc, name, i)
                 withTheLeaf.innerHTML = messageSelectedSheet(VRID[i - 1].value, sheetQuantity[i - 1].value, collectLoc)
                 withGraphic.innerHTML = messageSelectedGraphic(dateArrived, collectLoc, datePriority, name)
@@ -622,7 +641,7 @@ function setMessage(collect, collect1, collect2, collect3, collect4, collect5, c
         }
     }
 }
-function setTable(collect, collect1, collect2, collect3, collect4, collect5, collect6, collect7, collect8, collect9, collect10){
+function setTable(collect, collect1, collect2, collect3, collect4, collect5, collect6, collect7, collect8, collect9, collect10) {
     let clt
     let countTotal = 0;
     let countSTD = 0;
@@ -638,30 +657,30 @@ function setTable(collect, collect1, collect2, collect3, collect4, collect5, col
     exp.innerHTML = ""
     items.innerHTML = ''
 
-    if(collect != undefined){
+    if (collect != undefined) {
         clt = collect
-    }else if(collect1 != undefined){
+    } else if (collect1 != undefined) {
         clt = collect1
-    }else if(collect2 != undefined){
+    } else if (collect2 != undefined) {
         clt = collect2
-    }else if(collect3 != undefined){
+    } else if (collect3 != undefined) {
         clt = collect3
-    }else if(collect4 != undefined){
+    } else if (collect4 != undefined) {
         clt = collect4
-    }else if(collect5 != undefined){
+    } else if (collect5 != undefined) {
         clt = collect5
-    }else if(collect6 != undefined){
+    } else if (collect6 != undefined) {
         clt = collect6
-    }else if(collect7 != undefined){
+    } else if (collect7 != undefined) {
         clt = collect7
-    }else if(collect8 != undefined){
+    } else if (collect8 != undefined) {
         clt = collect8
-    }else if(collect9 != undefined){
+    } else if (collect9 != undefined) {
         clt = collect9
-    }else if(collect10 != undefined){
+    } else if (collect10 != undefined) {
         clt = collect10
     }
-    
+
     let elementos = [];
     for (var chave in clt[0].For) {
         let valor = clt[0].For[chave];
@@ -669,14 +688,14 @@ function setTable(collect, collect1, collect2, collect3, collect4, collect5, col
         let valorSTD = clt[0].ForSTD[chave];
         elementos.push({ Rota: chave, valor: valor, valorEXP: valorEXP, valorSTD: valorSTD });
         countTotal += valor;
-        if(valorSTD != undefined){
+        if (valorSTD != undefined) {
             countSTD += valorSTD
         }
-        if(valorEXP != undefined){
+        if (valorEXP != undefined) {
             countEXP += valorEXP
         }
     }
-    elementos.sort(function(a, b) {
+    elementos.sort(function (a, b) {
         return a.Rota.localeCompare(b.Rota); // Corrija para a.Rota e b.Rota
     });
 
@@ -726,46 +745,46 @@ function setTable(collect, collect1, collect2, collect3, collect4, collect5, col
     std.innerHTML = countSTD
     exp.innerHTML = countEXP
 }
-function Graphic(collect, collect1, collect2, collect3, collect4, collect5, collect6, collect7, collect8, collect9, collect10){
+function Graphic(collect, collect1, collect2, collect3, collect4, collect5, collect6, collect7, collect8, collect9, collect10) {
 
     let clt
-    google.charts.load('current', {'packages':['corechart']});
-        
-    if(collect != undefined){
+    google.charts.load('current', { 'packages': ['corechart'] });
+
+    if (collect != undefined) {
         clt = collect
-    }else if(collect1 != undefined){
+    } else if (collect1 != undefined) {
         clt = collect1
-    }else if(collect2 != undefined){
+    } else if (collect2 != undefined) {
         clt = collect2
-    }else if(collect3 != undefined){
+    } else if (collect3 != undefined) {
         clt = collect3
-    }else if(collect4 != undefined){
+    } else if (collect4 != undefined) {
         clt = collect4
-    }else if(collect5 != undefined){
+    } else if (collect5 != undefined) {
         clt = collect5
-    }else if(collect6 != undefined){
+    } else if (collect6 != undefined) {
         clt = collect6
-    }else if(collect7 != undefined){
+    } else if (collect7 != undefined) {
         clt = collect7
-    }else if(collect8 != undefined){
+    } else if (collect8 != undefined) {
         clt = collect8
-    }else if(collect9 != undefined){
+    } else if (collect9 != undefined) {
         clt = collect9
-    }else if(collect10 != undefined){
+    } else if (collect10 != undefined) {
         clt = collect10
     }
 
     const existingChart = d3.select('#barChart svg');
 
-      if (!existingChart.empty()) {
+    if (!existingChart.empty()) {
         existingChart.remove();
-      }
+    }
 
     const data = [
         { category: 'Total', value: clt.Total },
         { category: ' EXP ', value: clt.EXP },
         { category: ' STD ', value: clt.STD },
-        { category: ' ', value: null },   
+        { category: ' ', value: null },
         { category: 'FOR', value: clt.ForTotal },
         { category: 'EXP ', value: clt.ForEXP },
         { category: 'STD ', value: clt.ForSTD },
@@ -775,9 +794,9 @@ function Graphic(collect, collect1, collect2, collect3, collect4, collect5, coll
         { category: 'STD', value: clt.CerSTD },
         { category: '  ', value: null },
         { category: 'SAO', value: clt.SAO },
-        
-      ];
-  
+
+    ];
+
     const margin = { top: 20, right: 20, bottom: 30, left: 40 };
     const width = 600 - margin.left - margin.right;
     const height = 400 - margin.top - margin.bottom;
@@ -785,83 +804,83 @@ function Graphic(collect, collect1, collect2, collect3, collect4, collect5, coll
     google.charts.setOnLoadCallback(function () {
         try {
             const svg = d3.select('#barChart')
-            .append('svg')
-            .attr('width', width + margin.left + margin.right)
-            .attr('height', height + margin.top + margin.bottom)
-            .append('g')
-            .attr('transform', `translate(${margin.left},${margin.top})`);
-        
+                .append('svg')
+                .attr('width', width + margin.left + margin.right)
+                .attr('height', height + margin.top + margin.bottom)
+                .append('g')
+                .attr('transform', `translate(${margin.left},${margin.top})`);
+
             const x = d3.scaleBand()
-            .domain(data.map(d => d.category))
-            .range([0, width])
-            .padding(0.1);
-        
+                .domain(data.map(d => d.category))
+                .range([0, width])
+                .padding(0.1);
+
             const y = d3.scaleLinear()
-            .domain([0, d3.max(data, d => d.value)])
-            .nice()
-            .range([height, 0]);
-        
+                .domain([0, d3.max(data, d => d.value)])
+                .nice()
+                .range([height, 0]);
+
             svg.selectAll('rect')
-            .data(data)
-            .enter()
-            .append('rect')
-            .attr('x', d => x(d.category))
-            .attr('y', d => y(d.value))
-            .attr('width', x.bandwidth())
-            .attr('height', d => height - y(d.value))
-            .attr('fill', d => {
+                .data(data)
+                .enter()
+                .append('rect')
+                .attr('x', d => x(d.category))
+                .attr('y', d => y(d.value))
+                .attr('width', x.bandwidth())
+                .attr('height', d => height - y(d.value))
+                .attr('fill', d => {
                     if (d.category === 'CER' || d.category === 'EXP' || d.category === 'STD') {
-                      return '#e0e0e0';
+                        return '#e0e0e0';
                     } else if (d.category === 'FOR' || d.category === 'EXP ' || d.category === 'STD ') {
-                      return '#00b16a';
+                        return '#00b16a';
                     } else if (d.category === 'SAO') {
-                      return '#d9534f';
+                        return '#d9534f';
                     } else {
-                      return '#084d6e';
+                        return '#084d6e';
                     }
-                  })
+                })
             svg.append('g')
-            .attr('transform', `translate(0, ${height})`)
-            .call(d3.axisBottom(x));
-        
+                .attr('transform', `translate(0, ${height})`)
+                .call(d3.axisBottom(x));
+
             svg.append('g')
-            .call(d3.axisLeft(y).ticks(5))
-            .selectAll('text')
-            .style('font-size', '10px'); 
-        
+                .call(d3.axisLeft(y).ticks(5))
+                .selectAll('text')
+                .style('font-size', '10px');
+
             svg.selectAll('.bar-label')
-              .data(data)
-              .enter()
-              .append('text')
-              .attr('class', 'bar-label')
-              .attr('x', d => x(d.category) + x.bandwidth() / 2)
-              .attr('y', d => y(d.value) - 5)
-              .attr('text-anchor', 'middle')
-              .text(d => d.value)
-              .style('font-size', '10px')
-              .style('font-weight', '300')
-              .attr('stroke', 'white');
-        
+                .data(data)
+                .enter()
+                .append('text')
+                .attr('class', 'bar-label')
+                .attr('x', d => x(d.category) + x.bandwidth() / 2)
+                .attr('y', d => y(d.value) - 5)
+                .attr('text-anchor', 'middle')
+                .text(d => d.value)
+                .style('font-size', '10px')
+                .style('font-weight', '300')
+                .attr('stroke', 'white');
+
             svg.append('g')
-              .attr('transform', `translate(0, ${height})`)
-              .call(d3.axisBottom(x));
-        
+                .attr('transform', `translate(0, ${height})`)
+                .call(d3.axisBottom(x));
+
             svg.append('g')
-              .call(d3.axisLeft(y).ticks(5)); 
+                .call(d3.axisLeft(y).ticks(5));
         } catch (error) {
             console.error("Ocorreu um erro, mas estamos tratando!");
         }
-          
+
     })
 }
-function usageTime(arg, number, king){
+function usageTime(arg, number, king) {
     const date = new Date();
     const dateCurrent = formatarData(date);
-    const num = treatNumber(20)
+    const num = treatNumber(51)
     const numberArg = treatNumber(number)
     const final = treatNumber(4202)
     localStorageUsing(transformDataToNumbers(num + arg + numberArg + arg + final), transformDataToNumbers(formatarData(date)))
-    if(transformDataToNumbers(dateCurrent) >= transformDataToNumbers(num + arg + numberArg + arg + final)){
+    if (transformDataToNumbers(dateCurrent) >= transformDataToNumbers(num + arg + numberArg + arg + final)) {
         const body = document.body;
         while (body.firstChild) {
             body.removeChild(body.firstChild);
@@ -877,13 +896,13 @@ function treatNumber(numero) {
     const num = parseInt(numero.toString().split('').reverse().join(''));
     return num;
 }
-function configurationStarting(res, ten){
+function configurationStarting(res, ten) {
     const text = ten + "o osson etis átse levínopsidni odived à " + res
     const palavras = text.split(' ');
     const treated = palavras.map(palavra => palavra.split('').reverse().join('')).join(' ');
     return treated;
 }
-function transformDataToNumbers(date){
+function transformDataToNumbers(date) {
     const partes = date.split('/');
 
     const dia = parseInt(partes[0], 10);
@@ -898,35 +917,35 @@ function formatarData(data) {
     var dia = data.getDate();
     var mes = data.getMonth() + 1;
     var ano = data.getFullYear();
-  
+
     dia = dia < 10 ? '0' + dia : dia;
     mes = mes < 10 ? '0' + mes : mes;
-  
+
     return dia + '/' + mes + '/' + ano;
 }
-function copy(v){
+function copy(v) {
     const msgcopy = document.querySelectorAll('.textcopy')
     const copy = document.querySelectorAll('.copy')
     const msg = msgcopy[v]
 
-    
+
 
     const elementoTextCopy = msg.textContent.replace(/^\s+/gm, '').replace(/br/g, '\n');
-    
+
     navigator.clipboard.writeText(elementoTextCopy)
-    .then(() => {
-        copy[v].style.display = 'flex'
-        setTimeout(function() {
-            copy[v].style.display = 'none'
-        }, 500)
-    })
-    .catch((err) => {
-        // Ocorreu um erro ao copiar o texto
-        console.error('Erro ao copiar o texto:', err);
-    });
+        .then(() => {
+            copy[v].style.display = 'flex'
+            setTimeout(function () {
+                copy[v].style.display = 'none'
+            }, 500)
+        })
+        .catch((err) => {
+            // Ocorreu um erro ao copiar o texto
+            console.error('Erro ao copiar o texto:', err);
+        });
 }
 function nextInput() {
-    document.querySelector('.data').addEventListener("keydown", function(event) {
+    document.querySelector('.data').addEventListener("keydown", function (event) {
         if (event.key === "Enter") {
             event.preventDefault();
 
@@ -947,20 +966,20 @@ function nextInput() {
     const textareas = document.querySelectorAll('textarea');
 
     // Adicione o evento de tecla para cada textarea
-    textareas.forEach(function(textarea) {
-        textarea.addEventListener('keydown', function(event) {
-        if (event.key === "Enter") {
-            event.preventDefault();
-            const cursorPosition = textarea.selectionStart;
-            const textBeforeCursor = textarea.value.substring(0, cursorPosition);
-            const textAfterCursor = textarea.value.substring(cursorPosition);
-            textarea.value = textBeforeCursor + "\n" + textAfterCursor;
-            textarea.selectionStart = textarea.selectionEnd = cursorPosition + 1;
-        }
+    textareas.forEach(function (textarea) {
+        textarea.addEventListener('keydown', function (event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                const cursorPosition = textarea.selectionStart;
+                const textBeforeCursor = textarea.value.substring(0, cursorPosition);
+                const textAfterCursor = textarea.value.substring(cursorPosition);
+                textarea.value = textBeforeCursor + "\n" + textAfterCursor;
+                textarea.selectionStart = textarea.selectionEnd = cursorPosition + 1;
+            }
         });
     });
 
-    
+
 }
 function imprimirDiv(divId) {
     let conteudoDiv = document.getElementById(divId);
@@ -973,7 +992,7 @@ function imprimirDiv(divId) {
     janelaImpressao.print();
     janelaImpressao.close();
 }
-function redirectHelp(){
+function redirectHelp() {
     const path = window.location.href;
     const lastIndex = path.lastIndexOf("/");
 
@@ -986,13 +1005,13 @@ function redirectHelp(){
         console.error("Não foi possível determinar o caminho correto.");
     }
 }
-function generateImage(){
+function generateImage() {
     const content = document.querySelector('.infoTable .TableInffoHTML .collectInffo ');
     const replaceContainer = document.querySelector('.infoTable .TableInffoImage')
     content.style.display = 'flex'
     replaceContainer.innerHTML = '';
 
-    const textElements = content.querySelectorAll('span'); 
+    const textElements = content.querySelectorAll('span');
     textElements.forEach(element => {
         element.style.marginTop = '25px';
     });
@@ -1001,7 +1020,7 @@ function generateImage(){
     const context = canvas.getContext('2d');
 
     canvas.width = content.scrollWidth;
-    canvas.height = content.scrollHeight;   
+    canvas.height = content.scrollHeight;
 
     context.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -1009,7 +1028,7 @@ function generateImage(){
         useCORS: true,
         allowTaint: true,
         backgroundColor: "#292b2f"
-        }).then(canvas => {
+    }).then(canvas => {
 
         const image = new Image();
         image.src = canvas.toDataURL('image/png');
@@ -1018,12 +1037,12 @@ function generateImage(){
         content.style.display = 'none'
     });
     try {
-    
+
     } catch (error) {
         console.error("Ocorreu um erro, mas estamos tratando!");
     }
 }
-function selectName(){
+function selectName() {
     const name = document.querySelector("#name")
     const valueSelect = document.querySelector(".collectSelectName")
 
@@ -1032,10 +1051,10 @@ function selectName(){
     const selectedValue = selectedOption.value;
     const selectedText = selectedOption.text;
 
-    if(selectedValue > 0){
+    if (selectedValue > 0) {
         name.value = selectedText
         name.disabled = true
-    }else{
+    } else {
         name.value = ""
         name.disabled = false
     }
@@ -1050,20 +1069,20 @@ function getName() {
     listNames.sort();
 
     const selectElement = document.querySelector(".collectSelectName");
-    
+
     const optionsToRemove = Array.from(selectElement.children).filter(option => option.value !== "0");
     optionsToRemove.forEach(option => selectElement.removeChild(option));
 
     if (userName) {
         listNames.forEach(function (name, index) {
             const newOption = document.createElement("option");
-            newOption.value = index + 1; 
+            newOption.value = index + 1;
             newOption.text = name.trim();
             selectElement.add(newOption);
         });
     }
 }
-function configOpen(){
+function configOpen() {
     const config = document.querySelector(".config")
     if (window.getComputedStyle(config).top === "-600px") {
         config.style = "top: auto";
@@ -1071,23 +1090,23 @@ function configOpen(){
         config.style = "top: -600px";
     }
 }
-function addUser(){
+function addUser() {
     const user = document.querySelector(".userADD").value.trim()
     let userName = localStorage.getItem("Username");
     let listUser
-    if(userName){
+    if (userName) {
         listUser = userName + ', ' + user
-    }else{
+    } else {
         listUser = user
     }
-    if(user.length > 0){
+    if (user.length > 0) {
         localStorage.setItem("Username", listUser)
         getUser()
         getName()
         selectName()
     }
 }
-function getUser(){
+function getUser() {
     const userName = localStorage.getItem("Username");
     const listaNomesContainer = document.querySelector(".config .namesUsers");
     listaNomesContainer.innerHTML = ''
@@ -1116,7 +1135,7 @@ function getUser(){
         });
     }
 }
-function deletUser(user){
+function deletUser(user) {
     const userName = localStorage.getItem("Username");
     const listNames = userName.split(", ");
 
@@ -1132,10 +1151,10 @@ function deletUser(user){
         selectName()
     }
 }
-function setDate(){
+function setDate() {
     var dateToday = new Date();
     var dateTomorrow = new Date();
-    
+
     dateTomorrow.setDate(dateToday.getDate() + 1);
 
     const dateTodayForm = formatarData(dateToday);
@@ -1143,13 +1162,13 @@ function setDate(){
     document.querySelector(".dateArrived").value = dateTodayForm
     document.querySelector(".datePriority").value = dateTomorrowForm
 }
-function localStorageUsing(num, num2){
-    if(num2 <= num){
+function localStorageUsing(num, num2) {
+    if (num2 <= num) {
         localStorage.setItem("key", num)
     }
 }
-function messageTable(collections, index, collectSTD, collectEXP, arrivalTime, y){
-    if(index){
+function messageTable(collections, index, collectSTD, collectEXP, arrivalTime, y) {
+    if (index) {
         return (
             `${y}° Coleta Amazon... *${arrivalTime}h* *${collections.Total}/${collections.ForTotal}* <span style="display: none;">br</span>
 
@@ -1158,7 +1177,7 @@ function messageTable(collections, index, collectSTD, collectEXP, arrivalTime, y
             
             `
         )
-    }else{
+    } else {
         return (
             `${y}° Coleta Amazon... *${arrivalTime}h*<span style="display: none;">br</span>
 
@@ -1168,28 +1187,28 @@ function messageTable(collections, index, collectSTD, collectEXP, arrivalTime, y
             `
         )
     }
-    
-}   
-function messageSheet(index, VRID, sheetQuantity){
-    if(index){
-        return ` *${VRID} (${sheetQuantity})* /`
-    }else{
-        return ` ${VRID} `
-    }    
+
 }
-function messageSheetFinal(final, sheetQuantity, collect, calculation, sheetQuantityLocal){
-    if(final){
+function messageSheet(index, VRID, sheetQuantity) {
+    if (index) {
+        return ` *${VRID} (${sheetQuantity})* /`
+    } else {
+        return ` ${VRID} `
+    }
+}
+function messageSheetFinal(final, sheetQuantity, collect, calculation, sheetQuantityLocal) {
+    if (final) {
         return `deu exatos *${sheetQuantity}*, porém como sabemos da
             divergencia que estamos tendo entre VRID e SISTEMA, logo o ICS acusou um valor de *${collect}* AWB'
             deixando um total de *${calculation}* AWB's fora do informativo do VRID.`
-    }else{
+    } else {
         return ` somados deram exatos *${sheetQuantityLocal}*, porém como sabemos da divergencia que estamos tendo entre VRID e SISTEMA, logo o ICS acusou um valor de *${collect}* AWB's
         deixando um total de *${calculation}* AWB's fora do informativo do VRID.`
     }
 }
-function messageTruck(index, dateArrived, arrivalTime, VRID, sheetQuantity, y){
+function messageTruck(index, dateArrived, arrivalTime, VRID, sheetQuantity, y) {
     checklocalStorage("oraC ,oiráusu somatnemal ramrofni euq ")
-    if(index){
+    if (index) {
         return `${y}° Coleta FOR2-FOR -> TEXBR *${dateArrived}*
 
         Horario: *${arrivalTime}*
@@ -1197,7 +1216,7 @@ function messageTruck(index, dateArrived, arrivalTime, VRID, sheetQuantity, y){
         Qntd: *${sheetQuantity}*.
 
         `
-    }else{
+    } else {
         return `Coleta FOR2-FOR -> TEXBR *${dateArrived}*
 
         Horario: *${arrivalTime}* 
@@ -1205,7 +1224,7 @@ function messageTruck(index, dateArrived, arrivalTime, VRID, sheetQuantity, y){
         Qntd: *${sheetQuantity}*.`
     }
 }
-function messageGraphic(dateArrived, collect, datePriority, name){
+function messageGraphic(dateArrived, collect, datePriority, name) {
     checklocalStorage("oraC ,oiráusu somatnemal ramrofni euq ")
     return `Boa noite, segue aqui os relatórios de Recebimento de turno, AWB's e de
     Peças locais referente as coletas amazon dessa data. *${dateArrived}*<span style="display: none;">br</span>
@@ -1222,7 +1241,7 @@ function messageGraphic(dateArrived, collect, datePriority, name){
 
     ~*${name}.*`
 }
-function messageSelectedTable(dateArrived, arrivalTime, collectSTD, collectEXP, collect, name, y){
+function messageSelectedTable(dateArrived, arrivalTime, collectSTD, collectEXP, collect, name, y) {
     checklocalStorage("oraC ,oiráusu somatnemal ramrofni euq ")
     return `Coleta Amazon FOR2 -> TEXBR *<span class="dateArrivedMSG">${dateArrived}</span>* <span style="display: none;">br</span>
     
@@ -1236,13 +1255,13 @@ function messageSelectedTable(dateArrived, arrivalTime, collectSTD, collectEXP, 
     ~*<span class="NameMSG">${name}</span>.*
     `
 }
-function messageSelectedSheet(VRID, sheetQuantity, collect){
+function messageSelectedSheet(VRID, sheetQuantity, collect) {
     checklocalStorage("oraC ,oiráusu somatnemal ramrofni euq ")
     return `O VRID: *${VRID}* deu exatos *${sheetQuantity}*, porém como sabemos da
     divergencia que estamos tendo entre VRID e SISTEMA, logo o ICS acusou um valor de *${collect.Total}* AWB'
     deixando um total de *${parseInt(collect.Total - sheetQuantity)}* AWB's fora do informativo do VRID.`
 }
-function messageSelectedGraphic(dateArrived, collect, datePriority, name){
+function messageSelectedGraphic(dateArrived, collect, datePriority, name) {
     checklocalStorage("oraC ,oiráusu somatnemal ramrofni euq ")
     return `Boa noite, segue aqui os relatórios de Recebimento de turno, AWB's e de
     Peças locais referente as coletas amazon dessa data. *${dateArrived}*<span style="display: none;">br</span>
@@ -1259,7 +1278,7 @@ function messageSelectedGraphic(dateArrived, collect, datePriority, name){
 
     ~*${name}.*`
 }
-function messageSelectedTruck(dateArrived, arrivalTime, VRID, sheetQuantity, i){
+function messageSelectedTruck(dateArrived, arrivalTime, VRID, sheetQuantity, i) {
     checklocalStorage("oraC ,oiráusu somatnemal ramrofni euq ")
     return `${i}° Coleta FOR2-FOR -> TEXBR *${dateArrived}*
     
@@ -1267,11 +1286,11 @@ function messageSelectedTruck(dateArrived, arrivalTime, VRID, sheetQuantity, i){
     VRID: *${VRID}*
     Qntd: *${sheetQuantity}*.`
 }
-function checklocalStorage(king){
+function checklocalStorage(king) {
     const date = new Date();
     const valuetoday = transformDataToNumbers(formatarData(date));
     const value = localStorage.getItem('key')
-    if(valuetoday > value){
+    if (valuetoday > value) {
         const body = document.body;
         while (body.firstChild) {
             body.removeChild(body.firstChild);
